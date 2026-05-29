@@ -20,6 +20,28 @@ Then open `D:\Repos\my_project\AGENTS.md` and populate the project-specific sect
 
 Do not invent commands, architecture, services, or deployment assumptions.
 
+For a guided population prompt, use:
+
+```text
+D:\Repos\leap_agent_pack\repo\AGENTS_Population_Prompt.md
+```
+
+## Install The Combined Local-Trial AGENTS.md
+
+Use the combined template when you want to test LEAP in one repository before installing global instructions.
+
+```powershell
+Copy-Item D:\Repos\leap_agent_pack\combined\AGENTS.md D:\Repos\my_project\AGENTS.md
+```
+
+Then use the combined population prompt:
+
+```text
+D:\Repos\leap_agent_pack\combined\AGENTS_Population_Prompt.md
+```
+
+The combined template contains a locked global LEAP section and an editable repository section. Populate only the editable repository section.
+
 ## Install The Global AGENTS.md
 
 Use the global template only when you want LEAP guidance available across projects.
@@ -67,3 +89,8 @@ Record local modifications in the hidden metadata block.
 ## Update Later
 
 Check `manifests/latest.json` for the latest Agent Pack version. Follow `docs/upgrade-guide.md` before replacing any local `AGENTS.md` content.
+
+## Detailed Guides
+
+- `docs/LEAP_AGENTS_Quickstart.md` covers the combined local-trial workflow.
+- `docs/LEAP_AGENTS_Separate_Global_and_Repo_Method.md` covers the separate global and repo-file workflow.

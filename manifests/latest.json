@@ -13,6 +13,18 @@
     "repoAgents": {
       "path": "repo/AGENTS.md",
       "version": "0.1.0"
+    },
+    "repoAgentsPopulationPrompt": {
+      "path": "repo/AGENTS_Population_Prompt.md",
+      "version": "0.1.0"
+    },
+    "combinedAgents": {
+      "path": "combined/AGENTS.md",
+      "version": "0.1.0"
+    },
+    "combinedAgentsPopulationPrompt": {
+      "path": "combined/AGENTS_Population_Prompt.md",
+      "version": "0.1.0"
     }
   }
 }

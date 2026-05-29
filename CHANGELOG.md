@@ -12,3 +12,6 @@ All notable changes to LEAP Agent Pack will be documented here.
 - Added initial version and compatibility manifests.
 - Added quickstart, versioning, upgrade, and customization docs.
 - Added examples, including the combined local-trial AGENTS template as an example only.
+- Added installable combined local-trial AGENTS template and population prompt.
+- Added repo-level AGENTS population prompt.
+- Restored historical LEAP AGENTS quickstart docs and compatibility template paths.
