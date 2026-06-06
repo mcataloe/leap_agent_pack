@@ -102,9 +102,12 @@ Default behavior:
 3. Use the current LEAP Recon Standard Operational Prompt from the LEAP framework repository:
    `/prompts/leap-recon-standard.md`
 4. Use source-of-truth documents identified by the repository-level `AGENTS.md`.
-5. Return Recon only.
-6. Do not implement code changes.
-7. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
+5. Perform the Recon Baseline Freshness Check using repository AGENTS.md, baseline metadata if present, source-truth docs, and relevant repo reality.
+6. Return Recon only.
+7. Do not implement code changes.
+8. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
+
+LEAP Charter is not required before every Recon. If the baseline is fresh enough, continue Recon. If minor drift exists, continue and disclose the limitation. If material drift exists, ask whether to run Brownfield Charter or LEAP Governance, continue with limited scope, or defer reconciliation. If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation.
 
 If the LEAP Recon standard or repository-level `AGENTS.md` cannot be read, stop and explain what source is unavailable.
 
@@ -326,6 +329,36 @@ Project summary:
 
 `{{ONE_PARAGRAPH_PROJECT_DESCRIPTION}}`
 
+## LEAP Baseline State
+
+Use this section during LEAP Recon to decide whether the project baseline is fresh enough for focused investigation. This is a signal, not a hard gate.
+
+| Item | Value |
+| --- | --- |
+| Baseline record | Inline in `AGENTS.md` |
+| Last full reconcile | `{{YYYY-MM-DD_OR_NEVER}}` |
+| Last reconcile mode | `{{Brownfield Charter / LEAP Governance / Manual / Never}}` |
+| Current source-truth entry point | `{{PATH_TO_SOURCE_TRUTH_ENTRYPOINT}}` |
+| Canonical docs location | `{{PATH_TO_CANONICAL_DOCS}}` |
+| Archive location | `{{PATH_TO_ARCHIVE_DOCS_OR_NA}}` |
+| Gap register / known drift | `{{PATH_TO_GAP_REGISTER_OR_NONE}}` |
+| Baseline confidence | `{{High / Medium / Low / Unknown}}` |
+| Reconcile triggers | `{{MAJOR_ROADMAP_CHANGE; ARCHITECTURE_PIVOT; SOURCE_TRUTH_CONFLICT; STALE_AGENTS_MD; LARGE_NEW_LAYER; ETC.}}` |
+
+Update this section only after a full Brownfield Charter, LEAP Governance pass, major source-truth reconciliation, or intentional manual baseline update. Do not update it for every small feature or documentation edit.
+
+If `leap.baseline.yaml` exists, use this compact pointer form instead and treat that file as the canonical machine-readable baseline record:
+
+| Item | Value |
+| --- | --- |
+| Baseline record | `leap.baseline.yaml` |
+| Last full reconcile | `{{YYYY-MM-DD_OR_NEVER}}` |
+| Last reconcile mode | `{{Brownfield Charter / LEAP Governance / Manual / Never}}` |
+| Current source-truth entry point | `{{PATH_TO_SOURCE_TRUTH_ENTRYPOINT}}` |
+| Baseline confidence | `{{High / Medium / Low / Unknown}}` |
+| Known drift | See `leap.baseline.yaml` |
+| Reconcile triggers | See `leap.baseline.yaml` |
+
 Primary product/architecture docs:
 
 - `{{PATH_TO_PRIMARY_STRATEGY_DOC}}`
@@ -434,6 +467,20 @@ When a task references a layer, phase, subsection, milestone, or roadmap item:
 7. Summarize remaining gaps.
 
 Do not skip ahead into later layers unless the user explicitly asks.
+
+During LEAP Recon, perform a lightweight Baseline Freshness Check before focused investigation:
+
+- Check the LEAP Baseline State table if present.
+- If `leap.baseline.yaml` exists, use it as the canonical machine-readable baseline record and treat this table as a quick summary only.
+- Do not treat an old date as an automatic blocker.
+- Do not treat a recent date as proof that source truth is correct.
+- Use baseline metadata as a signal, then inspect relevant repo/docs evidence.
+- If baseline metadata is missing, continue normal source-truth inspection and recommend adding it when appropriate.
+- Do not update the AGENTS.md Baseline State table or `leap.baseline.yaml` unless the task explicitly performs or confirms a full reconciliation, governance pass, or baseline update.
+- If the baseline is fresh enough, continue Recon normally.
+- If minor drift exists, continue Recon, disclose the limitation, and recommend follow-up cleanup if useful.
+- If material drift exists, ask whether to run Brownfield Charter or LEAP Governance now, continue with limited scope/confidence, or defer reconciliation.
+- If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation before proceeding.
 
 ---
 

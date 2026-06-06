@@ -77,9 +77,12 @@ Default behavior:
 3. Use the current LEAP Recon Standard Operational Prompt from the LEAP framework repository:
    `/prompts/leap-recon-standard.md`
 4. Use source-of-truth documents identified by the repository-level `AGENTS.md`.
-5. Return Recon only.
-6. Do not implement code changes.
-7. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
+5. Perform the Recon Baseline Freshness Check using repository AGENTS.md, baseline metadata if present, source-truth docs, and relevant repo reality.
+6. Return Recon only.
+7. Do not implement code changes.
+8. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
+
+LEAP Charter is not required before every Recon. If the baseline is fresh enough, continue Recon. If minor drift exists, continue and disclose the limitation. If material drift exists, ask whether to run Brownfield Charter or LEAP Governance, continue with limited scope, or defer reconciliation. If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation.
 
 If the LEAP Recon standard or repository-level `AGENTS.md` cannot be read, stop and explain what source is unavailable.
 

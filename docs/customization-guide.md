@@ -7,6 +7,7 @@ Customize the repo-level `AGENTS.md` so it reflects the actual project.
 - Local setup commands.
 - Test, lint, typecheck, format, and build commands.
 - Source-of-truth docs.
+- LEAP Baseline State summary for Recon preflight.
 - Architecture constraints.
 - Security, data, and privacy rules.
 - Project-specific stop conditions.
@@ -40,3 +41,5 @@ Start with docs/00_start_here.md and docs/architecture/overview.md.
 ```
 
 Avoid copying entire architecture or roadmap documents into `AGENTS.md`.
+
+Keep LEAP Baseline State small. It is a freshness signal for Recon, not a hard gate or running status log. If optional `leap.baseline.yaml` exists, treat that file as the canonical machine-readable baseline record and keep AGENTS.md as a short pointer/summary.

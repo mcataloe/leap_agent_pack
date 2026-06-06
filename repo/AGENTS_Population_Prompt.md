@@ -54,6 +54,7 @@ Populate the AGENTS.md file with:
 - Infrastructure and deployment notes.
 - Source-of-truth documents and their status if known.
 - Known stale, draft, archived, or conflicting documents if discoverable.
+- LEAP Baseline State table values from repo evidence.
 - Security, secrets, and data-handling rules.
 - Coding conventions and architectural constraints.
 - Branch, worktree, PR, and commit conventions.
@@ -66,6 +67,12 @@ Rules:
 - Keep the file concise, practical, and useful to a coding agent.
 - Prefer verified repository evidence over assumptions.
 - If something is unknown, mark it as TBD and include the exact question the project owner should answer.
+- For LEAP Baseline State, populate fields from evidence when available. If unknown, use TBD, Never, None, or Not established.
+- Do not invent reconcile history.
+- Do not claim a full reconcile happened unless this prompt actually performed one.
+- Do not create `leap.baseline.yaml` during normal AGENTS.md population unless explicitly authorized or the prompt includes an authorized baseline setup pass.
+- If the repo clearly needs machine-readable baseline tracking, recommend optional `leap.baseline.yaml` as follow-up.
+- Do not treat an old baseline date as an automatic blocker or a recent baseline date as proof that source truth is correct.
 - Do not refactor application code.
 - Do not create new strategic docs unless I explicitly approve that separately.
 - Do not remove useful template sections unless they clearly do not apply.
@@ -76,4 +83,5 @@ After editing, return a short completion report with:
 3. Unknowns left as TBD.
 4. Any contradictions or stale-doc risks found.
 5. Recommended next LEAP Recon target.
+6. Whether optional `leap.baseline.yaml` is recommended as follow-up.
 ```

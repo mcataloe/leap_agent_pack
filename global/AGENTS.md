@@ -109,10 +109,13 @@ Default Recon behavior:
 1. Use the repository-level `AGENTS.md` first.
 2. Inspect the current repository state.
 3. Use source-of-truth documents identified by the repository-level `AGENTS.md`.
-4. Treat Brownfield Charter outputs as source-truth inputs when present.
-5. Return Recon only.
-6. Do not implement code changes.
-7. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
+4. Perform the Recon Baseline Freshness Check using repository AGENTS.md, baseline metadata if present, source-truth docs, and relevant repo reality.
+5. Treat Brownfield Charter outputs as source-truth inputs when present.
+6. Return Recon only.
+7. Do not implement code changes.
+8. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
+
+LEAP Charter is not required before every Recon. If the baseline is fresh enough, continue Recon. If minor drift exists, continue and disclose the limitation. If material drift exists, ask whether to run Brownfield Charter or LEAP Governance, continue with limited scope, or defer reconciliation. If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation.
 
 If the LEAP standard prompt or repository-level `AGENTS.md` cannot be read, stop and explain what source is unavailable.
 

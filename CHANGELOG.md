@@ -15,3 +15,6 @@ All notable changes to LEAP Agent Pack will be documented here.
 - Added installable combined local-trial AGENTS template and population prompt.
 - Added repo-level AGENTS population prompt.
 - Restored historical LEAP AGENTS quickstart docs and compatibility template paths.
+- Added LEAP Baseline State table guidance to repo-level and combined AGENTS templates.
+- Added Recon Baseline Freshness Check behavior to global and local-trial Recon shortcuts.
+- Updated population prompts to fill Baseline State from evidence and recommend optional `leap.baseline.yaml` only as follow-up unless explicitly authorized.
