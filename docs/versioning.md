@@ -41,3 +41,9 @@ The initial compatibility range is:
 ```text
 >=0.1.0 <1.0.0
 ```
+
+## Current Reconciliation Posture
+
+The current setup-scenario reconciliation is tracked as an unreleased `0.2.0` candidate. It adds optional global initialization guidance, clearer template inventory metadata, command shortcut coverage, and Dependency & Contract Recon adapter guidance without creating a release tag.
+
+Do not claim `0.2.0` is released unless a tag or release is created separately.

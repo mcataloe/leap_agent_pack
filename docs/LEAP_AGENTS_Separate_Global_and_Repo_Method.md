@@ -1,8 +1,8 @@
 # LEAP AGENTS.md Setup — Separate Global + Repo Method
 
-Use this method when the user wants to install LEAP in the coding agent's global instruction location and maintain a separate repository-level `AGENTS.md` file per project.
+Use this method when the user wants to install LEAP in the coding agent's global instruction location and maintain a separate repository-level `AGENTS.md` file per project. This is the recommended setup for users who want LEAP behavior across multiple repositories.
 
-For first-time evaluation inside one local repo, prefer the **Master Repo AGENTS.md local-trial method** from the main Quickstart. This separate method is best after the user is ready to make LEAP available across multiple repositories.
+For first-time evaluation inside one local repo, use the combined local-trial method from `combined/AGENTS.md`.
 
 ---
 
@@ -14,9 +14,13 @@ Primary framework reference:
 
 Template links:
 
-- [Global AGENTS.md template](/templates/leap-global-AGENTS-file/AGENTS.md)
-- [Repo AGENTS.md template](/templates/leap-repo-AGENTS-file/AGENTS.md)
-- [Repository AGENTS.md Population Prompt](/templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md)
+- Canonical global template: `global/AGENTS.md`
+- Canonical global initialization prompt: `global/AGENTS_Population_Prompt.md`
+- Canonical repo template: `repo/AGENTS.md`
+- Canonical repo population prompt: `repo/AGENTS_Population_Prompt.md`
+- Compatibility global template: [templates/leap-global-AGENTS-file/AGENTS.md](/templates/leap-global-AGENTS-file/AGENTS.md)
+- Compatibility repo template: [templates/leap-repo-AGENTS-file/AGENTS.md](/templates/leap-repo-AGENTS-file/AGENTS.md)
+- Compatibility repo population prompt: [templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md](/templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md)
 
 ---
 
@@ -29,7 +33,7 @@ This method uses two instruction files:
 
 ### 1. Install the global AGENTS.md file
 
-Download the global LEAP `AGENTS.md` template and place it in the global instruction location used by the coding agent.
+Download `global/AGENTS.md` and place it in the global instruction location used by the coding agent. Use `global/AGENTS_Population_Prompt.md` to verify it remains reusable.
 
 Common locations:
 
@@ -47,7 +51,7 @@ Do **not** put project-specific commands, architecture, secrets, or repo details
 
 ### 2. Install the repo / project AGENTS.md file
 
-Download the repo-level LEAP `AGENTS.md` template and place it at the root of the project repository:
+Download `repo/AGENTS.md` and place it at the root of the project repository:
 
 ```text
 <repo-root>/AGENTS.md
@@ -75,7 +79,7 @@ Open the repository in the user's coding agent or code editor.
 Then use this population prompt:
 
 ```text
-templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md
+repo/AGENTS_Population_Prompt.md
 ```
 
 The prompt should update only the repository-level `AGENTS.md` file from actual repository evidence.

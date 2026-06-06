@@ -1,30 +1,43 @@
 {
   "agentPack": {
     "name": "leap-agent-pack",
-    "latestVersion": "0.1.0",
-    "releaseDate": "2026-05-29",
-    "repository": "https://github.com/mjcataldi/leap_agent_pack"
+    "latestVersion": "0.2.0-candidate",
+    "latestReleasedVersion": null,
+    "releaseDate": null,
+    "releaseStatus": "no local release tag verified",
+    "repository": "https://github.com/mcataloe/leap_agent_pack",
+    "nextCandidateVersion": "0.2.0",
+    "nextCandidateStatus": "unreleased"
   },
   "templates": {
     "globalAgents": {
       "path": "global/AGENTS.md",
-      "version": "0.1.0"
+      "version": "0.2.0-candidate"
+    },
+    "globalAgentsPopulationPrompt": {
+      "path": "global/AGENTS_Population_Prompt.md",
+      "version": "0.2.0-candidate"
     },
     "repoAgents": {
       "path": "repo/AGENTS.md",
-      "version": "0.1.0"
+      "version": "0.2.0-candidate"
     },
     "repoAgentsPopulationPrompt": {
       "path": "repo/AGENTS_Population_Prompt.md",
-      "version": "0.1.0"
+      "version": "0.2.0-candidate"
     },
     "combinedAgents": {
       "path": "combined/AGENTS.md",
-      "version": "0.1.0"
+      "version": "0.2.0-candidate"
     },
     "combinedAgentsPopulationPrompt": {
       "path": "combined/AGENTS_Population_Prompt.md",
-      "version": "0.1.0"
+      "version": "0.2.0-candidate"
+    },
+    "templateInventory": {
+      "path": "manifests/template-inventory.json",
+      "version": "0.2.0-candidate"
     }
-  }
+  },
+  "inventoryManifest": "manifests/template-inventory.json"
 }

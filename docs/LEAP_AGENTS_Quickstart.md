@@ -1,15 +1,15 @@
 # LEAP AGENTS.md Quickstart
 
-Use this starter guide to add LEAP to a local repository with the least possible friction.
+Use this compatibility guide for the historical combined local-trial setup. For new installs, prefer `docs/quickstart.md`, which lists all canonical setup scenarios.
 
-This Quickstart defaults to the **Master Repo AGENTS.md local-trial method**. This method uses one repository-root `AGENTS.md` file that contains both:
+This historical Quickstart defaults to the **Master Repo AGENTS.md local-trial method**. The canonical current path for that scenario is `combined/AGENTS.md`; the older compatibility path remains `templates/leap-repo-AGENTS-file-complete/AGENTS.md`. This method uses one repository-root `AGENTS.md` file that contains both:
 
 1. A locked global LEAP operating section.
 2. An editable repository-specific section.
 
 This lets users test LEAP inside one local repository before installing anything system-wide.
 
-For users who prefer the traditional two-file approach, see:
+For users who prefer the recommended separate global + repo approach, see:
 
 - [Separate Global + Repo AGENTS.md Method](/docs/LEAP_AGENTS_Separate_Global_and_Repo_Method.md)
 
@@ -19,7 +19,7 @@ There are two setup actions, then one first-use action.
 
 ### 1. Install the Master Repo AGENTS.md file
 
-Download the [Master Repo AGENTS.md local-trial template](/templates/leap-repo-AGENTS-file-complete/AGENTS.md) and place it at the root of the project repository:
+For new installs, copy `combined/AGENTS.md`. The compatibility mirror is [Master Repo AGENTS.md local-trial template](/templates/leap-repo-AGENTS-file-complete/AGENTS.md). Place the selected file at the root of the project repository:
 
 ```text
 <repo-root>/AGENTS.md
@@ -38,7 +38,7 @@ This is the recommended starter method because it lets the user test LEAP in one
 
 Open the repository in the user's coding agent or code editor.
 
-Then use the [Master Repo AGENTS.md population prompt](/templates/leap-repo-AGENTS-file-complete/AGENTS_Population_Prompt.md):
+Then use `combined/AGENTS_Population_Prompt.md`. The compatibility mirror is [Master Repo AGENTS.md population prompt](/templates/leap-repo-AGENTS-file-complete/AGENTS_Population_Prompt.md):
 
 The prompt instructs the code assistant to:
 
@@ -112,6 +112,8 @@ Useful starting points:
 
 AGENTS.md local-trial template links:
 
+- Canonical local-trial template: `combined/AGENTS.md`
+- Canonical local-trial population prompt: `combined/AGENTS_Population_Prompt.md`
 - [Master Repo AGENTS.md local-trial template](/templates/leap-repo-AGENTS-file-complete/AGENTS.md)
 - [Master Repo AGENTS.md population prompt](/templates/leap-repo-AGENTS-file-complete/AGENTS_Population_Prompt.md)
 

@@ -4,6 +4,15 @@ Use this guide to decide whether a local `AGENTS.md` should be updated.
 
 Agent Pack updates are manual. Do not overwrite local project guidance automatically.
 
+## Setup Scenario Inventory
+
+| Scenario | Use when | Install this AGENTS.md | Also install global? | Population / initialization prompt | Notes |
+| --- | --- | --- | --- | --- | --- |
+| Recommended Separate Global + Repo Method | LEAP should be available across multiple projects with project-specific repo rules. | `repo/AGENTS.md` | Yes, `global/AGENTS.md` | `global/AGENTS_Population_Prompt.md` and `repo/AGENTS_Population_Prompt.md` | Review both files independently during upgrades. |
+| Repo-Only Method | LEAP is needed only inside one repository. | `repo/AGENTS.md` | No | `repo/AGENTS_Population_Prompt.md` | Upgrade only the repo template and preserve local project sections. |
+| Combined Local-Trial Method | A user is testing LEAP locally before global install. | `combined/AGENTS.md` | No | `combined/AGENTS_Population_Prompt.md` | Preserve Locked Global Section and Editable Repository Section boundaries. |
+| Compatibility / Legacy Paths | Existing users rely on older template paths. | Mapped compatibility template | Depends on mapped scenario | Paired compatibility prompt when present | Keep paths available; prefer canonical paths for new installs. |
+
 ## Compare Versions
 
 1. Read the hidden metadata block in the local `AGENTS.md`.

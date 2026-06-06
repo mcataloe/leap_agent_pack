@@ -1,10 +1,10 @@
 <!--
 LEAP_AGENT_PACK_TEMPLATE:
   template: combined-example
-  version: 0.1.0
+  version: 0.2.0-candidate
   compatible_leap_framework: ">=0.1.0 <1.0.0"
-  source: https://github.com/mjcataldi/leap_agent_pack
-  last_updated: 2026-05-29
+  source: https://github.com/mcataloe/leap_agent_pack
+  last_updated: 2026-06-05
   local_modification_notes: Record downstream edits here.
 END_LEAP_AGENT_PACK_TEMPLATE
 -->
@@ -91,9 +91,19 @@ Do not treat the task as greenfield unless the repository clearly lacks an exist
 
 ## LEAP Command Shortcuts
 
-When the user asks to run LEAP Charter, use `/prompts/leap-charter-standard.md` from the LEAP framework repository.
+When the user invokes a LEAP command, route it to current LEAP Framework behavior instead of responding generically. Use `docs/leap.md` as the lifecycle reference and the current prompt files when available.
 
-When the user asks to run LEAP Recon, use `/prompts/leap-recon-standard.md` from the LEAP framework repository.
+| Command | Route and behavior |
+| --- | --- |
+| `Run LEAP Charter` | Use `prompts/leap-charter-standard.md` to establish or reconcile project direction, source truth, roadmap, baseline assumptions, and implementation posture. |
+| `Run LEAP Recon` | Use `prompts/leap-recon-standard.md` to investigate a focused feature, risk, layer, dependency, contract, repo area, or architecture question before implementation planning. |
+| `Generate LEAP Prompt` | Use `prompts/leap-prompt-standard.md` only after source truth, repo reality, scope, validation, stop conditions, and execution configuration are clear enough. |
+| `Run LEAP Prompt` | Execute or apply an already-approved LEAP Prompt according to its stated scope, constraints, validation, and stop conditions. |
+| `Generate LEAP LHS` | Generate a staged LEAP Prompt format only when implementation gravity warrants Build Units; LHS is not a mandatory lifecycle phase. |
+| `Run LEAP LHS` | Execute or apply an approved LHS prompt in Build Unit sequence with its validation and stop conditions. |
+| `Run LEAP Governance` | Use `prompts/leap-governance-pass-standard.md` for source-truth, framework, prompt-library, adoption, terminology, or docs drift. |
+| `Run LEAP Validation` | Verify completed work against scope, tests/checks, docs, acceptance criteria, and stop conditions. |
+| `Run LEAP Handoff` | Summarize completed work, unresolved risks, validation status, deviations, and recommended follow-up. |
 
 Default Recon behavior:
 
@@ -286,6 +296,14 @@ During LEAP Recon, perform a lightweight Baseline Freshness Check before focused
 - If minor drift exists, continue Recon, disclose the limitation, and recommend follow-up cleanup if useful.
 - If material drift exists, ask whether to run Brownfield Charter or LEAP Governance now, continue with limited scope/confidence, or defer reconciliation.
 - If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation before proceeding.
+
+## Dependency & Contract Recon Adapter
+
+During LEAP Recon, inspect dependency and contract evidence when the task touches integrations, APIs, SDKs, generated clients, packages, platform services, events, identity, payments, or infrastructure dependencies.
+
+Relevant evidence can include `leap.dependencies.yaml`, OpenAPI, AsyncAPI, protobuf, GraphQL schemas, provider repo URLs, docs URLs, SDKs, generated clients, package manifests, integration tests, mocks, Pact or WireMock files, infrastructure service dependencies, event topics, queues, identity providers, and payment providers.
+
+Dependency tracking is not mandatory for tiny projects. If `leap.dependencies.yaml` is missing, treat that as a limitation and possible follow-up, not an automatic blocker. Do not claim ownership of provider repos or external contracts; report incomplete evidence instead of guessing.
 
 ## Project Source of Truth
 

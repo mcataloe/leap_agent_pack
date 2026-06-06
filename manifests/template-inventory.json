@@ -1,0 +1,82 @@
+{
+  "agentPack": {
+    "name": "leap-agent-pack",
+    "repository": "https://github.com/mcataloe/leap_agent_pack",
+    "inventoryVersion": "0.2.0-candidate",
+    "status": "unreleased"
+  },
+  "templates": [
+    {
+      "scenario": "Recommended Separate Global + Repo Method",
+      "templatePath": "global/AGENTS.md",
+      "promptPath": "global/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "canonical",
+      "version": "0.2.0-candidate",
+      "notes": "Reusable global LEAP behavior; do not populate with project-specific facts."
+    },
+    {
+      "scenario": "Recommended Separate Global + Repo Method",
+      "templatePath": "repo/AGENTS.md",
+      "promptPath": "repo/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "canonical",
+      "version": "0.2.0-candidate",
+      "notes": "Project-specific source truth, commands, validation, architecture constraints, baseline state, and stop conditions."
+    },
+    {
+      "scenario": "Repo-Only Method",
+      "templatePath": "repo/AGENTS.md",
+      "promptPath": "repo/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "canonical",
+      "version": "0.2.0-candidate",
+      "notes": "Standalone repo setup when global instructions are unavailable or unwanted."
+    },
+    {
+      "scenario": "Combined Local-Trial Method",
+      "templatePath": "combined/AGENTS.md",
+      "promptPath": "combined/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "canonical",
+      "version": "0.2.0-candidate",
+      "notes": "Single repo-root trial file with Locked Global Section and Editable Repository Section."
+    },
+    {
+      "scenario": "Recommended Separate Global + Repo Method",
+      "templatePath": "templates/leap-global-AGENTS-file/AGENTS.md",
+      "promptPath": "global/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "compatibility",
+      "version": "0.2.0-candidate",
+      "notes": "Legacy global template path; prefer global/AGENTS.md for new installs."
+    },
+    {
+      "scenario": "Recommended Separate Global + Repo Method",
+      "templatePath": "templates/global-AGENTS.md",
+      "promptPath": "global/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "compatibility",
+      "version": "0.2.0-candidate",
+      "notes": "Copy-friendly mirror of global/AGENTS.md."
+    },
+    {
+      "scenario": "Recommended Separate Global + Repo Method",
+      "templatePath": "templates/repo-AGENTS.md",
+      "promptPath": "repo/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "compatibility",
+      "version": "0.2.0-candidate",
+      "notes": "Copy-friendly mirror of repo/AGENTS.md."
+    },
+    {
+      "scenario": "Repo-Only Method",
+      "templatePath": "templates/leap-repo-AGENTS-file/AGENTS.md",
+      "promptPath": "templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "compatibility",
+      "version": "0.2.0-candidate",
+      "notes": "Legacy repo-level template path; prefer repo/AGENTS.md for new installs."
+    },
+    {
+      "scenario": "Combined Local-Trial Method",
+      "templatePath": "templates/leap-repo-AGENTS-file-complete/AGENTS.md",
+      "promptPath": "templates/leap-repo-AGENTS-file-complete/AGENTS_Population_Prompt.md",
+      "canonicalOrCompatibility": "compatibility",
+      "version": "0.2.0-candidate",
+      "notes": "Legacy combined local-trial template path; prefer combined/AGENTS.md for new installs."
+    }
+  ]
+}

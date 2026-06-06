@@ -1,10 +1,12 @@
 {
-  "agentPackVersion": "0.1.0",
+  "agentPackVersion": "0.2.0-candidate",
+  "nextCandidateVersion": "0.2.0",
+  "nextCandidateStatus": "unreleased",
   "compatibleLeapFramework": {
     "minimum": "0.1.0",
     "maximumExclusive": "1.0.0",
-    "notes": "Initial compatibility range for early LEAP Framework versions."
+    "notes": "Initial compatibility range for early LEAP Framework versions. The unreleased 0.2.0 candidate keeps this range while clarifying AGENTS setup scenarios and template inventory."
   },
   "breakingChanges": [],
-  "recommendedAction": "Initial release."
+  "recommendedAction": "For new installs, use canonical global/, repo/, and combined/ paths. Keep compatibility paths available for older docs and downstream installs."
 }

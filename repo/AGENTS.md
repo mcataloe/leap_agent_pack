@@ -1,10 +1,10 @@
 <!--
 LEAP_AGENT_PACK_TEMPLATE:
   template: repo
-  version: 0.1.0
+  version: 0.2.0-candidate
   compatible_leap_framework: ">=0.1.0 <1.0.0"
-  source: https://github.com/mjcataldi/leap_agent_pack
-  last_updated: 2026-05-29
+  source: https://github.com/mcataloe/leap_agent_pack
+  last_updated: 2026-06-05
   local_modification_notes: Record downstream edits here.
 END_LEAP_AGENT_PACK_TEMPLATE
 -->
@@ -207,6 +207,14 @@ During LEAP Recon, perform a lightweight Baseline Freshness Check before focused
 - If minor drift exists, continue Recon, disclose the limitation, and recommend follow-up cleanup if useful.
 - If material drift exists, ask whether to run Brownfield Charter or LEAP Governance now, continue with limited scope/confidence, or defer reconciliation.
 - If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation before proceeding.
+
+## Dependency & Contract Recon Adapter
+
+During LEAP Recon, inspect dependency and contract evidence when the task touches integrations, APIs, SDKs, generated clients, packages, platform services, events, identity, payments, or infrastructure dependencies.
+
+Relevant evidence can include `leap.dependencies.yaml`, OpenAPI, AsyncAPI, protobuf, GraphQL schemas, provider repo URLs, docs URLs, SDKs, generated clients, package manifests, integration tests, mocks, Pact or WireMock files, infrastructure service dependencies, event topics, queues, identity providers, and payment providers.
+
+Dependency tracking is not mandatory for tiny projects. If `leap.dependencies.yaml` is missing, treat that as a limitation and possible follow-up, not an automatic blocker. Do not claim ownership of provider repos or external contracts; report incomplete evidence instead of guessing.
 
 ## Project Source of Truth
 
