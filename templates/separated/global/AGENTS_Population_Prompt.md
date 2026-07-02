@@ -1,6 +1,6 @@
 # Global AGENTS.md Initialization Prompt
 
-Use this after copying `global/AGENTS.md` into the coding agent's global instruction location.
+Use this after copying `templates/separated/global/AGENTS.md` into the coding agent's global instruction location.
 
 ## Goal
 
