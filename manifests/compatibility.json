@@ -5,8 +5,16 @@
   "compatibleLeapFramework": {
     "minimum": "0.1.0",
     "maximumExclusive": "1.0.0",
-    "notes": "Initial compatibility range for early LEAP Framework versions. The unreleased 0.2.0 candidate keeps this range while clarifying AGENTS setup scenarios and template inventory."
+    "notes": "Compatible with the current pre-1.0 LEAP Framework. The candidate aligns distributed agent guidance with Mission / Project Charter -> Strategic Outcome -> Initiative -> Delivery Unit -> Build Unit."
+  },
+  "documentationModelCompatibility": {
+    "roadmap": "Scheduling, priority, dependency, milestone, release, status, and parallelism view.",
+    "domain": "Persistent responsibility boundary with many-to-many Initiative relationships.",
+    "architecture": "Technical structure; qualified technical Layers remain valid.",
+    "deliveryUnit": "Conditionally collapsible for small work.",
+    "buildUnit": "Bounded implementation; not necessarily independently deployable.",
+    "legacyLayer": "Supported as a compatibility input that must be semantically classified before migration."
   },
   "breakingChanges": [],
-  "recommendedAction": "For new installs, use canonical global/, repo/, and combined/ paths. Keep compatibility paths available for older docs and downstream installs."
+  "recommendedAction": "Review and manually merge Agent Pack-managed guidance into downstream AGENTS.md files. Preserve project and local sections. New installs should use templates/separated/global, templates/separated/repo, or templates/combined."
 }
