@@ -1,124 +1,84 @@
-# LEAP AGENTS.md Quickstart
+# LEAP AGENTS.md Combined Local-Trial Guide
 
-Use this compatibility guide for the historical combined local-trial setup. For new installs, prefer `docs/quickstart.md`, which lists all canonical setup scenarios.
+Use this method to test LEAP inside one repository before installing separate global instructions.
 
-This historical Quickstart defaults to the **Master Repo AGENTS.md local-trial method**. The canonical current path for that scenario is `combined/AGENTS.md`; the older compatibility path remains `templates/leap-repo-AGENTS-file-complete/AGENTS.md`. This method uses one repository-root `AGENTS.md` file that contains both:
+For most long-term multi-repository use, prefer [`LEAP_AGENTS_Separate_Global_and_Repo_Method.md`](LEAP_AGENTS_Separate_Global_and_Repo_Method.md).
 
-1. A locked global LEAP operating section.
-2. An editable repository-specific section.
+## Canonical files
 
-This lets users test LEAP inside one local repository before installing anything system-wide.
+- Combined template: `templates/combined/AGENTS.md`
+- Combined population Prompt: `templates/combined/AGENTS_Population_Prompt.md`
 
-For users who prefer the recommended separate global + repo approach, see:
+Older references to top-level `combined/` or `templates/leap-repo-AGENTS-file-complete/` paths are not valid on the current branch unless compatibility files are explicitly added later.
 
-- [Separate Global + Repo AGENTS.md Method](/docs/LEAP_AGENTS_Separate_Global_and_Repo_Method.md)
+## Structure
 
-# User Actions
+The combined file contains:
 
-There are two setup actions, then one first-use action.
+1. A Locked Global Section with reusable LEAP behavior.
+2. An Editable Repository Section for project-specific facts.
 
-### 1. Install the Master Repo AGENTS.md file
+During population:
 
-For new installs, copy `combined/AGENTS.md`. The compatibility mirror is [Master Repo AGENTS.md local-trial template](/templates/leap-repo-AGENTS-file-complete/AGENTS.md). Place the selected file at the root of the project repository:
+- do not edit the Locked Global Section
+- do not remove or rename boundary markers
+- populate only the Editable Repository Section
+- use repository evidence
+- mark unsupported facts as `TBD`
 
-```text
-<repo-root>/AGENTS.md
-```
-
-This file intentionally combines two scopes:
-
-1. **Locked Global Section** — reusable LEAP operating behavior.
-2. **Editable Repository Section** — project-specific AGENTS.md content that should be populated from the current repository.
-
-This is the recommended starter method because it lets the user test LEAP in one repository without changing global system behavior.
-
----
-
-### 2. Populate the editable repo section
-
-Open the repository in the user's coding agent or code editor.
-
-Then use `combined/AGENTS_Population_Prompt.md`. The compatibility mirror is [Master Repo AGENTS.md population prompt](/templates/leap-repo-AGENTS-file-complete/AGENTS_Population_Prompt.md):
-
-The prompt instructs the code assistant to:
-
-- Preserve the locked global section.
-- Preserve the section boundary markers.
-- Update only the editable repository section.
-- Populate project-specific values from actual repository evidence.
-- Mark unknowns as `TBD` instead of guessing.
-
-The output of this step should be a populated repository-root `AGENTS.md` file.
-
----
-
-### 3. Run LEAP Recon on the functionality
-
-After the editable repo section is populated, run a Recon pass before asking the coding agent to implement anything.
-
-Use this short launcher:
+## Current documentation model
 
 ```text
-Run LEAP Recon for the following functionality:
-
-[DESCRIBE THE FEATURE, LAYER, BUGFIX, WORKFLOW, OR FUNCTIONAL AREA HERE]
+Mission / Project Charter
+  -> Strategic Outcome
+    -> Initiative
+      -> Delivery Unit
+        -> Build Unit
 ```
 
-The Master Repo AGENTS.md file provides the operating rules for Recon. The user should not need to paste the full Recon rules when using standard AGENTS.md behavior.
+Roadmap is a planning view. Domains are persistent boundaries. Architecture is technical structure.
 
-Only after Recon is accepted should the user generate a final LEAP Prompt for implementation.
+Several Initiatives may run in parallel. Delivery Unit may collapse for small work. Build Unit is not necessarily independently deployable.
 
----
+Generic project-planning `Layer` is legacy-compatible and must be classified before migration.
 
-## Done state
+## Install
 
-The project is ready for normal LEAP use when:
+```powershell
+Copy-Item D:\Repos\leap_agent_pack\templates\combined\AGENTS.md D:\Repos\my_project\AGENTS.md
+```
 
-- The Master Repo `AGENTS.md` file exists at the repository root.
-- The locked global section is still intact.
-- The editable repository section has been populated from actual repo evidence.
-- Unknowns are marked as `TBD`, not guessed.
-- A LEAP Recon pass has been run for the first functionality target.
-- The next implementation task has bounded scope, non-goals, validation expectations, and stop conditions.
-
----
-
-## Short rule
+Then run:
 
 ```text
-Master Repo AGENTS.md lets users test LEAP locally before installing global instructions.
-The locked global section teaches the agent how to think with LEAP.
-The editable repo section teaches the agent how LEAP applies to this project.
-Recon verifies reality before implementation.
-Prompt only after Recon.
+D:\Repos\leap_agent_pack\templates\combined\AGENTS_Population_Prompt.md
 ```
 
----
+## Population expectations
 
-## LEAP reference links
+The editable section should identify:
 
-Primary framework reference:
+- project name, Mission, users, and maturity
+- Strategic Outcomes and Initiative registry
+- Roadmap, Domain map, and Architecture docs
+- Delivery Unit and Build Unit paths
+- legacy Layer classification candidates
+- repository layout, technology stack, and commands
+- source-truth status and baseline freshness
+- contracts, dependencies, security, privacy, data, testing, and documentation rules
+- branch, PR, commit, and stop-condition guidance
 
-- [LEAP Framework — main branch](/)
+## First LEAP workflow
 
-Useful starting points:
+Run Charter when project direction, Strategic Outcomes, Initiative identity, Roadmap, Domains, Architecture, or source truth is unclear.
 
-- [Start Here](/docs/00_start_here.md)
-- [LEAP for Humans](/docs/leap-for-humans.md)
-- [Quick LEAP Brief](/docs/quick-leap-brief.md)
-- [Current LEAP Framework Document](/docs/leap.md)
-- [LEAP Recon Template](/templates/leap-recon-template.md)
-- [LEAP Prompt Template](/templates/leap-prompt-template.md)
+Run focused Recon when the baseline is sufficient and one Initiative, Delivery Unit, Build Unit, Domain, Architecture area, feature, dependency, contract, risk, or legacy Layer needs investigation.
 
-AGENTS.md local-trial template links:
+## Moving beyond the trial
 
-- Canonical local-trial template: `combined/AGENTS.md`
-- Canonical local-trial population prompt: `combined/AGENTS_Population_Prompt.md`
-- [Master Repo AGENTS.md local-trial template](/templates/leap-repo-AGENTS-file-complete/AGENTS.md)
-- [Master Repo AGENTS.md population prompt](/templates/leap-repo-AGENTS-file-complete/AGENTS_Population_Prompt.md)
+When LEAP becomes useful across several repositories:
 
-Optional advanced setup:
-
-- [Separate Global + Repo AGENTS.md Method](/docs/LEAP_AGENTS_Separate_Global_and_Repo_Method.md)
-
----
+1. Install `templates/separated/global/AGENTS.md` globally.
+2. Install `templates/separated/repo/AGENTS.md` in each repository.
+3. Move project-specific content from the combined Editable Repository Section into the repository template.
+4. Do not copy project-specific facts into the global file.
