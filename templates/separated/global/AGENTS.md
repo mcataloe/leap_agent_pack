@@ -4,7 +4,7 @@ LEAP_AGENT_PACK_TEMPLATE:
   version: 0.2.0-candidate
   compatible_leap_framework: ">=0.1.0 <1.0.0"
   source: https://github.com/mcataloe/leap_agent_pack
-  last_updated: 2026-06-05
+  last_updated: 2026-07-01
   local_modification_notes: Record downstream edits here.
 END_LEAP_AGENT_PACK_TEMPLATE
 -->
@@ -15,9 +15,9 @@ END_LEAP_AGENT_PACK_TEMPLATE
 
 ## Purpose
 
-Use LEAP as the default operating model for software engineering tasks unless the user, repository, or task-specific prompt says otherwise.
+Use LEAP as the default operating model for software-engineering work unless the user, repository, or task-specific Prompt says otherwise.
 
-LEAP is a layered, evidence-first execution model for agent-assisted software work. Its purpose is to keep implementation grounded in the existing repository, aligned to project intent, and delivered in small, reviewable units.
+LEAP is evidence-first and documentation-aware. It keeps implementation grounded in repository reality, project intent, explicit planning boundaries, and verifiable completion.
 
 Current lifecycle:
 
@@ -25,250 +25,297 @@ Current lifecycle:
 LEAP Charter -> LEAP Recon -> LEAP Prompt -> Implementation -> Validation/Handoff
 ```
 
-LEAP Charter establishes or reconciles project direction, source-of-truth docs, roadmap, and implementation posture. LEAP LHS is a structured LEAP Prompt format for layered House Standard-style implementation work; it is not a mandatory lifecycle stage.
+LEAP LHS is the Layered House Standard Prompt format for staged implementation. It is not a lifecycle phase and does not define a project's strategic hierarchy.
 
-LEAP Prompt is the instruction artifact family. It includes Charter, Recon, standard implementation, fix, refactor, governance, validation, and LHS prompts. Use LEAP LHS only when staged implementation is warranted by implementation gravity.
+## Canonical project-documentation model
 
-This global file defines reusable behavior across repositories. It should not contain project-specific architecture, product rules, business logic, commands, or layer maps. Those belong in the repository-level `AGENTS.md` and project documentation.
+Use this hierarchy when strategic context is material:
 
-## Instruction Priority
+```text
+Mission / Project Charter
+        ↓
+Strategic Outcome
+        ↓
+Initiative
+        ↓
+Delivery Unit
+        ↓
+Build Unit
+```
 
-When working in a repository, follow instructions in this order:
+Treat these as separate supporting views:
 
-1. System/developer/tool instructions.
+```text
+Roadmap      = timing, priority, milestones, dependencies, release targets, status, parallelism
+Domain Map   = persistent business, responsibility, ownership, or technical boundaries
+Architecture = technical structure and qualified technical Layers
+```
+
+Rules:
+
+- Several Initiatives may run in parallel.
+- A Roadmap schedules and prioritizes work; it does not permanently own Initiative identity.
+- Initiatives and Domains have a many-to-many relationship.
+- A Delivery Unit is a releasable, deployable, enabled, adoptable, or demonstrable increment.
+- Delivery Unit may be collapsed for small work when one Build Unit delivers the complete Initiative outcome.
+- A Build Unit is bounded implementation that can be implemented, tested, reviewed, and usually committed independently.
+- A Build Unit is not necessarily independently deployable or independently valuable to an end user.
+
+Generic unqualified project-planning `Layer` is legacy-compatible and deprecated as the preferred planning level.
+
+Preserve:
+
+- Layered Execution & Alignment Protocol
+- Layered House Standard
+- LEAP LHS
+- qualified Architecture Layers
+- public paths
+- historical and compatibility references
+
+Classify a legacy Layer before migration as Initiative, Delivery Unit, Build Unit, Domain, Architecture Layer, Phase, or mixed / unclear.
+
+## Global-versus-repository boundary
+
+This global file contains reusable behavior only.
+
+Do not add project-specific:
+
+- product facts
+- repositories
+- source-truth paths
+- architecture decisions
+- setup commands
+- validation commands
+- business rules
+- environment details
+- credentials or secrets
+- Initiative, Roadmap, Domain, Delivery Unit, or Build Unit records
+
+Those belong in the repository-level `AGENTS.md` and project documentation.
+
+## Instruction priority
+
+Follow instructions in this order:
+
+1. System, developer, and tool instructions.
 2. Explicit user instructions for the current task.
-3. Repository-level `AGENTS.md` and closer scoped agent instruction files.
+3. Repository-level `AGENTS.md` and closer-scoped agent instruction files.
 4. This global `AGENTS.md`.
 5. Existing source code, tests, documentation, and conventions.
 
-If instructions conflict, follow the more specific and more recent instruction unless it would create security, data-loss, or integrity risk.
+When instructions conflict, prefer the more specific, current, and safer instruction. Stop when the conflict materially affects source truth, product behavior, Architecture, data, security, compatibility, or validation.
 
-## Documentation Starting Point
+## Documentation starting point
 
 When present, start with `docs/00_start_here.md`.
 
-Treat canonical docs as source of truth. Treat archived docs as historical unless a current canonical document explicitly references them.
+Treat canonical docs as source truth. Treat Draft, stale, archived, superseded, and do-not-use docs according to repository guidance.
 
-During Charter work, prefer LEAP Charter outputs when reconciling project direction. Create LEAP Recon or LEAP Prompt recommendations instead of making risky implementation changes during Charter work.
+During Charter work, establish or reconcile Mission, Strategic Outcomes, Initiative identity, Roadmap posture, Domains, Architecture, source truth, and implementation readiness.
 
-## Default LEAP Work Pattern
+During Recon, inspect repository reality before implementation planning.
 
-For non-trivial implementation tasks, use this sequence:
+## Default work pattern
 
-1. Understand the task.
-2. Perform repository reconnaissance before editing.
-3. Identify the relevant layer, subsystem, feature, route, component, service, data model, or workflow.
-4. Locate existing patterns and contracts.
-5. Make a concise implementation plan.
-6. Implement the smallest coherent change.
-7. Add or update relevant tests.
-8. Run practical validation checks.
-9. Complete Validation/Handoff with changes, validation, risks, and follow-ups.
+For non-trivial work:
 
-Do not treat the task as greenfield unless the repository clearly lacks an existing implementation path.
+1. Understand the requested outcome.
+2. Inspect repository and documentation evidence before editing.
+3. Identify Strategic Outcome and Initiative when material.
+4. Identify Roadmap placement only as planning context.
+5. Identify affected Domains and Architecture areas.
+6. Determine whether the task is Initiative-sized, Delivery-Unit-sized, Build-Unit-sized, Domain-oriented, Architecture-oriented, a Phase, or an ambiguous legacy Layer.
+7. Define a bounded Build Unit or task.
+8. Make the smallest coherent change.
+9. Add or update relevant tests and docs.
+10. Run practical validation.
+11. Complete Validation/Handoff.
 
-## Reconnaissance Expectations
+Do not treat work as greenfield unless repository evidence supports that conclusion.
 
-Before editing code, inspect the repository enough to understand:
+## Reconnaissance expectations
 
-- Existing project structure.
-- `docs/00_start_here.md` when present.
-- Relevant canonical docs and architecture notes.
-- Archived, stale, duplicate, or conflicting docs that should not be treated as source truth.
-- Similar implemented features.
-- Naming conventions.
-- Data contracts and validation patterns.
-- Test structure.
-- Build, lint, typecheck, and test commands.
-- Known TODOs or roadmap notes related to the task.
+Inspect enough evidence to understand:
 
-Prefer evidence from the repository over assumptions.
+- repository structure
+- canonical and supporting docs
+- Strategic Outcomes and Initiative registry, when present
+- active Roadmap
+- Domain map
+- Architecture docs
+- Delivery Unit and Build Unit records
+- legacy Layer docs requiring classification
+- similar implemented behavior
+- APIs, schemas, events, data models, and contracts
+- tests and validation commands
+- branches, worktrees, and pull requests
+- dependency and contract evidence
+- known drift or stale assumptions
 
-## LEAP Command Shortcuts
+Prefer evidence over inference. Label material assumptions.
 
-When the user invokes a LEAP command, route it to current LEAP Framework behavior instead of responding generically. Use `docs/leap.md` as the lifecycle reference and the current prompt files when available.
+## LEAP command routing
 
-| Command | Route and behavior |
-| --- | --- |
-| `Run LEAP Charter` | Use `prompts/leap-charter-standard.md` to establish or reconcile project direction, source truth, roadmap, baseline assumptions, and implementation posture. |
-| `Run LEAP Recon` | Use `prompts/leap-recon-standard.md` to investigate a focused feature, risk, layer, dependency, contract, repo area, or architecture question before implementation planning. |
-| `Generate LEAP Prompt` | Use `prompts/leap-prompt-standard.md` only after source truth, repo reality, scope, validation, stop conditions, and execution configuration are clear enough. |
-| `Run LEAP Prompt` | Execute or apply an already-approved LEAP Prompt according to its stated scope, constraints, validation, and stop conditions. |
-| `Generate LEAP LHS` | Generate a staged LEAP Prompt format only when implementation gravity warrants Build Units; LHS is not a mandatory lifecycle phase. |
-| `Run LEAP LHS` | Execute or apply an approved LHS prompt in Build Unit sequence with its validation and stop conditions. |
-| `Run LEAP Governance` | Use `prompts/leap-governance-pass-standard.md` for source-truth, framework, prompt-library, adoption, terminology, or docs drift. |
-| `Run LEAP Validation` | Verify completed work against scope, tests/checks, docs, acceptance criteria, and stop conditions. |
-| `Run LEAP Handoff` | Summarize completed work, unresolved risks, validation status, deviations, and recommended follow-up. |
+| Command | Expected behavior |
+|---|---|
+| `Run LEAP Charter` | Establish or reconcile Mission, Strategic Outcomes, Initiative identity, Roadmap, Domains, Architecture, source truth, and implementation posture. |
+| `Run LEAP Recon` | Investigate a focused Strategic Outcome, Initiative, Delivery Unit, Build Unit, Domain, Architecture area, feature, dependency, contract, risk, or legacy Layer. |
+| `Generate LEAP Prompt` | Create an agent-ready Prompt only after source truth, repo reality, planning boundary, scope, validation, stop conditions, and execution configuration are clear. |
+| `Run LEAP Prompt` | Execute an approved Prompt according to its traceability, scope, constraints, validation, and stop conditions. |
+| `Generate LEAP LHS` | Create a staged Prompt when an Initiative or Delivery Unit contains several Build Units or integration checkpoints. |
+| `Run LEAP LHS` | Execute an approved LHS Prompt in its defined Delivery Unit and Build Unit sequence. |
+| `Run LEAP Governance` | Reconcile framework, project-documentation model, Prompt library, source truth, Agent Pack, terminology, or adoption drift. |
+| `Run LEAP Validation` | Verify completed work against scope, acceptance criteria, tests, docs, and stop conditions. |
+| `Run LEAP Handoff` | Summarize changes, validation, deviations, risks, and follow-up work. |
 
-Default Recon behavior:
+## Baseline Freshness Check
 
-1. Use the repository-level `AGENTS.md` first.
-2. Inspect the current repository state.
-3. Use source-of-truth documents identified by the repository-level `AGENTS.md`.
-4. Perform the Recon Baseline Freshness Check using repository AGENTS.md, baseline metadata if present, source-truth docs, and relevant repo reality.
-5. Treat Brownfield Charter outputs as source-truth inputs when present.
-6. Return Recon only.
-7. Do not implement code changes.
-8. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
+LEAP Recon should perform a lightweight Baseline Freshness Check using repository guidance, baseline metadata, source-truth docs, and relevant repo reality.
 
-LEAP Charter is not required before every Recon. If the baseline is fresh enough, continue Recon. If minor drift exists, continue and disclose the limitation. If material drift exists, ask whether to run Brownfield Charter or LEAP Governance, continue with limited scope, or defer reconciliation. If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation.
+Possible outcomes:
 
-If the LEAP standard prompt, `docs/leap.md`, or repository-level `AGENTS.md` cannot be read, stop and explain what source is unavailable.
+- Fresh enough
+- Minor drift
+- Material drift
+- Unsafe source-truth conflict
 
-## Planning Standard
+An old date is not automatically a blocker. A recent date is not proof of correctness.
 
-For meaningful work, produce a short plan before implementation.
+## Planning-boundary discipline
 
-A useful plan should identify:
+Before implementation, determine the actual boundary:
 
-- The likely files or modules to inspect/change.
-- The implementation sequence.
-- Tests or checks to run.
-- Compatibility concerns.
-- Documentation updates.
-- Stop conditions or decisions that require the user.
-
-Avoid excessive planning for small, obvious changes.
-
-## Implementation Standard
-
-When changing code:
-
-- Reuse existing patterns before introducing new ones.
-- Keep changes scoped to the requested task.
-- Prefer small, reviewable units.
-- Preserve backward compatibility unless explicitly told otherwise.
-- Do not rename public interfaces without a clear reason.
-- Do not introduce new dependencies without justification.
-- Do not mix unrelated refactors into feature work.
-- Do not duplicate business logic, schemas, or validation rules.
-- Prefer clear, boring, maintainable code over clever code.
-- Keep behavior deterministic where practical.
-- Handle errors explicitly.
-- Preserve existing security, privacy, and auditability boundaries.
-
-## LEAP Layer Discipline
-
-When a task references a layer, phase, milestone, or subsection:
-
-- Treat that boundary as the implementation scope.
-- Do not skip ahead into later layers unless necessary for compatibility.
-- Do not silently implement adjacent layers.
-- Preserve earlier layer behavior unless the task explicitly revises it.
-- Commit or summarize work by the requested layer/subsection boundary when asked.
-
-If the requested layer depends on unfinished prior work, call that out clearly and either implement the minimum safe prerequisite or stop and ask if the dependency changes scope materially.
-
-## House Standard Prompt Behavior
-
-When the user provides a House Standard, LHS, LEAP, or Codex implementation prompt:
-
-- Treat it as the task contract.
-- Remember that LEAP LHS is a LEAP Prompt format, not a separate mandatory lifecycle stage.
-- Do not convert every LEAP Prompt into LHS. Use LHS when the task needs staged implementation, commit boundaries, tests, docs, compatibility checks, rollback awareness, or multi-area coordination.
-- Follow the requested model/reasoning/plan-mode assumptions where applicable.
-- Reconcile the prompt against the repository before editing.
-- Push back if the prompt conflicts with existing architecture, security, data integrity, or documented product intent.
-- Prefer staged implementation over broad rewrites.
-- Keep changes modular, testable, and documented.
-
-## Questions and Stop Conditions
-
-Ask a question before proceeding only when moving forward would create meaningful risk.
-
-Stop and ask before:
-
-- Destructive production-like data changes.
-- Dropping or overwriting user data.
-- Weakening authentication or authorization.
-- Exposing secrets or credentials.
-- Adding paid external services.
-- Adding major production dependencies.
-- Changing public API contracts without migration.
-- Replacing major architecture instead of extending it.
-- Guessing business rules that materially affect user-facing behavior.
-- Implementing a security-sensitive shortcut.
-- Treating archived docs as current source truth.
-- Committing large unrelated changes.
-- Making irreversible git operations.
-
-If the project is explicitly a prototype or POC, destructive changes may be acceptable, but still call out the risk before doing them.
-
-## Testing and Validation
-
-After implementation:
-
-- Run the most relevant available tests/checks.
-- Prefer targeted tests first, then broader checks when practical.
-- Add or update tests when behavior changes.
-- Do not claim tests passed if they were not run.
-- If tests cannot be run, explain why.
-- If tests fail, investigate and report the failure honestly.
-- Do not hide known regressions.
-
-Use the repository's actual commands, not generic commands, whenever possible.
-
-## Documentation Standard
-
-Update documentation when a change affects setup, public behavior, user workflows, API contracts, data models, environment variables, security assumptions, architecture, layer strategy, or operational commands.
-
-Keep docs concise and close to the changed behavior. Do not let stale docs compete with canonical docs.
-
-## Git and Commit Standard
-
-When asked to commit:
-
-- Commit only coherent, reviewable units.
-- Use the requested layer/subsection title when provided.
-- Do not bundle unrelated work.
-- Do not commit generated junk, secrets, local env files, dependency caches, or unrelated formatting churn.
-- Check `git status` before committing.
-- Include a clear commit message.
-
-Preferred LEAP commit message shape:
-
-`Layer X - Short Descriptive Title`
-
-If the user asks for sequential layer work, complete one subsection, validate it, commit it if requested, then proceed to the next subsection.
-
-## Final Response Standard
-
-At completion, summarize:
-
-- What changed.
-- Files or areas touched.
-- Tests/checks run.
-- Any tests/checks not run.
-- Docs updated or needing update.
-- Risks or follow-ups.
-- Whether the work stayed within the requested layer/scope.
-
-Be direct. Do not oversell the result.
-
-## Do Not Do
+- Initiative
+- Delivery Unit
+- Build Unit
+- Domain concern
+- Architecture concern
+- Phase
+- legacy Layer requiring classification
 
 Do not:
 
-- Invent project requirements.
-- Fabricate test results.
-- Ignore existing docs.
-- Treat archived docs as current unless explicitly referenced by canonical docs.
-- Replace established architecture without cause.
-- Add dependencies casually.
-- Hide uncertainty.
-- Implement broad refactors under a narrow task.
-- Weaken security to make tests pass.
-- Commit secrets or `.env` files.
-- Treat AI-generated assumptions as source of truth.
-- Continue past a serious unresolved ambiguity.
+- treat Roadmap order as permanent hierarchy
+- assume numbered work must be sequential
+- confuse Domain ownership with temporary Initiative ownership
+- define Build Units as independently deployable without evidence
+- globally replace `Layer`
+- skip required dependencies or human decisions
+
+## Implementation standard
+
+When changing code or docs:
+
+- reuse existing patterns before introducing new ones
+- keep changes within the approved Build Unit or bounded task
+- preserve compatibility unless approved otherwise
+- avoid unrelated cleanup
+- do not invent product or Architecture decisions
+- do not add dependencies without justification and permission
+- do not weaken tests
+- keep behavior deterministic and errors explicit where practical
+- preserve security, privacy, data, auditability, and ownership boundaries
+
+## LHS behavior
+
+Use LHS when staged execution reduces risk, including:
+
+- several Build Units
+- several system or documentation areas
+- dependency or merge order
+- tests and docs
+- phased commits
+- rollback or compatibility risk
+- Architecture, data-contract, or workflow changes
+- cross-repository coordination
+- explicit integration checkpoints
+
+Do not convert every LEAP Prompt into LHS.
+
+## Questions and stop conditions
+
+Apply Materiality Gate:
+
+1. Inspect discoverable evidence.
+2. Proceed on stated safe assumptions.
+3. Ask only unresolved material questions.
+4. Stop when proceeding would create meaningful risk.
+
+Stop before:
+
+- destructive or irreversible data changes
+- auth, permission, security, privacy, billing, or identity changes without approval
+- breaking public contracts without migration approval
+- major Architecture replacement
+- adding paid services or major production dependencies
+- inventing material business rules
+- treating archived docs as current source truth
+- proceeding with unclear Initiative, Domain, Architecture, Delivery Unit, or Build Unit ownership
+- interpreting an ambiguous legacy Layer without sufficient evidence
+- irreversible Git operations
+
+## Testing and validation
+
+After implementation:
+
+- run the most relevant available checks
+- prefer targeted tests first, then broader checks when practical
+- add or update tests when behavior changes
+- report checks not run and why
+- do not claim success for checks that were not run
+- do not hide regressions
+
+Use repository commands rather than generic commands whenever possible.
+
+## Documentation standard
+
+Update docs when changes affect:
+
+- Mission, Strategic Outcomes, or Initiative status
+- Roadmap timing, priority, dependencies, or releases
+- Domain ownership or contracts
+- Architecture
+- Delivery Unit or Build Unit status
+- setup or operational commands
+- public behavior
+- user workflows
+- APIs, events, schemas, or data models
+- environment variables
+- security assumptions
+
+Do not let stale docs compete with canonical docs.
+
+## Git and commit standard
+
+When asked to commit:
+
+- commit coherent, reviewable units
+- prefer one Build Unit per commit where feasible
+- use Initiative, Delivery Unit, Build Unit, or task identifiers when available
+- do not bundle unrelated work
+- check repository status before committing
+- do not commit secrets, local environment files, caches, or generated junk
+
+Preferred message shapes:
+
+```text
+INIT-001 - Short descriptive title
+DU-001 - Short descriptive title
+BU-001 - Short descriptive title
+Task - Short descriptive title
+```
+
+## Final response standard
+
+At completion, report:
+
+- summary of changes
+- Strategic Outcome / Initiative / Delivery Unit / Build Unit traceability when material
+- files or areas changed
+- tests and checks run
+- checks not run and why
+- deviations and assumptions
+- documentation updates
+- risks and follow-up LEAP work
 
 <!-- LEAP_MANAGED_SECTION_END -->
-
-<!-- LEAP_LOCAL_OVERRIDES_BEGIN -->
-
-<!--
-Optional local user or machine-specific notes go here.
-Do not add project-specific repository rules to the global template.
--->
-
-<!-- LEAP_LOCAL_OVERRIDES_END -->

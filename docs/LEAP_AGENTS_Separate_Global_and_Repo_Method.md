@@ -1,125 +1,79 @@
-# LEAP AGENTS.md Setup — Separate Global + Repo Method
+# LEAP AGENTS.md Setup - Separate Global + Repository Method
 
-Use this method when the user wants to install LEAP in the coding agent's global instruction location and maintain a separate repository-level `AGENTS.md` file per project. This is the recommended setup for users who want LEAP behavior across multiple repositories.
+Use this recommended method when LEAP should be available across several repositories while each project retains its own source truth, commands, Architecture, planning, and stop conditions.
 
-For first-time evaluation inside one local repo, use the combined local-trial method from `combined/AGENTS.md`.
+## Canonical paths
 
----
+- Global template: `templates/separated/global/AGENTS.md`
+- Global initialization Prompt: `templates/separated/global/AGENTS_Population_Prompt.md`
+- Repository template: `templates/separated/repo/AGENTS.md`
+- Repository population Prompt: `templates/separated/repo/AGENTS_Population_Prompt.md`
 
-## Reference links
+Older references to top-level `global/` or `repo/` paths are not valid in the current repository.
 
-Primary framework reference:
+## What belongs globally
 
-- [LEAP Framework — main branch](/)
+The global file owns reusable behavior:
 
-Template links:
+- LEAP lifecycle
+- Materiality Gate
+- evidence-first inspection
+- project-documentation terminology
+- Planning Boundary Review
+- general safety, validation, and handoff rules
 
-- Canonical global template: `global/AGENTS.md`
-- Canonical global initialization prompt: `global/AGENTS_Population_Prompt.md`
-- Canonical repo template: `repo/AGENTS.md`
-- Canonical repo population prompt: `repo/AGENTS_Population_Prompt.md`
-- Compatibility global template: [templates/leap-global-AGENTS-file/AGENTS.md](/templates/leap-global-AGENTS-file/AGENTS.md)
-- Compatibility repo template: [templates/leap-repo-AGENTS-file/AGENTS.md](/templates/leap-repo-AGENTS-file/AGENTS.md)
-- Compatibility repo population prompt: [templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md](/templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md)
+It must not contain project-specific facts.
 
----
+## What belongs in each repository
 
-## What the user does
+The repository file owns:
 
-This method uses two instruction files:
+- project identity and Mission
+- Strategic Outcomes
+- Initiative registry
+- Roadmap
+- Domain map
+- Architecture docs
+- Delivery Unit and Build Unit records
+- legacy Layer classification candidates
+- source-truth status
+- repository layout and technology stack
+- commands, dependencies, contracts, security rules, and stop conditions
 
-1. A global `AGENTS.md` file for reusable LEAP operating behavior.
-2. A repo-level `AGENTS.md` file for one specific project.
-
-### 1. Install the global AGENTS.md file
-
-Download `global/AGENTS.md` and place it in the global instruction location used by the coding agent. Use `global/AGENTS_Population_Prompt.md` to verify it remains reusable.
-
-Common locations:
-
-| Agent / Tool | macOS / Linux | Windows |
-|---|---|---|
-| Codex-style AGENTS.md | `~/.codex/AGENTS.md` | `%USERPROFILE%\.codex\AGENTS.md` |
-| Claude Code-style user memory | `~/.claude/CLAUDE.md` or tool-supported AGENTS import | `%USERPROFILE%\.claude\CLAUDE.md` or tool-supported AGENTS import |
-| Other coding agents | Use the tool's documented global instruction location | Use the tool's documented global instruction location |
-
-The global file should stay broad. It should explain LEAP behavior, source-of-truth discipline, Recon-first thinking, stop conditions, and safe agent handoff rules.
-
-Do **not** put project-specific commands, architecture, secrets, or repo details in the global file.
-
----
-
-### 2. Install the repo / project AGENTS.md file
-
-Download `repo/AGENTS.md` and place it at the root of the project repository:
+## Current project-documentation model
 
 ```text
-<repo-root>/AGENTS.md
+Mission / Project Charter
+  -> Strategic Outcome
+    -> Initiative
+      -> Delivery Unit
+        -> Build Unit
 ```
 
-The repo AGENTS.md file is where project-specific details belong, including:
+Roadmap schedules and prioritizes. Domains are persistent responsibility boundaries. Architecture is technical structure.
 
-- Project purpose.
-- Tech stack.
-- Local development commands.
-- Test, lint, typecheck, format, and build commands.
-- Source-of-truth docs.
-- Architecture notes.
-- Data model and API conventions.
-- Security and secrets rules.
-- Branch, worktree, and commit expectations.
-- LEAP-specific repo workflow rules.
+Several Initiatives may run in parallel. Delivery Unit may collapse for small work. Build Unit is not necessarily independently deployable.
 
----
+Generic project-planning `Layer` is legacy-compatible and deprecated. Preserve the LEAP name, Layered House Standard, LEAP LHS, qualified Architecture Layers, public paths, and compatibility references.
 
-### 3. Populate the repo AGENTS.md file
+## Installation
 
-Open the repository in the user's coding agent or code editor.
+1. Copy the global template to the coding agent's supported global instruction location.
+2. Run the global initialization Prompt.
+3. Copy the repository template to the project root as `AGENTS.md`.
+4. Run the repository population Prompt inside the target repository.
+5. Review every `TBD`, source-truth conflict, and legacy Layer classification.
+6. Run Charter when project direction or documentation ownership is unclear.
+7. Run focused Recon when the baseline is fresh enough.
 
-Then use this population prompt:
+## Update policy
 
-```text
-repo/AGENTS_Population_Prompt.md
-```
+Update global and repository files independently.
 
-The prompt should update only the repository-level `AGENTS.md` file from actual repository evidence.
+- Preserve project and local sections.
+- Manually merge managed guidance.
+- Do not overwrite source-truth paths, commands, or project rules blindly.
+- Review Agent Pack manifests and Framework compatibility.
+- Do not globally rename legacy Layer terms.
 
----
-
-### 4. Run LEAP Recon
-
-After the repo AGENTS.md file is populated, run Recon before asking the coding agent to implement anything.
-
-Use the short launcher:
-
-```text
-Run LEAP Recon for the following functionality:
-
-[DESCRIBE THE FEATURE, LAYER, BUGFIX, WORKFLOW, OR FUNCTIONAL AREA HERE]
-```
-
-The global and repo AGENTS files should provide the operating rules for Recon. The user should not need to paste the full Recon rules when using standard AGENTS.md behavior.
-
----
-
-## Done state
-
-The project is ready for normal LEAP use when:
-
-- The global AGENTS.md or equivalent global instruction file is installed.
-- The repo-level `AGENTS.md` file exists at the repository root.
-- The repo-level `AGENTS.md` file has been populated from actual repo evidence.
-- Unknowns are marked as `TBD`, not guessed.
-- A LEAP Recon pass has been run for the first functionality target.
-- The next implementation task has bounded scope, non-goals, validation expectations, and stop conditions.
-
----
-
-## Short rule
-
-```text
-Global AGENTS.md teaches the agent how to think with LEAP.
-Repo AGENTS.md teaches the agent how LEAP applies to this project.
-Recon verifies reality before implementation.
-Prompt only after Recon.
-```
+See [`upgrade-guide.md`](upgrade-guide.md).

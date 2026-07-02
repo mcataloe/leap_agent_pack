@@ -1,54 +1,98 @@
 # LEAP Agent Pack Customization Guide
 
-Customize the repo-level `AGENTS.md` so it reflects the actual project.
+Customize repository-level guidance so it reflects actual project evidence.
 
-## Setup Scenarios
+## Canonical templates
 
-| Scenario | Use when | Install this AGENTS.md | Also install global? | Population / initialization prompt | Notes |
-| --- | --- | --- | --- | --- | --- |
-| Recommended Separate Global + Repo Method | Reusable LEAP behavior belongs globally and project facts belong in each repo. | `repo/AGENTS.md` | Yes, `global/AGENTS.md` | `global/AGENTS_Population_Prompt.md` and `repo/AGENTS_Population_Prompt.md` | Customize only the repo file with project-specific facts. |
-| Repo-Only Method | The project cannot or should not use global instructions. | `repo/AGENTS.md` | No | `repo/AGENTS_Population_Prompt.md` | Keep reusable LEAP behavior and project facts in the repo setup. |
-| Combined Local-Trial Method | LEAP is being tested in one repo before global install. | `combined/AGENTS.md` | No | `combined/AGENTS_Population_Prompt.md` | Populate only the Editable Repository Section. |
-| Compatibility / Legacy Paths | Older docs or downstream installs already use old paths. | Mapped compatibility template | Depends on mapped scenario | Paired compatibility prompt when present | Do not delete or rename compatibility paths. |
+- Global reusable guidance: `templates/separated/global/AGENTS.md`
+- Repository guidance: `templates/separated/repo/AGENTS.md`
+- Combined local trial: `templates/combined/AGENTS.md`
 
-## What Belongs In Repo-Level AGENTS.md
+## What belongs in repository guidance
 
-- Local setup commands.
-- Test, lint, typecheck, format, and build commands.
-- Source-of-truth docs.
-- LEAP Baseline State summary for Recon preflight.
-- Architecture constraints.
-- Security, data, and privacy rules.
-- Project-specific stop conditions.
-- Branch, commit, and PR expectations.
+- project name, Mission, users, and maturity
+- source-truth entry point
+- Project Charter or equivalent strategy
+- Strategic Outcomes
+- Initiative registry and active Initiative posture
+- Roadmap path
+- Domain map
+- Architecture docs
+- Delivery Unit and Build Unit paths
+- legacy Layer docs requiring classification
+- repository layout and technology stack
+- setup and validation commands
+- dependencies and contracts
+- security, privacy, data, and ownership rules
+- branch, PR, and commit conventions
+- project-specific stop conditions
 
-## What Does Not Belong
+## What remains reusable global guidance
 
-- The full LEAP methodology.
-- Long product docs that should live under `docs/`.
-- Secrets, credentials, private tokens, or personal data.
-- Guessed commands or unsupported architecture assumptions.
+- lifecycle
+- Materiality Gate behavior
+- evidence-first repository inspection
+- project-documentation terminology
+- general planning-boundary rules
+- general safety and validation expectations
 
-## Modification Notes
+Do not put project-specific facts in global instructions.
 
-Record meaningful local edits in the hidden metadata block:
+## Project-documentation customization
 
-```md
-local_modification_notes: Added project setup commands and source-of-truth docs on 2026-05-29.
+Use:
+
+```text
+Mission / Project Charter
+  -> Strategic Outcome
+    -> Initiative
+      -> Delivery Unit
+        -> Build Unit
 ```
 
-This helps future update checks distinguish expected local customization from accidental drift.
+Keep Roadmap, Domain Map, and Architecture separate.
 
-## Keep Guidance Small
+Do not customize the model by:
 
-Prefer links to canonical project docs over duplicating long content.
+- making Roadmap the permanent owner of Initiative identity
+- treating temporary Initiatives as persistent Domains
+- requiring Delivery Units for trivial work
+- defining every Build Unit as independently deployable
+- renaming all uses of `Layer`
+
+A downstream project may retain legacy Layer docs. Record what each Layer actually represents and add canonical links before moving or renaming public paths.
+
+## Keep guidance compact
+
+Prefer links to canonical project docs over copying long content.
 
 Good:
 
 ```text
-Start with docs/00_start_here.md and docs/architecture/overview.md.
+Start with docs/00_start_here.md.
+Strategic Outcomes: docs/02_strategy/01_strategic_outcomes.md
+Initiative registry: docs/02_strategy/02_initiative_registry.md
+Roadmap: docs/02_strategy/03_roadmap.md
+Domain map: docs/03_domains/00_domain_map.md
+Architecture: docs/04_architecture/00_architecture_overview.md
 ```
 
-Avoid copying entire architecture or roadmap documents into `AGENTS.md`.
+Avoid copying entire strategy, Roadmap, Domain, or Architecture documents into `AGENTS.md`.
 
-Keep LEAP Baseline State small. It is a freshness signal for Recon, not a hard gate or running status log. If optional `leap.baseline.yaml` exists, treat that file as the canonical machine-readable baseline record and keep AGENTS.md as a short pointer/summary.
+## Baseline State
+
+Keep Baseline State small. It is a Recon freshness signal, not a running status log.
+
+When optional `leap.baseline.yaml` exists, use it as the canonical machine-readable record and keep `AGENTS.md` as a concise pointer.
+
+Do not invent reconciliation dates or silently update baseline metadata during ordinary implementation.
+
+## Modification notes
+
+Record meaningful local edits in the hidden metadata block, for example:
+
+```text
+local_modification_notes: Added project source-truth paths and validation commands on 2026-07-01.
+```
+
+This distinguishes expected customization from accidental Agent Pack drift.

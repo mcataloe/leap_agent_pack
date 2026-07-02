@@ -1,87 +1,107 @@
 # Repository AGENTS.md Population Prompt
 
-Repository path:
+Use this with the separate global-plus-repository AGENTS method after placing the repository template at the project root.
 
 ```text
-templates/leap-repo-AGENTS-file/AGENTS_Population_Prompt.md
-```
-
-Use this prompt when using the **separate global AGENTS.md + repo AGENTS.md method**.
-
-This prompt assumes:
-
-1. The global LEAP `AGENTS.md` file has already been installed in the coding agent's global instruction location.
-2. The repository-level LEAP `AGENTS.md` template has already been placed at the root of the target repository.
-3. The code assistant has access to the target repository and can inspect its files.
-
-Copy/paste the prompt below into the code assistant for the target repository.
-
-```text
-You are helping adopt the LEAP Framework in this repository using a separate repository-level AGENTS.md file.
+You are helping adopt the current LEAP Framework in this repository.
 
 Target file:
 - AGENTS.md at the repository root.
 
-Framework reference:
-- Use the LEAP Framework main branch as the stable reference:
-  /
+Framework source:
+- https://github.com/mcataloe/leap_framework
 
 Goal:
-Populate this repository's AGENTS.md file with project-specific operating context so future LEAP Recon and LEAP Prompt work can be accurate, bounded, and source-grounded.
+Populate the repository AGENTS.md with verified project-specific context so
+future Charter, Recon, Prompt, implementation, and Validation/Handoff work is
+source-grounded, bounded, and aligned with the current project-documentation model.
 
 Scope:
-- Update only the repository-level AGENTS.md file unless I explicitly approve another file change.
-- Do not modify any global AGENTS.md file or system-wide instruction file.
-- Do not perform product implementation work.
+- Update only the repository-level AGENTS.md unless another file is explicitly approved.
+- Do not modify global instructions.
+- Do not perform product implementation.
+- Do not create or rewrite strategy docs during ordinary population.
 
 Before editing:
-1. Inspect the existing repository structure.
-2. Read the existing repository-level AGENTS.md template.
-3. Identify available source-of-truth documents, such as README files, docs, architecture notes, package files, build files, compose files, infrastructure files, test configuration, and CI files.
-4. Infer only what the repository evidence supports.
-5. Do not invent commands, architecture, services, credentials, environments, workflows, business rules, or deployment assumptions.
+1. Inspect repository structure and current branch state.
+2. Read the full repository AGENTS.md template.
+3. Inspect README files, docs, package/build files, Architecture material,
+   schemas, tests, CI, infrastructure, and other source-truth evidence.
+4. Identify canonical, supporting, Draft, stale, archived, superseded,
+   conflicting, and unknown documents.
+5. Infer only what repository evidence supports.
+6. Mark unsupported facts as TBD with the exact owner question.
 
-Populate the AGENTS.md file with:
-- Project name and purpose.
-- Application type and current maturity, if discoverable.
-- Primary users or use cases, if documented.
-- Tech stack and major frameworks.
-- Repository layout.
-- Local setup commands.
-- Development commands.
-- Test, lint, typecheck, format, and build commands.
-- Database, storage, queue, cache, or external service dependencies.
-- Infrastructure and deployment notes.
-- Source-of-truth documents and their status if known.
-- Known stale, draft, archived, or conflicting documents if discoverable.
-- LEAP Baseline State table values from repo evidence.
-- Security, secrets, and data-handling rules.
-- Coding conventions and architectural constraints.
-- Branch, worktree, PR, and commit conventions.
-- LEAP Recon expectations for this repo.
-- LEAP Prompt / implementation handoff expectations for this repo.
-- Stop conditions requiring human review.
+Use this project-documentation model when material:
+
+Mission / Project Charter
+  -> Strategic Outcome
+    -> Initiative
+      -> Delivery Unit
+        -> Build Unit
+
+Treat these as separate views:
+- Roadmap: timing, priority, milestones, dependencies, releases, status, parallelism.
+- Domain Map: persistent responsibility and ownership boundaries.
+- Architecture: technical structure and qualified technical Layers.
 
 Rules:
-- Preserve the intent of the LEAP repository AGENTS.md template.
-- Keep the file concise, practical, and useful to a coding agent.
-- Prefer verified repository evidence over assumptions.
-- If something is unknown, mark it as TBD and include the exact question the project owner should answer.
-- For LEAP Baseline State, populate fields from evidence when available. If unknown, use TBD, Never, None, or Not established.
-- Do not invent reconcile history.
-- Do not claim a full reconcile happened unless this prompt actually performed one.
-- Do not create `leap.baseline.yaml` during normal AGENTS.md population unless explicitly authorized or the prompt includes an authorized baseline setup pass.
-- If the repo clearly needs machine-readable baseline tracking, recommend optional `leap.baseline.yaml` as follow-up.
-- Do not treat an old baseline date as an automatic blocker or a recent baseline date as proof that source truth is correct.
-- Do not refactor application code.
-- Do not create new strategic docs unless I explicitly approve that separately.
-- Do not remove useful template sections unless they clearly do not apply.
+- Several Initiatives may run in parallel.
+- Roadmap placement does not permanently define Initiative identity.
+- Initiatives and Domains are many-to-many.
+- Delivery Unit may collapse for small work.
+- Build Unit is bounded implementation and is not necessarily independently deployable.
+- Generic project-planning Layer is legacy-compatible and deprecated.
+- Preserve the LEAP name, Layered House Standard, LEAP LHS,
+  qualified Architecture Layers, public paths, and compatibility references.
+- Classify legacy Layer docs as Initiative, Delivery Unit, Build Unit,
+  Domain, Architecture Layer, Phase, or mixed / unclear before migration.
 
-After editing, return a short completion report with:
+Populate or reconcile:
+- Project name, purpose, type, maturity, users, and use cases.
+- Repository layout and technology stack.
+- Setup, development, test, lint, typecheck, format, and build commands.
+- Infrastructure, database, storage, queue, cache, and external dependencies.
+- LEAP Baseline State values from evidence.
+- Mission / Project Charter path.
+- Strategic Outcomes path.
+- Initiative registry path and active Initiative posture.
+- Roadmap path.
+- Domain map path.
+- Architecture docs path.
+- Delivery Unit and Build Unit documentation paths, when present.
+- API, event, schema, and data-contract paths.
+- Legacy Layer docs requiring classification.
+- Canonical and non-canonical document lists.
+- Security, privacy, secrets, and data-handling rules.
+- Coding, Architecture, contract, testing, branch, PR, and commit conventions.
+- Recon expectations and planning-boundary behavior.
+- Prompt and implementation handoff expectations.
+- Stop conditions requiring human review.
+
+Baseline rules:
+- Populate values only from evidence.
+- Use TBD, Never, None, or Not established when unknown.
+- Do not invent reconciliation history.
+- Do not claim a full reconcile unless this task performed one.
+- Do not create leap.baseline.yaml unless explicitly authorized.
+- Recommend optional machine-readable baseline tracking only when justified.
+- An old date is not automatically a blocker; a recent date is not proof of correctness.
+
+Editing rules:
+- Preserve template intent and section markers.
+- Keep the file concise and operationally useful.
+- Remove or mark non-applicable placeholders only when evidence supports doing so.
+- Do not refactor application code.
+- Do not blindly rename legacy Layer material.
+- Do not convert Roadmap lanes into permanent Initiative identity.
+
+After editing, return:
 1. Sections populated.
 2. Evidence used.
-3. Unknowns left as TBD.
-4. Any contradictions or stale-doc risks found.
-5. Recommended next LEAP Recon target.
-6. Whether optional `leap.baseline.yaml` is recommended as follow-up.
+3. Strategic and planning paths identified.
+4. Unknowns left as TBD.
+5. Contradictions, stale-doc risks, or legacy Layer classifications.
+6. Recommended next Charter or Recon target.
+7. Whether leap.baseline.yaml is recommended as follow-up.
 ```

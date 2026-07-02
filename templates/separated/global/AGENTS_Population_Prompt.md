@@ -1,29 +1,48 @@
 # Global AGENTS.md Initialization Prompt
 
-Use this prompt after copying `global/AGENTS.md` into the global instruction location used by Codex or another coding agent.
+Use this after copying `templates/separated/global/AGENTS.md` into the coding agent's global instruction location.
 
 ## Goal
 
-Install or verify reusable LEAP operating guidance without adding project-specific facts.
+Install or verify reusable LEAP behavior without adding project-specific facts.
 
-## Instructions for Codex
+## Instructions
 
-1. Confirm that `global/AGENTS.md` or equivalent global instructions are installed in the user's intended global instruction location.
-2. Verify that the global file stays reusable across projects.
-3. Do not add project-specific architecture, commands, source-truth docs, business rules, repositories, secrets, credentials, environment details, or validation commands to the global file.
-4. If project-specific facts are needed, direct the user to install `repo/AGENTS.md` in the project root and run `repo/AGENTS_Population_Prompt.md`.
-5. If the user wants to test LEAP in only one repository before installing global guidance, direct the user to use `combined/AGENTS.md` and `combined/AGENTS_Population_Prompt.md` instead.
-6. If the global file contains project-specific content, report the issue and recommend moving that content into the repo-level AGENTS file.
+1. Confirm the global LEAP file is installed in the intended global instruction location.
+2. Verify that it remains reusable across repositories.
+3. Confirm it includes the current lifecycle:
+
+   ```text
+   LEAP Charter -> LEAP Recon -> LEAP Prompt -> Implementation -> Validation/Handoff
+   ```
+
+4. Confirm it recognizes the preferred project-documentation model:
+
+   ```text
+   Mission / Project Charter
+     -> Strategic Outcome
+       -> Initiative
+         -> Delivery Unit
+           -> Build Unit
+   ```
+
+5. Confirm it treats Roadmap, Domain Map, and Architecture as separate supporting views.
+6. Confirm it allows Delivery Unit collapse for small work and does not define Build Units as necessarily independently deployable.
+7. Confirm it treats generic project-planning `Layer` as legacy-compatible while preserving the LEAP name, Layered House Standard, LEAP LHS, qualified Architecture Layers, public paths, and compatibility references.
+8. Do not add project-specific Architecture, commands, source-truth paths, business rules, repositories, Strategic Outcomes, Initiatives, Roadmaps, Domains, Delivery Units, Build Units, credentials, environments, or validation commands.
+9. Direct project-specific content to the repository-level template and population Prompt.
+10. For a one-repository trial, direct the user to the combined template and combined population Prompt.
+11. If project-specific content is already present in the global file, report it and recommend moving it to repository guidance.
 
 ## Output
-
-Return:
 
 ```text
 Global AGENTS.md Initialization Summary
 - Global file present:
+- Current LEAP lifecycle present:
+- Current project-documentation model present:
 - Reusable guidance preserved:
 - Project-specific content found:
-- Recommended repo-level next step:
-- Local-trial alternative needed:
+- Recommended repository-level next step:
+- Combined local-trial alternative needed:
 ```

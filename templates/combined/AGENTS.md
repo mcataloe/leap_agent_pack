@@ -1,316 +1,151 @@
-# Master Repo AGENTS.md — LEAP Local Trial Template
+<!--
+LEAP_AGENT_PACK_TEMPLATE:
+  template: combined-local-trial
+  version: 0.2.0-candidate
+  compatible_leap_framework: ">=0.1.0 <1.0.0"
+  source: https://github.com/mcataloe/leap_agent_pack
+  last_updated: 2026-07-01
+  local_modification_notes: Record downstream edits here.
+END_LEAP_AGENT_PACK_TEMPLATE
+-->
 
-Use this single-file template when you want to test LEAP inside one local repository before installing a global AGENTS.md system-wide.
+# Master Repo AGENTS.md - LEAP Local Trial Template
 
-This file intentionally combines two scopes:
+Use this single file to test LEAP in one repository before installing separate global instructions.
 
-1. **Locked Global Section** — reusable LEAP operating behavior copied from the global AGENTS.md template.
-2. **Editable Repository Section** — project-specific AGENTS.md content that should be populated from the current repository.
+The file has two scopes:
 
-When this file is placed at the root of a repository as `AGENTS.md`, the code assistant should treat the locked global section as global LEAP behavior and the editable repository section as the repository-level AGENTS.md content.
+1. **Locked Global Section** — reusable LEAP behavior.
+2. **Editable Repository Section** — project-specific context populated from repository evidence.
 
-## Local-Trial Editing Rules
-
-- Do not edit the locked global section unless the user explicitly asks to revise LEAP global behavior.
-- Do not remove or rename the section boundary markers.
-- Populate only the editable repository section during repo onboarding.
-- Preserve the overall two-section structure.
-- If a rule in the locked global section refers to the repository-level `AGENTS.md`, interpret that as the editable repository section in this same file.
-- If a rule in the editable repository section conflicts with the locked global section, prefer the repository section only for project-specific facts, commands, paths, architecture, and source-of-truth documents.
-- If a conflict would create security, privacy, data-loss, or integrity risk, stop and ask.
+Do not edit the locked section during repository onboarding. Preserve all section markers.
 
 ---
 
 <!-- LEAP_MASTER_GLOBAL_SECTION_START: DO NOT EDIT DURING REPO POPULATION -->
 
-# Global AGENTS.md — LEAP Operating Template
+# Locked Global Section - LEAP Operating Guidance
+
+## Lifecycle
+
+```text
+LEAP Charter -> LEAP Recon -> LEAP Prompt -> Implementation -> Validation/Handoff
+```
+
+LEAP LHS is the Layered House Standard Prompt format for staged implementation. It is not a lifecycle phase and does not define the project's strategic hierarchy.
+
+## Project-documentation model
+
+```text
+Mission / Project Charter
+        ↓
+Strategic Outcome
+        ↓
+Initiative
+        ↓
+Delivery Unit
+        ↓
+Build Unit
+```
+
+Supporting views:
+
+```text
+Roadmap      = timing, priority, milestones, dependencies, releases, status, parallelism
+Domain Map   = persistent responsibility and ownership boundaries
+Architecture = technical structure and qualified technical Layers
+```
+
+Rules:
+
+- Several Initiatives may run in parallel.
+- Roadmap placement does not permanently define Initiative identity.
+- Initiatives and Domains are many-to-many.
+- Delivery Unit may collapse for small work.
+- Build Unit is bounded implementation and is not necessarily independently deployable.
+- Generic project-planning `Layer` is legacy-compatible and deprecated.
+- Preserve the LEAP name, Layered House Standard, LEAP LHS, qualified Architecture Layers, public paths, and compatibility references.
+- Classify a legacy Layer as Initiative, Delivery Unit, Build Unit, Domain, Architecture Layer, Phase, or mixed / unclear before migration.
+
+## Instruction priority
+
+1. System, developer, and tool instructions.
+2. Explicit user instructions.
+3. Editable Repository Section and closer-scoped instructions.
+4. This Locked Global Section.
+5. Repository code, tests, docs, and conventions.
+
+Stop when conflicts materially affect source truth, product behavior, Architecture, data, security, compatibility, or validation.
+
+## Default work pattern
+
+1. Inspect repository and documentation evidence.
+2. Identify Strategic Outcome and Initiative when material.
+3. Treat Roadmap as planning context.
+4. Identify affected Domains and Architecture areas.
+5. Perform Planning Boundary Review.
+6. Define a Delivery Unit when a meaningful release or adoption boundary exists.
+7. Define a bounded Build Unit or task.
+8. Implement only the approved scope.
+9. Test and update docs.
+10. Complete Validation/Handoff.
+
+## Planning Boundary Review
+
+Classify the target as:
+
+- Strategic Outcome question
+- Initiative
+- Delivery Unit
+- Build Unit
+- Domain concern
+- Architecture concern
+- Phase
+- ambiguous legacy Layer
+
+Do not assume numbered work must be sequential. Do not globally replace `Layer`.
+
+## LEAP command routing
+
+| Command | Expected behavior |
+|---|---|
+| `Run LEAP Charter` | Establish or reconcile Mission, Outcomes, Initiatives, Roadmap, Domains, Architecture, source truth, and readiness. |
+| `Run LEAP Recon` | Investigate a focused Outcome, Initiative, Delivery Unit, Build Unit, Domain, Architecture area, feature, dependency, contract, risk, or legacy Layer. |
+| `Generate LEAP Prompt` | Create an agent-ready Prompt only after source truth, repo reality, boundary, validation, stop conditions, and execution configuration are clear. |
+| `Generate LEAP LHS` | Create staged execution when an Initiative or Delivery Unit contains several Build Units or integration checkpoints. |
+| `Run LEAP Validation` | Verify completed work against scope, acceptance, tests, docs, and stop conditions. |
+| `Run LEAP Handoff` | Report changes, validation, deviations, risks, and follow-up work. |
+
+## Implementation rules
+
+- Reuse existing patterns.
+- Keep changes within the approved Build Unit or bounded task.
+- Preserve compatibility unless approved otherwise.
+- Do not invent product or Architecture decisions.
+- Do not add dependencies without permission.
+- Do not weaken tests.
+- Preserve security, privacy, data, auditability, and ownership boundaries.
 
-## Purpose
+## Stop conditions
 
-Use LEAP as the default operating model for software engineering tasks unless the user, repository, or task-specific prompt says otherwise.
+Stop before:
 
-LEAP is a layered, evidence-first execution model for agent-assisted software work. Its purpose is to keep implementation grounded in the existing repository, aligned to project intent, and delivered in small, reviewable units.
+- destructive or irreversible data changes
+- auth, permission, security, privacy, billing, or identity changes without approval
+- breaking contracts without migration approval
+- major Architecture replacement
+- adding paid services or major dependencies
+- inventing material business rules
+- treating archived docs as current source truth
+- proceeding with unclear Initiative, Domain, Architecture, Delivery Unit, or Build Unit ownership
+- interpreting an ambiguous legacy Layer without enough evidence
+- irreversible Git operations
 
-This global file defines reusable behavior across repositories. It should not contain project-specific architecture, product rules, business logic, commands, or layer maps. Those belong in the repository-level `AGENTS.md` and project documentation.
+## Validation and commits
 
----
+Run relevant repository checks and report anything not run.
 
-## Instruction Priority
-
-When working in a repository, follow instructions in this order:
-
-1. System/developer/tool instructions.
-2. Explicit user instructions for the current task.
-3. Repository-level `AGENTS.md` and closer scoped agent instruction files.
-4. This global `AGENTS.md`.
-5. Existing source code, tests, documentation, and conventions.
-
-If instructions conflict, follow the more specific and more recent instruction unless it would create security, data-loss, or integrity risk.
-
----
-
-## Default LEAP Work Pattern
-
-For non-trivial implementation tasks, use this sequence:
-
-1. Understand the task.
-2. Perform repository reconnaissance before editing.
-3. Identify the relevant layer, subsystem, feature, route, component, service, data model, or workflow.
-4. Locate existing patterns and contracts.
-5. Make a concise implementation plan.
-6. Implement the smallest coherent change.
-7. Add or update relevant tests.
-8. Run practical validation checks.
-9. Summarize changes, validation, risks, and follow-ups.
-
-Do not treat the task as greenfield unless the repository clearly lacks an existing implementation path.
-
----
-
-## Reconnaissance Expectations
-
-Before editing code, inspect the repository enough to understand:
-
-- Existing project structure.
-- Relevant docs and architecture notes.
-- Similar implemented features.
-- Naming conventions.
-- Data contracts and validation patterns.
-- Test structure.
-- Build, lint, typecheck, and test commands.
-- Known TODOs or roadmap notes related to the task.
-
-Prefer evidence from the repository over assumptions.
-
----
-
-## LEAP Command Shortcuts
-
-When the user invokes a LEAP command, route it to current LEAP Framework behavior instead of responding generically. Use `docs/leap.md` as the lifecycle reference and the current prompt files when available.
-
-| Command | Route and behavior |
-| --- | --- |
-| `Run LEAP Charter` | Use `prompts/leap-charter-standard.md` to establish or reconcile project direction, source truth, roadmap, baseline assumptions, and implementation posture. |
-| `Run LEAP Recon` | Use `prompts/leap-recon-standard.md` to investigate a focused feature, risk, layer, dependency, contract, repo area, or architecture question before implementation planning. |
-| `Generate LEAP Prompt` | Use `prompts/leap-prompt-standard.md` only after source truth, repo reality, scope, validation, stop conditions, and execution configuration are clear enough. |
-| `Run LEAP Prompt` | Execute or apply an already-approved LEAP Prompt according to its stated scope, constraints, validation, and stop conditions. |
-| `Generate LEAP LHS` | Generate a staged LEAP Prompt format only when implementation gravity warrants Build Units; LHS is not a mandatory lifecycle phase. |
-| `Run LEAP LHS` | Execute or apply an approved LHS prompt in Build Unit sequence with its validation and stop conditions. |
-| `Run LEAP Governance` | Use `prompts/leap-governance-pass-standard.md` for source-truth, framework, prompt-library, adoption, terminology, or docs drift. |
-| `Run LEAP Validation` | Verify completed work against scope, tests/checks, docs, acceptance criteria, and stop conditions. |
-| `Run LEAP Handoff` | Summarize completed work, unresolved risks, validation status, deviations, and recommended follow-up. |
-
-Default Recon behavior:
-
-1. Use the repository-level `AGENTS.md` first.
-2. Inspect the current repository state.
-3. Use the current LEAP Recon Standard Operational Prompt from the LEAP framework repository:
-   `/prompts/leap-recon-standard.md`
-4. Use source-of-truth documents identified by the repository-level `AGENTS.md`.
-5. Perform the Recon Baseline Freshness Check using repository AGENTS.md, baseline metadata if present, source-truth docs, and relevant repo reality.
-6. Return Recon only.
-7. Do not implement code changes.
-8. Do not generate the final LEAP implementation prompt unless the user asks after Recon.
-
-LEAP Charter is not required before every Recon. If the baseline is fresh enough, continue Recon. If minor drift exists, continue and disclose the limitation. If material drift exists, ask whether to run Brownfield Charter or LEAP Governance, continue with limited scope, or defer reconciliation. If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation.
-
-If the LEAP standard prompt, `docs/leap.md`, or repository-level `AGENTS.md` cannot be read, stop and explain what source is unavailable.
-
-The user should not need to paste full framework prompt standards when using standard AGENTS.md behavior.
-
----
-
-## Planning Standard
-
-For meaningful work, produce a short plan before implementation.
-
-A useful plan should identify:
-
-- The likely files or modules to inspect/change.
-- The implementation sequence.
-- Tests or checks to run.
-- Compatibility concerns.
-- Documentation updates.
-- Stop conditions or decisions that require the user.
-
-Avoid excessive planning for small, obvious changes.
-
----
-
-## Implementation Standard
-
-When changing code:
-
-- Reuse existing patterns before introducing new ones.
-- Keep changes scoped to the requested task.
-- Prefer small, reviewable units.
-- Preserve backward compatibility unless explicitly told otherwise.
-- Do not rename public interfaces without a clear reason.
-- Do not introduce new dependencies without justification.
-- Do not mix unrelated refactors into feature work.
-- Do not duplicate business logic, schemas, or validation rules.
-- Prefer clear, boring, maintainable code over clever code.
-- Keep behavior deterministic where practical.
-- Handle errors explicitly.
-- Preserve existing security, privacy, and auditability boundaries.
-
----
-
-## LEAP Layer Discipline
-
-When a task references a layer, phase, milestone, or subsection:
-
-- Treat that boundary as the implementation scope.
-- Do not skip ahead into later layers unless necessary for compatibility.
-- Do not silently implement adjacent layers.
-- Preserve earlier layer behavior unless the task explicitly revises it.
-- Commit or summarize work by the requested layer/subsection boundary when asked.
-
-If the requested layer depends on unfinished prior work, call that out clearly and either:
-
-- implement the minimum safe prerequisite, or
-- stop and ask if the dependency changes scope materially.
-
----
-
-## House Standard Prompt Behavior
-
-When the user provides a House Standard, LHS, LEAP, or Codex implementation prompt:
-
-- Treat it as the task contract.
-- Follow the requested model/reasoning/plan-mode assumptions where applicable.
-- Reconcile the prompt against the repository before editing.
-- Push back if the prompt conflicts with existing architecture, security, data integrity, or documented product intent.
-- Prefer staged implementation over broad rewrites.
-- Keep changes modular, testable, and documented.
-
----
-
-## Questions and Stop Conditions
-
-Ask a question before proceeding only when moving forward would create meaningful risk.
-
-Stop and ask before:
-
-- Destructive production-like data changes.
-- Dropping or overwriting user data.
-- Weakening authentication or authorization.
-- Exposing secrets or credentials.
-- Adding paid external services.
-- Adding major production dependencies.
-- Changing public API contracts without migration.
-- Replacing major architecture instead of extending it.
-- Guessing business rules that materially affect user-facing behavior.
-- Implementing a security-sensitive shortcut.
-- Committing large unrelated changes.
-- Making irreversible git operations.
-
-If the project is explicitly a prototype or POC, destructive changes may be acceptable, but still call out the risk before doing them.
-
----
-
-## Testing and Validation
-
-After implementation:
-
-- Run the most relevant available tests/checks.
-- Prefer targeted tests first, then broader checks when practical.
-- Add or update tests when behavior changes.
-- Do not claim tests passed if they were not run.
-- If tests cannot be run, explain why.
-- If tests fail, investigate and report the failure honestly.
-- Do not hide known regressions.
-
-Common validation categories:
-
-- Unit tests.
-- Integration/API tests.
-- Typecheck.
-- Lint.
-- Build.
-- Formatting.
-- Migration checks.
-- Manual smoke test notes.
-
-Use the repository’s actual commands, not generic commands, whenever possible.
-
----
-
-## Documentation Standard
-
-Update documentation when a change affects:
-
-- Setup or local development.
-- Public behavior.
-- User workflows.
-- API contracts.
-- Data models.
-- Environment variables.
-- Security assumptions.
-- Architecture.
-- Layer strategy.
-- Operational commands.
-
-Keep docs concise and close to the changed behavior.
-
----
-
-## Git and Commit Standard
-
-When asked to commit:
-
-- Commit only coherent, reviewable units.
-- Use the requested layer/subsection title when provided.
-- Do not bundle unrelated work.
-- Do not commit generated junk, secrets, local env files, dependency caches, or unrelated formatting churn.
-- Check `git status` before committing.
-- Include a clear commit message.
-
-Preferred LEAP commit message shape:
-
-`Layer X — Short Descriptive Title`
-
-Examples:
-
-`Layer 6C — Versioning, Review, and Submitted-State Workflow`
-
-`Layer 8A — Integration Provider Contracts`
-
-If the user asks for sequential layer work, complete one subsection, validate it, commit it if requested, then proceed to the next subsection.
-
----
-
-## Final Response Standard
-
-At completion, summarize:
-
-- What changed.
-- Files or areas touched.
-- Tests/checks run.
-- Any tests/checks not run.
-- Risks or follow-ups.
-- Whether the work stayed within the requested layer/scope.
-
-Be direct. Do not oversell the result.
-
----
-
-## Do Not Do
-
-Do not:
-
-- Invent project requirements.
-- Fabricate test results.
-- Ignore existing docs.
-- Replace established architecture without cause.
-- Add dependencies casually.
-- Hide uncertainty.
-- Implement broad refactors under a narrow task.
-- Weaken security to make tests pass.
-- Commit secrets or `.env` files.
-- Treat AI-generated assumptions as source of truth.
-- Continue past a serious unresolved ambiguity.
-
+Prefer one Build Unit per commit where feasible. Use Initiative, Delivery Unit, Build Unit, or task identifiers when available.
 
 <!-- LEAP_MASTER_GLOBAL_SECTION_END -->
 
@@ -318,28 +153,29 @@ Do not:
 
 <!-- LEAP_MASTER_REPO_SECTION_START: EDIT THIS SECTION ONLY DURING REPO POPULATION -->
 
-# Repository AGENTS.md — LEAP Project Template
+# Editable Repository Section - Project-Specific Guidance
 
-## Project Identity
+## Project identity
 
-This repository uses LEAP for agent-assisted software delivery.
-
-LEAP work must be grounded in the repository’s actual code, tests, documentation, architecture, and product intent. Do not treat prompts as permission to bypass established project rules.
-
-Project name:
-
-`{{PROJECT_NAME}}`
+Project name: `{{PROJECT_NAME}}`
 
 Project summary:
 
 `{{ONE_PARAGRAPH_PROJECT_DESCRIPTION}}`
 
+Primary users or use cases:
+
+- `{{PRIMARY_USER_OR_USE_CASE_1}}`
+- `{{PRIMARY_USER_OR_USE_CASE_2}}`
+
+## Documentation starting point
+
+Start with `docs/00_start_here.md` when present.
+
 ## LEAP Baseline State
 
-Use this section during LEAP Recon to decide whether the project baseline is fresh enough for focused investigation. This is a signal, not a hard gate.
-
 | Item | Value |
-| --- | --- |
+|---|---|
 | Baseline record | Inline in `AGENTS.md` |
 | Last full reconcile | `{{YYYY-MM-DD_OR_NEVER}}` |
 | Last reconcile mode | `{{Brownfield Charter / LEAP Governance / Manual / Never}}` |
@@ -348,52 +184,45 @@ Use this section during LEAP Recon to decide whether the project baseline is fre
 | Archive location | `{{PATH_TO_ARCHIVE_DOCS_OR_NA}}` |
 | Gap register / known drift | `{{PATH_TO_GAP_REGISTER_OR_NONE}}` |
 | Baseline confidence | `{{High / Medium / Low / Unknown}}` |
-| Reconcile triggers | `{{MAJOR_ROADMAP_CHANGE; ARCHITECTURE_PIVOT; SOURCE_TRUTH_CONFLICT; STALE_AGENTS_MD; LARGE_NEW_LAYER; ETC.}}` |
+| Reconcile triggers | `{{STRATEGIC_OUTCOME_CHANGE; INITIATIVE_CHANGE; ROADMAP_REPRIORITIZATION; DOMAIN_OWNERSHIP_CHANGE; ARCHITECTURE_PIVOT; SOURCE_TRUTH_CONFLICT; LARGE_DELIVERY_UNIT; ETC.}}` |
 
-Update this section only after a full Brownfield Charter, LEAP Governance pass, major source-truth reconciliation, or intentional manual baseline update. Do not update it for every small feature or documentation edit.
+Do not invent reconcile history or silently create baseline metadata.
 
-If `leap.baseline.yaml` exists, use this compact pointer form instead and treat that file as the canonical machine-readable baseline record:
+## Strategic and planning sources
 
-| Item | Value |
-| --- | --- |
-| Baseline record | `leap.baseline.yaml` |
-| Last full reconcile | `{{YYYY-MM-DD_OR_NEVER}}` |
-| Last reconcile mode | `{{Brownfield Charter / LEAP Governance / Manual / Never}}` |
-| Current source-truth entry point | `{{PATH_TO_SOURCE_TRUTH_ENTRYPOINT}}` |
-| Baseline confidence | `{{High / Medium / Low / Unknown}}` |
-| Known drift | See `leap.baseline.yaml` |
-| Reconcile triggers | See `leap.baseline.yaml` |
+- Mission / Project Charter: `{{PATH_TO_PROJECT_CHARTER_OR_EQUIVALENT}}`
+- Strategic Outcomes: `{{PATH_TO_STRATEGIC_OUTCOMES}}`
+- Initiative registry: `{{PATH_TO_INITIATIVE_REGISTRY}}`
+- Roadmap: `{{PATH_TO_ROADMAP}}`
+- Domain map: `{{PATH_TO_DOMAIN_MAP}}`
+- Architecture docs: `{{PATH_TO_ARCHITECTURE_DOCS}}`
+- Delivery Unit docs: `{{PATH_TO_DELIVERY_UNIT_DOCS_OR_NA}}`
+- Build Unit docs / active Prompts: `{{PATH_TO_BUILD_UNIT_DOCS_OR_ACTIVE_PROMPTS}}`
+- Contracts: `{{PATH_TO_API_EVENT_SCHEMA_OR_DATA_CONTRACTS}}`
+- Legacy Layer docs requiring classification: `{{PATHS_OR_NONE}}`
 
-Primary product/architecture docs:
+Canonical docs:
 
-- `{{PATH_TO_PRIMARY_STRATEGY_DOC}}`
-- `{{PATH_TO_ARCHITECTURE_DOCS}}`
-- `{{PATH_TO_LAYER_OR_ROADMAP_DOCS}}`
-- `{{PATH_TO_API_OR_DATA_CONTRACT_DOCS}}`
+- `{{CANONICAL_DOC_1}}`
+- `{{CANONICAL_DOC_2}}`
+- `{{CANONICAL_DOC_3}}`
 
-Read the relevant docs before implementing layer, architecture, workflow, data model, or user-facing changes.
+Draft, stale, archived, superseded, or do-not-use docs:
 
----
+- `{{NON_CANONICAL_DOC_1}}`
+- `{{NON_CANONICAL_DOC_2}}`
 
-## Repository Layout
+## Repository layout
 
-Update this section to match the actual repository.
+- Frontend: `{{FRONTEND_PATH_OR_NA}}`
+- Backend/API: `{{BACKEND_PATH_OR_NA}}`
+- Shared code/contracts: `{{SHARED_PATH_OR_NA}}`
+- Docs: `{{DOCS_PATH}}`
+- Tests: `{{TESTS_PATH}}`
+- Scripts: `{{SCRIPTS_PATH_OR_NA}}`
+- Infrastructure: `{{INFRA_PATH_OR_NA}}`
 
-- `{{FRONTEND_PATH}}` — Frontend application.
-- `{{BACKEND_PATH}}` — API/backend service.
-- `{{SHARED_PATH}}` — Shared types, schemas, utilities, or contracts.
-- `{{DOCS_PATH}}` — Product, architecture, LEAP, and roadmap documentation.
-- `{{TESTS_PATH}}` — Test suites.
-- `{{SCRIPTS_PATH}}` — Development and operational scripts.
-- `{{INFRA_PATH}}` — Infrastructure-as-code or deployment configuration.
-
-If the repository structure changes, update this section.
-
----
-
-## Technology Stack
-
-Update this section to match the actual project.
+## Technology stack
 
 - Frontend: `{{FRONTEND_STACK}}`
 - Backend/API: `{{BACKEND_STACK}}`
@@ -403,13 +232,7 @@ Update this section to match the actual project.
 - Test framework: `{{TEST_FRAMEWORK}}`
 - Runtime versions: `{{RUNTIME_VERSIONS}}`
 
-Use the existing stack unless the user explicitly requests evaluation or migration.
-
----
-
-## Setup Commands
-
-Use the repository’s existing setup process.
+## Setup and validation commands
 
 ```bash
 {{INSTALL_COMMAND}}
@@ -418,18 +241,6 @@ Use the repository’s existing setup process.
 ```bash
 {{LOCAL_DEV_COMMAND}}
 ```
-
-```bash
-{{DATABASE_SETUP_OR_MIGRATION_COMMAND}}
-```
-
-Do not invent setup commands. If the command is unclear, inspect the repo first.
-
----
-
-## Validation Commands
-
-Use the most relevant validation commands for the changed area.
 
 ```bash
 {{FORMAT_COMMAND}}
@@ -451,296 +262,68 @@ Use the most relevant validation commands for the changed area.
 {{BUILD_COMMAND}}
 ```
 
-If only part of the repo changed, prefer targeted checks first. Run broader checks when practical.
+Do not invent commands. Report unknown commands as `TBD`.
 
-If a command is missing, broken, or too expensive to run, explain that in the final response.
+## Project-specific Architecture and coding rules
 
----
+- `{{ARCHITECTURE_OR_CODING_RULE_1}}`
+- `{{ARCHITECTURE_OR_CODING_RULE_2}}`
+- `{{ARCHITECTURE_OR_CODING_RULE_3}}`
 
-## LEAP Project Rules
+## Data and contract rules
 
-This repository should be implemented in bounded LEAP units.
+- `{{DATA_OR_CONTRACT_RULE_1}}`
+- `{{DATA_OR_CONTRACT_RULE_2}}`
+- `{{DATA_OR_CONTRACT_RULE_3}}`
 
-When a task references a layer, phase, subsection, milestone, or roadmap item:
+## Security and privacy rules
 
-1. Locate the corresponding documentation.
-2. Confirm the existing implementation state.
-3. Identify affected models, routes, services, components, tests, and docs.
-4. Implement only the requested layer/subsection unless a prerequisite is required.
-5. Preserve compatibility with completed prior layers.
-6. Update relevant tests and docs.
-7. Summarize remaining gaps.
+- `{{SECURITY_OR_PRIVACY_RULE_1}}`
+- `{{SECURITY_OR_PRIVACY_RULE_2}}`
+- `{{SECURITY_OR_PRIVACY_RULE_3}}`
 
-Do not skip ahead into later layers unless the user explicitly asks.
+Never commit secrets, weaken access controls, expose sensitive data, bypass validation, or add third-party services without approval.
 
-During LEAP Recon, perform a lightweight Baseline Freshness Check before focused investigation:
+## Testing and documentation expectations
 
-- Check the LEAP Baseline State table if present.
-- If `leap.baseline.yaml` exists, use it as the canonical machine-readable baseline record and treat this table as a quick summary only.
-- Do not treat an old date as an automatic blocker.
-- Do not treat a recent date as proof that source truth is correct.
-- Use baseline metadata as a signal, then inspect relevant repo/docs evidence.
-- If baseline metadata is missing, continue normal source-truth inspection and recommend adding it when appropriate.
-- Do not update the AGENTS.md Baseline State table or `leap.baseline.yaml` unless the task explicitly performs or confirms a full reconciliation, governance pass, or baseline update.
-- If the baseline is fresh enough, continue Recon normally.
-- If minor drift exists, continue Recon, disclose the limitation, and recommend follow-up cleanup if useful.
-- If material drift exists, ask whether to run Brownfield Charter or LEAP Governance now, continue with limited scope/confidence, or defer reconciliation.
-- If source-truth conflict would make Recon unsafe or misleading, stop and recommend reconciliation before proceeding.
+- Add or update tests for changed behavior.
+- Use existing test helpers and patterns.
+- Do not weaken or delete failing tests without explanation and approval.
+- Update Strategy, Initiative, Roadmap, Domain, Architecture, Delivery Unit, Build Unit, product, contract, setup, and operational docs when implementation changes reality.
 
-## Dependency & Contract Recon Adapter
-
-During LEAP Recon, inspect dependency and contract evidence when the task touches integrations, APIs, SDKs, generated clients, packages, platform services, events, identity, payments, or infrastructure dependencies.
-
-Relevant evidence can include `leap.dependencies.yaml`, OpenAPI, AsyncAPI, protobuf, GraphQL schemas, provider repo URLs, docs URLs, SDKs, generated clients, package manifests, integration tests, mocks, Pact or WireMock files, infrastructure service dependencies, event topics, queues, identity providers, and payment providers.
-
-Dependency tracking is not mandatory for tiny projects. If `leap.dependencies.yaml` is missing, treat that as a limitation and possible follow-up, not an automatic blocker. Do not claim ownership of provider repos or external contracts; report incomplete evidence instead of guessing.
-
----
-
-## Project Source of Truth
-
-Use this order of truth when making decisions:
-
-1. Explicit user instruction for the current task.
-2. Current repository code and tests.
-3. Repository `AGENTS.md` and scoped `AGENTS.md` / `AGENTS.override.md` files.
-4. Product strategy and architecture docs.
-5. Layer/roadmap docs.
-6. README and setup docs.
-7. Existing issue/task text.
-8. Reasonable inference from nearby patterns.
-
-If these conflict, call out the conflict and prefer the more specific, more recent, and safer source.
-
----
-
-## Architecture Rules
-
-Follow the project’s existing architecture.
-
-Default expectations:
-
-- Keep domain logic out of presentation-only code when possible.
-- Keep API contracts explicit.
-- Keep validation close to data boundaries.
-- Reuse existing schema, type, and DTO patterns.
-- Avoid duplicating model definitions.
-- Preserve ownership and authorization boundaries.
-- Keep persistence concerns isolated according to existing repository patterns.
-- Prefer incremental extension over replacement.
-- Avoid broad rewrites unless the user requested a refactor.
-
-Project-specific architecture constraints:
-
-- `{{ARCHITECTURE_CONSTRAINT_1}}`
-- `{{ARCHITECTURE_CONSTRAINT_2}}`
-- `{{ARCHITECTURE_CONSTRAINT_3}}`
-
----
-
-## Data and Migration Rules
-
-Before changing schemas, migrations, seed data, or persistence behavior:
-
-- Inspect existing models and migrations.
-- Determine whether the project is prototype, staging, or production-like.
-- Preserve existing data unless destructive changes are explicitly allowed.
-- Keep migrations reversible where practical.
-- Update tests and docs for data model changes.
-- Do not silently change identifiers, ownership semantics, or lifecycle states.
-
-Project-specific data rules:
-
-- `{{DATA_RULE_1}}`
-- `{{DATA_RULE_2}}`
-- `{{DATA_RULE_3}}`
-
----
-
-## API and Contract Rules
-
-When changing APIs, contracts, schemas, or shared types:
-
-- Preserve backward compatibility unless explicitly told otherwise.
-- Update shared types and validation together.
-- Update API tests.
-- Update docs or examples.
-- Keep error responses consistent with existing patterns.
-- Avoid creating parallel contract definitions.
-
-Project-specific contract rules:
-
-- `{{CONTRACT_RULE_1}}`
-- `{{CONTRACT_RULE_2}}`
-
----
-
-## UI/UX Rules
-
-When changing UI:
-
-- Follow existing component and styling patterns.
-- Keep user flows calm, clear, and accessible.
-- Prefer progressive disclosure over clutter.
-- Preserve user-entered data.
-- Make loading, success, error, and empty states explicit.
-- Avoid large visual rewrites unless requested.
-- Keep forms and validation behavior consistent.
-
-Project-specific UX rules:
-
-- `{{UX_RULE_1}}`
-- `{{UX_RULE_2}}`
-- `{{UX_RULE_3}}`
-
----
-
-## AI / Automation Rules
-
-If the project uses AI-assisted parsing, evaluation, generation, recommendations, or automation:
-
-- Keep AI outputs reviewable by the user.
-- Do not fabricate user facts, credentials, claims, experience, metrics, or decisions.
-- Preserve traceability to source material where applicable.
-- Distinguish generated drafts from reviewed or submitted artifacts.
-- Make uncertainty visible.
-- Do not automate irreversible user-facing actions without review.
-
-Project-specific AI rules:
-
-- `{{AI_RULE_1}}`
-- `{{AI_RULE_2}}`
-- `{{AI_RULE_3}}`
-
----
-
-## Security and Privacy Rules
-
-Never:
-
-- Commit secrets, tokens, credentials, private keys, or `.env` files.
-- Log sensitive user data unnecessarily.
-- Weaken authentication or authorization.
-- Bypass validation to make a test pass.
-- Store sensitive data in client-visible locations.
-- Add third-party services without approval.
-- Change security-sensitive behavior without calling it out.
-
-Project-specific security/privacy rules:
-
-- `{{SECURITY_RULE_1}}`
-- `{{SECURITY_RULE_2}}`
-- `{{SECURITY_RULE_3}}`
-
----
-
-## Testing Expectations
-
-When behavior changes:
-
-- Add or update tests.
-- Prefer tests near the changed behavior.
-- Cover success, failure, and edge cases where practical.
-- Use existing test helpers and factories.
-- Do not rewrite test infrastructure unless requested.
-- Do not delete failing tests without explaining why.
-
-Testing priorities:
-
-1. Contract/schema tests.
-2. Service/domain logic tests.
-3. API route tests.
-4. UI behavior tests.
-5. Regression tests for bugs.
-6. Smoke tests for critical workflows.
-
----
-
-## Documentation Expectations
-
-Update docs when changes affect:
-
-- Product behavior.
-- User workflows.
-- API contracts.
-- Data models.
-- Setup.
-- Commands.
-- Environment variables.
-- Architecture.
-- Layer status.
-- Roadmap assumptions.
-
-Project-specific docs to keep aligned:
+Project docs to keep aligned:
 
 - `{{DOC_PATH_1}}`
 - `{{DOC_PATH_2}}`
 - `{{DOC_PATH_3}}`
 
----
+## Branch and commit expectations
 
-## Commit and Branch Expectations
+- `{{BRANCH_OR_PR_RULE_1}}`
+- `{{BRANCH_OR_PR_RULE_2}}`
+- Prefer one Build Unit per commit where feasible.
+- Use `{{INITIATIVE_DELIVERY_BUILD_OR_TASK_ID}} - {{SHORT_TITLE}}` when identifiers exist.
 
-When the user asks for commits:
-
-- Keep commits scoped and reviewable.
-- Use the layer/subsection name in the commit message when available.
-- Do not combine unrelated layers.
-- Check `git status` before committing.
-- Include tests/docs in the same commit when they belong to the change.
-
-Preferred LEAP commit message:
-
-`{{LAYER_OR_PHASE}} — {{SUBSECTION_OR_FEATURE_TITLE}}`
-
-Examples:
-
-`Layer 4B — Application Timeline and Notes Workflow`
-
-`Layer 6C — Versioning, Review, and Submitted-State Workflow`
-
----
-
-## Stop Conditions
-
-Stop and ask before:
-
-- Destructive schema or data changes unless the project explicitly allows them.
-- Changing auth/session/ownership rules.
-- Changing public API contracts in a breaking way.
-- Adding paid services or external integrations.
-- Introducing new production dependencies.
-- Removing major existing functionality.
-- Replacing established architecture.
-- Implementing unclear business rules with material product impact.
-- Weakening privacy, traceability, auditability, or security controls.
-
-Project-specific stop conditions:
+## Project-specific stop conditions
 
 - `{{STOP_CONDITION_1}}`
 - `{{STOP_CONDITION_2}}`
 - `{{STOP_CONDITION_3}}`
 
----
+## Completion requirements
 
-## Completion Requirements
+Report:
 
-A task is complete when:
-
-- The requested behavior is implemented.
-- The change follows existing project patterns.
-- Relevant tests/checks were run or clearly explained.
-- Docs were updated if needed.
-- Risks and follow-ups are called out.
-- The implementation stays within the requested LEAP layer/scope.
-
-Final response should include:
-
-- Summary of changes.
-- Files/areas changed.
-- Tests/checks run.
-- Tests/checks not run.
-- Known risks or follow-ups.
-
+- summary of changes
+- Strategic Outcome / Initiative / Delivery Unit / Build Unit impact when material
+- files and areas changed
+- tests and checks run
+- checks not run and why
+- docs updated or still needed
+- deviations, risks, and follow-up LEAP work
 
 <!-- LEAP_MASTER_REPO_SECTION_END -->
+
+<!-- LEAP_LOCAL_OVERRIDES_BEGIN -->
+<!-- Optional local notes. Keep durable project guidance in the editable repository section. -->
+<!-- LEAP_LOCAL_OVERRIDES_END -->

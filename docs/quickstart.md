@@ -1,126 +1,117 @@
 # LEAP Agent Pack Quickstart
 
-Use this guide to install LEAP `AGENTS.md` templates into a local project.
+Use this guide to install LEAP `AGENTS.md` guidance into a project.
 
 ## Prerequisites
 
-- A local copy of this repository, for example `D:\Repos\leap_agent_pack`.
-- A target project repository, for example `D:\Repos\my_project`.
-- A coding agent that reads `AGENTS.md` instructions.
+- A local copy of `leap_agent_pack`.
+- A target repository.
+- A coding agent that reads `AGENTS.md` or equivalent instructions.
 
-## Setup Scenarios
+## Current template paths
 
-| Scenario | Use when | Install this AGENTS.md | Also install global? | Population / initialization prompt | Notes |
-| --- | --- | --- | --- | --- | --- |
-| Recommended Separate Global + Repo Method | You want LEAP behavior across multiple projects with per-repo rules. | `repo/AGENTS.md` | Yes, install `global/AGENTS.md` once | `global/AGENTS_Population_Prompt.md` and `repo/AGENTS_Population_Prompt.md` | Keep global reusable; put source truth, commands, validation, and stop conditions in repo AGENTS. |
-| Repo-Only Method | You only want LEAP inside one repository or cannot use global instructions. | `repo/AGENTS.md` | No | `repo/AGENTS_Population_Prompt.md` | Works standalone; project instructions may need to provide any missing reusable LEAP behavior. |
-| Combined Local-Trial Method | You want to test LEAP in one repository before installing global instructions. | `combined/AGENTS.md` | No | `combined/AGENTS_Population_Prompt.md` | Populate only the Editable Repository Section. |
-| Compatibility / Legacy Paths | Older docs, old links, or users already relying on historical paths. | Compatibility path matching the scenario | Depends on mapped scenario | Paired compatibility prompt when present | Preserved, but not the primary recommendation for new installs. |
+| Scenario | Template | Population prompt |
+|---|---|---|
+| Separate global plus repository | `templates/separated/global/AGENTS.md` and `templates/separated/repo/AGENTS.md` | Both separated population prompts |
+| Repository-only | `templates/separated/repo/AGENTS.md` | `templates/separated/repo/AGENTS_Population_Prompt.md` |
+| Combined local trial | `templates/combined/AGENTS.md` | `templates/combined/AGENTS_Population_Prompt.md` |
 
-## Recommended: Install Global + Repo AGENTS.md
+Do not use nonexistent top-level `global/`, `repo/`, or `combined/` paths.
 
-Install global LEAP behavior once:
+## Documentation model installed by the templates
+
+```text
+Mission / Project Charter
+  -> Strategic Outcome
+    -> Initiative
+      -> Delivery Unit
+        -> Build Unit
+```
+
+Roadmap schedules and prioritizes. Domains describe persistent responsibility boundaries. Architecture describes technical structure.
+
+Several Initiatives may run in parallel. Delivery Unit may collapse for small work. Build Unit is not necessarily independently deployable.
+
+Generic project-planning `Layer` is legacy-compatible and deprecated. Existing Layer docs should be classified before migration.
+
+## Recommended: separate global plus repository method
+
+Install global guidance once in the global instruction location supported by the coding agent:
 
 ```powershell
-Copy-Item D:\Repos\leap_agent_pack\global\AGENTS.md <your-global-agent-instructions-path>\AGENTS.md
+Copy-Item D:\Repos\leap_agent_pack\templates\separated\global\AGENTS.md <global-instruction-path>\AGENTS.md
+```
+
+Use:
+
+```text
+D:\Repos\leap_agent_pack\templates\separated\global\AGENTS_Population_Prompt.md
+```
+
+The global file must remain reusable and contain no project facts.
+
+Then install repository guidance:
+
+```powershell
+Copy-Item D:\Repos\leap_agent_pack\templates\separated\repo\AGENTS.md D:\Repos\my_project\AGENTS.md
+```
+
+Populate it with:
+
+```text
+D:\Repos\leap_agent_pack\templates\separated\repo\AGENTS_Population_Prompt.md
+```
+
+## Repository-only method
+
+Copy the repository template to the project root and run the repository population Prompt.
+
+Use this when global instructions are unavailable or the user wants LEAP only in one project.
+
+## Combined local-trial method
+
+```powershell
+Copy-Item D:\Repos\leap_agent_pack\templates\combined\AGENTS.md D:\Repos\my_project\AGENTS.md
 ```
 
 Then use:
 
 ```text
-D:\Repos\leap_agent_pack\global\AGENTS_Population_Prompt.md
+D:\Repos\leap_agent_pack\templates\combined\AGENTS_Population_Prompt.md
 ```
 
-The global template should stay reusable. Keep project commands and architecture rules in the repo-level `AGENTS.md`.
+Populate only the Editable Repository Section. Do not alter the Locked Global Section or its markers.
 
-Then copy the repo-level template into the target project:
+## What repository population should identify
 
-```powershell
-Copy-Item D:\Repos\leap_agent_pack\repo\AGENTS.md D:\Repos\my_project\AGENTS.md
-```
+- project name, purpose, users, and maturity
+- repository layout and technology stack
+- setup and validation commands
+- source-truth entry point
+- Project Charter or equivalent Mission
+- Strategic Outcomes
+- Initiative registry
+- Roadmap
+- Domain map
+- Architecture docs
+- Delivery Unit and Build Unit docs or active Prompts
+- contracts and dependencies
+- legacy Layer docs requiring classification
+- baseline freshness metadata
+- security, privacy, data, testing, documentation, branch, and stop-condition rules
 
-For project-specific population, use:
+Do not invent missing facts. Use `TBD`, `Never`, `None`, or `Not established` where appropriate.
 
-```text
-D:\Repos\leap_agent_pack\repo\AGENTS_Population_Prompt.md
-```
+## Pinning and updates
 
-## Repo-Only AGENTS.md
+The current `0.2.0` candidate is unreleased. Do not assume a release tag exists.
 
-Copy the repo-level template into the target project:
+Before updating a downstream file:
 
-```powershell
-Copy-Item D:\Repos\leap_agent_pack\repo\AGENTS.md D:\Repos\my_project\AGENTS.md
-```
+1. Read its hidden Agent Pack metadata.
+2. Compare it with `manifests/latest.json`.
+3. Review local project and local-override sections.
+4. Manually merge useful managed-section changes.
+5. Preserve project-specific content.
 
-Then open `D:\Repos\my_project\AGENTS.md` and populate the project-specific sections from actual repository evidence.
-
-Do not invent commands, architecture, services, or deployment assumptions.
-
-For a guided population prompt, use:
-
-```text
-D:\Repos\leap_agent_pack\repo\AGENTS_Population_Prompt.md
-```
-
-## Combined Local-Trial AGENTS.md
-
-Use the combined template when you want to test LEAP in one repository before installing global instructions.
-
-```powershell
-Copy-Item D:\Repos\leap_agent_pack\combined\AGENTS.md D:\Repos\my_project\AGENTS.md
-```
-
-Then use the combined population prompt:
-
-```text
-D:\Repos\leap_agent_pack\combined\AGENTS_Population_Prompt.md
-```
-
-The combined template contains a locked global LEAP section and an editable repository section. Populate only the editable repository section.
-
-## Recommended Workspace Layout
-
-```text
-D:\Repos\
-  leap_framework\
-  leap_agent_pack\
-  my_project\
-```
-
-Cross-platform users can use the same layout idea with their normal home or workspace directory.
-
-## Customize Repo Instructions
-
-In the repo-level `AGENTS.md`, fill in:
-
-- Project name and purpose.
-- Source-of-truth docs.
-- Repository layout.
-- Setup and validation commands.
-- Security, data, architecture, and stop-condition rules.
-
-Prefer links to project docs over copying long documentation into `AGENTS.md`.
-
-## Pin A Version
-
-To pin a released version, install from a release tag after verifying the tag exists:
-
-```powershell
-git -C D:\Repos\leap_agent_pack tag --list
-git -C D:\Repos\leap_agent_pack checkout <release-tag>
-Copy-Item D:\Repos\leap_agent_pack\repo\AGENTS.md D:\Repos\my_project\AGENTS.md
-```
-
-The current reconciliation is an unreleased `0.2.0` candidate. Do not use a `0.2.0` tag unless it is created separately.
-
-Record local modifications in the hidden metadata block.
-
-## Update Later
-
-Check `manifests/latest.json` for the latest Agent Pack version. Follow `docs/upgrade-guide.md` before replacing any local `AGENTS.md` content.
-
-## Detailed Guides
-
-- `docs/LEAP_AGENTS_Quickstart.md` covers the combined local-trial workflow.
-- `docs/LEAP_AGENTS_Separate_Global_and_Repo_Method.md` covers the separate global and repo-file workflow.
+See [`upgrade-guide.md`](upgrade-guide.md).

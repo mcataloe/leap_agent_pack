@@ -4,40 +4,54 @@
     "latestVersion": "0.2.0-candidate",
     "latestReleasedVersion": null,
     "releaseDate": null,
-    "releaseStatus": "no local release tag verified",
+    "releaseStatus": "unreleased candidate; no release tag verified",
     "repository": "https://github.com/mcataloe/leap_agent_pack",
-    "nextCandidateVersion": "0.2.0",
-    "nextCandidateStatus": "unreleased"
+    "compatibleLeapFramework": ">=0.1.0 <1.0.0",
+    "documentationModel": "Mission / Project Charter -> Strategic Outcome -> Initiative -> Delivery Unit -> Build Unit",
+    "lastUpdated": "2026-07-01"
   },
   "templates": {
     "globalAgents": {
-      "path": "global/AGENTS.md",
+      "path": "templates/separated/global/AGENTS.md",
       "version": "0.2.0-candidate"
     },
     "globalAgentsPopulationPrompt": {
-      "path": "global/AGENTS_Population_Prompt.md",
+      "path": "templates/separated/global/AGENTS_Population_Prompt.md",
       "version": "0.2.0-candidate"
     },
     "repoAgents": {
-      "path": "repo/AGENTS.md",
+      "path": "templates/separated/repo/AGENTS.md",
       "version": "0.2.0-candidate"
     },
     "repoAgentsPopulationPrompt": {
-      "path": "repo/AGENTS_Population_Prompt.md",
+      "path": "templates/separated/repo/AGENTS_Population_Prompt.md",
       "version": "0.2.0-candidate"
     },
     "combinedAgents": {
-      "path": "combined/AGENTS.md",
+      "path": "templates/combined/AGENTS.md",
       "version": "0.2.0-candidate"
     },
     "combinedAgentsPopulationPrompt": {
-      "path": "combined/AGENTS_Population_Prompt.md",
+      "path": "templates/combined/AGENTS_Population_Prompt.md",
       "version": "0.2.0-candidate"
+    },
+    "examples": {
+      "global": "examples/global-AGENTS.example.md",
+      "repo": "examples/repo-AGENTS.example.md",
+      "combined": "examples/combined-local-trial-AGENTS.example.md"
     },
     "templateInventory": {
       "path": "manifests/template-inventory.json",
       "version": "0.2.0-candidate"
     }
   },
-  "inventoryManifest": "manifests/template-inventory.json"
+  "inventoryManifest": "manifests/template-inventory.json",
+  "updatePolicy": "manual-review-and-notify",
+  "migrationNotes": [
+    "Roadmap is a scheduling and dependency view, not permanent Initiative ownership.",
+    "Domains are persistent boundaries with many-to-many Initiative relationships.",
+    "Delivery Unit may collapse for small work.",
+    "Build Units are not necessarily independently deployable.",
+    "Generic project-planning Layer is legacy-compatible and should be classified before migration."
+  ]
 }
