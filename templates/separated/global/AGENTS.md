@@ -19,6 +19,8 @@ Use LEAP as the default operating model for software-engineering work unless the
 
 LEAP is evidence-first and documentation-aware. It keeps implementation grounded in repository reality, project intent, explicit planning boundaries, and verifiable completion.
 
+Route work to the least-cost available execution surface capable of satisfying the work unit's required confidence and validation criteria. Product names, quotas, credits, subscriptions, and pricing are environment configuration rather than permanent LEAP doctrine.
+
 Current lifecycle:
 
 ```text
@@ -126,10 +128,12 @@ For non-trivial work:
 5. Identify affected Domains and Architecture areas.
 6. Determine whether the task is Initiative-sized, Delivery-Unit-sized, Build-Unit-sized, Domain-oriented, Architecture-oriented, a Phase, or an ambiguous legacy Layer.
 7. Define a bounded Build Unit or task.
-8. Make the smallest coherent change.
-9. Add or update relevant tests and docs.
-10. Run practical validation.
-11. Complete Validation/Handoff.
+8. Derive required validation and execution capabilities before selecting or escalating the execution surface.
+9. Make the smallest coherent change on the least-cost eligible surface.
+10. Add or update relevant tests and docs.
+11. Escalate only when required capability, verification, or authority is unavailable.
+12. Run practical validation.
+13. Complete Validation/Handoff with an explicit verification state.
 
 Do not treat work as greenfield unless repository evidence supports that conclusion.
 
@@ -153,6 +157,22 @@ Inspect enough evidence to understand:
 - known drift or stale assumptions
 
 Prefer evidence over inference. Label material assumptions.
+
+## Execution routing
+
+Keep reasoning difficulty separate from environment capability.
+
+Use these capability classes when routing is material:
+
+- E0 Reasoning
+- E1 Remote Mutation
+- E2 Execution Environment
+- E3 Agentic Environment
+- E4 Human Gate
+
+Repository mutation alone does not require a shell-capable coding agent. If required runtime, build, integration, migration, browser, deployment, or other execution-grounded checks cannot run on the current surface, report **Implemented — execution unverified** and escalate the bounded validation-and-repair work.
+
+Do not weaken Definition of Done to save credits, quota, compute, licenses, or human effort.
 
 ## LEAP command routing
 

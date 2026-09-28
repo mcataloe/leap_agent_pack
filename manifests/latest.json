@@ -8,7 +8,7 @@
     "repository": "https://github.com/mcataloe/leap_agent_pack",
     "compatibleLeapFramework": ">=0.1.0 <1.0.0",
     "documentationModel": "Mission / Project Charter -> Strategic Outcome -> Initiative -> Delivery Unit -> Build Unit",
-    "lastUpdated": "2026-07-01"
+    "lastUpdated": "2026-09-28"
   },
   "templates": {
     "globalAgents": {
@@ -52,6 +52,9 @@
     "Domains are persistent boundaries with many-to-many Initiative relationships.",
     "Delivery Unit may collapse for small work.",
     "Build Units are not necessarily independently deployable.",
-    "Generic project-planning Layer is legacy-compatible and should be classified before migration."
+    "Generic project-planning Layer is legacy-compatible and should be classified before migration.",
+    "Execution surfaces should be selected from required confidence, validation, capability, and permission needs.",
+    "Prefer the least-cost eligible surface; do not weaken Definition of Done to save credits, quota, compute, licenses, or human effort.",
+    "Distinguish implemented-but-unverified work from execution-verified work."
   ]
 }
