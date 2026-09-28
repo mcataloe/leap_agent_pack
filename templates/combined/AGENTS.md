@@ -34,6 +34,8 @@ LEAP Charter -> LEAP Recon -> LEAP Prompt -> Implementation -> Validation/Handof
 
 LEAP LHS is the Layered House Standard Prompt format for staged implementation. It is not a lifecycle phase and does not define the project's strategic hierarchy.
 
+Route work to the least-cost available execution surface capable of satisfying required confidence and validation. Treat product-specific credits, quotas, subscriptions, and pricing as project/environment configuration rather than permanent LEAP architecture.
+
 ## Project-documentation model
 
 ```text
@@ -86,9 +88,11 @@ Stop when conflicts materially affect source truth, product behavior, Architectu
 5. Perform Planning Boundary Review.
 6. Define a Delivery Unit when a meaningful release or adoption boundary exists.
 7. Define a bounded Build Unit or task.
-8. Implement only the approved scope.
-9. Test and update docs.
-10. Complete Validation/Handoff.
+8. Derive required validation and execution capabilities before selecting or escalating the execution surface.
+9. Implement only the approved scope on the least-cost eligible surface.
+10. Escalate only when capability, verification, or authority requires it.
+11. Test and update docs.
+12. Complete Validation/Handoff with an explicit verification state.
 
 ## Planning Boundary Review
 
@@ -104,6 +108,14 @@ Classify the target as:
 - ambiguous legacy Layer
 
 Do not assume numbered work must be sequential. Do not globally replace `Layer`.
+
+## Execution routing
+
+Use E0 Reasoning, E1 Remote Mutation, E2 Execution Environment, E3 Agentic Environment, and E4 Human Gate as capability classes when routing is material.
+
+Repository mutation alone does not require a shell-capable coding agent. When required execution-grounded checks cannot run on the current surface, report **Implemented — execution unverified** and escalate the bounded validation-and-repair work.
+
+Cost optimization may choose among adequate surfaces, but it must never weaken Definition of Done.
 
 ## LEAP command routing
 
