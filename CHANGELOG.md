@@ -6,6 +6,8 @@ All notable LEAP Agent Pack changes are documented here.
 
 ### Added
 
+- Added capability- and cost-aware execution routing to the global and combined templates.
+- Added E0-E4 capability classes and the `Implemented — execution unverified` versus `Execution verified` distinction.
 - Added distributed guidance for the current LEAP project-documentation model:
 
   ```text
@@ -27,6 +29,7 @@ All notable LEAP Agent Pack changes are documented here.
 ### Changed
 
 - Updated global, repository, and combined canonical templates.
+- Required validation/capability analysis before execution-surface selection and prohibited cost optimization from weakening Definition of Done.
 - Updated all three population Prompts.
 - Replaced Layer-first sequential implementation guidance with Initiative, Delivery Unit, and bounded Build Unit behavior.
 - Clarified that Roadmap is a scheduling and dependency view rather than permanent Initiative ownership.
