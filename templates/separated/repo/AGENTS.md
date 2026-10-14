@@ -13,6 +13,10 @@ END_LEAP_AGENT_PACK_TEMPLATE
 
 # Repository AGENTS.md - LEAP Project Template
 
+## LEAP command discovery
+
+Users may ask **LEAP help** or describe their intent. Select a safe workflow using https://github.com/mcataloe/leap_framework/blob/main/docs/semantic-routing.md (when accessible), preserving explicit commands and current user permissions. Discovery and Pressure Test are normally non-mutating. Native Skills are optional; this AGENTS.md remains the project-specific source for permissions and evidence. See https://github.com/mcataloe/leap_agent_pack/blob/main/docs/skills-installation.md .
+
 ## Project identity
 
 This repository uses LEAP for agent-assisted software delivery.
