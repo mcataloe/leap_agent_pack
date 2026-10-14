@@ -117,6 +117,14 @@ Repository mutation alone does not require a shell-capable coding agent. When re
 
 Cost optimization may choose among adequate surfaces, but it must never weaken Definition of Done.
 
+## LEAP semantic workflow routing and help
+
+For "LEAP help", "what does LEAP support?" or equivalent, display the canonical command/help catalog at https://github.com/mcataloe/leap_framework/blob/main/docs/semantic-routing.md . If unavailable, provide the familiar Charter, Recon, Prompt/LHS, Governance/Cleanup and Validation/Handoff choices, plus optional Discovery and Pressure Test; disclose any unavailable authoritative source.
+
+Route explicit invocations before inferred intent, subject to approval, stop and authorization requirements. Ordinary language about exploring a domain -> Discovery; challenging a conceptual hypothesis -> Pressure Test; checking actual repo/source truth -> Recon; planning instructions -> Generate Prompt; executing an approved bounded Prompt -> Run Prompt; obsolete artifacts -> Cleanup (discovery only until exact approval). Preserve the existing LEAP lifecycle. Do not mutate on exploration or simply because a Skill is present.
+
+Semantic workflow selection is separate from execution-surface routing. Native Skills are optional; see https://github.com/mcataloe/leap_agent_pack/blob/main/docs/skills-installation.md . Never assume a native Skill is installed.
+
 ## LEAP command routing
 
 | Command | Expected behavior |
@@ -125,6 +133,7 @@ Cost optimization may choose among adequate surfaces, but it must never weaken D
 | `Run LEAP Recon` | Investigate a focused Outcome, Initiative, Delivery Unit, Build Unit, Domain, Architecture area, feature, dependency, contract, risk, or legacy Layer. |
 | `Generate LEAP Prompt` | Create an agent-ready Prompt only after source truth, repo reality, boundary, validation, stop conditions, and execution configuration are clear. |
 | `Generate LEAP LHS` | Create staged execution when an Initiative or Delivery Unit contains several Build Units or integration checkpoints. |
+| `Run LEAP Cleanup` | Inventory obsolete artifacts and propose decommission plan; approval required before mutation. |
 | `Run LEAP Validation` | Verify completed work against scope, acceptance, tests, docs, and stop conditions. |
 | `Run LEAP Handoff` | Report changes, validation, deviations, risks, and follow-up work. |
 
