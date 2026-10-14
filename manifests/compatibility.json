@@ -16,5 +16,13 @@
     "legacyLayer": "Supported as a compatibility input that must be semantically classified before migration."
   },
   "breakingChanges": [],
-  "recommendedAction": "Review and manually merge Agent Pack-managed guidance into downstream AGENTS.md files. Preserve project and local sections. New installs should use templates/separated/global, templates/separated/repo, or templates/combined."
+  "recommendedAction": "Review and manually merge Agent Pack-managed guidance into downstream AGENTS.md files. Preserve project and local sections. New installs should use templates/separated/global, templates/separated/repo, or templates/combined. Optional Skills install separately with manual review; do not overwrite customized installed Skills.",
+  "optionalNativeSkills": {
+    "standardLeapNavigator": "Framework skills/leap/SKILL.md (canonical; copied at install)",
+    "installGuide": "docs/skills-installation.md",
+    "projectSkillStarter": "templates/skills/project-skill-starter/SKILL.md",
+    "noRootSkillsMdRequired": true,
+    "legacyCommandsSupported": true,
+    "nativeInvocationMustBeTested": true
+  }
 }

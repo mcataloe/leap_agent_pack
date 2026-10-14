@@ -99,6 +99,8 @@ Editing rules:
 - Do not create strategy docs during ordinary population.
 - Do not blindly rename legacy Layer material.
 
+Verify that LEAP help, Discovery and Pressure Test remain available through the locked combined bootstrap, even without optional native Skills. Do not modify the locked section or install a Skill during population.
+
 After editing, return:
 1. Confirmation that the locked section was unchanged.
 2. Editable sections populated.

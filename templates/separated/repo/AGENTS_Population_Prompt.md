@@ -96,6 +96,8 @@ Editing rules:
 - Do not blindly rename legacy Layer material.
 - Do not convert Roadmap lanes into permanent Initiative identity.
 
+Verify LEAP help routing is available through repository-only guidance, even if the optional native LEAP Skill is absent. Never silently install or rewrite native Skills during AGENTS.md population.
+
 After editing, return:
 1. Sections populated.
 2. Evidence used.
