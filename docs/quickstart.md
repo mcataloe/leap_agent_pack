@@ -8,6 +8,10 @@ Use this guide to install LEAP `AGENTS.md` guidance into a project.
 - A target repository.
 - A coding agent that reads `AGENTS.md` or equivalent instructions.
 
+## Optional Skill step
+
+After AGENTS.md population, follow [native Skill installation](skills-installation.md) to install the canonical LEAP navigator in a Codex and/or Claude Code project. Existing commands remain functional without native Skills. A NEW project capability can use the [Skill template](../templates/skills/project-skill-starter/SKILL.md) and its [population prompt](../templates/skills/Project_Skill_Population_Prompt.md).
+
 ## Current template paths
 
 | Scenario | Template | Population prompt |
