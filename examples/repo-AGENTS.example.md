@@ -1,102 +1,68 @@
 <!--
 LEAP_AGENT_PACK_TEMPLATE:
   template: repo-example
-  version: 0.2.0-candidate
+  version: 0.2.0-candidate.2
   compatible_leap_framework: ">=0.1.0 <1.0.0"
   source: https://github.com/mcataloe/leap_agent_pack
-  last_updated: 2026-07-01
+  last_updated: 2026-10-21
   local_modification_notes: Example only.
 END_LEAP_AGENT_PACK_TEMPLATE
 -->
 
 <!-- LEAP_MANAGED_SECTION_BEGIN -->
 
-# Example Repository AGENTS.md - Sample Project
+# Repository AGENTS.md
 
-## Project identity
-
-Project: `Example Verification Platform`
-
-Purpose: Help organizations submit verification requests and receive traceable eligibility results.
-
-## Lifecycle and documentation model
-
-```text
-LEAP Charter -> LEAP Recon -> LEAP Prompt -> Implementation -> Validation/Handoff
-```
-
-```text
-Mission / Project Charter
-  -> Strategic Outcome
-    -> Initiative
-      -> Delivery Unit
-        -> Build Unit
-```
-
-Roadmap is a scheduling view. Domains are persistent responsibility boundaries. Architecture is technical structure.
-
-## Baseline State
-
-| Item | Value |
-|---|---|
-| Baseline record | `leap.baseline.yaml` |
-| Last full reconcile | `2026-07-01` |
-| Last reconcile mode | `Brownfield Charter` |
-| Current source-truth entry point | `docs/00_start_here.md` |
-| Baseline confidence | `High` |
-| Known drift | See `leap.baseline.yaml` |
-
-## Strategic and planning sources
-
-- Project Charter: `docs/01_charter/00_project_charter.md`
-- Strategic Outcomes: `docs/02_strategy/01_strategic_outcomes.md`
-- Initiative registry: `docs/02_strategy/02_initiative_registry.md`
-- Roadmap: `docs/02_strategy/03_roadmap.md`
-- Domain map: `docs/03_domains/00_domain_map.md`
-- Architecture: `docs/04_architecture/00_architecture_overview.md`
-- Delivery plans: `docs/05_delivery/`
-- Build Units and Prompts: `docs/06_build_units/` and `docs/08_prompts/`
-
-Current example:
-
-```text
-Strategic Outcome: SO-001 - Reduce manual verification work
-Initiative: INIT-001 - Self-Service Organization Verification
-Delivery Unit: DU-001 - Submit and track verification request
-Build Unit: BU-001 - Verification request data model
-Affected Domains: Verification; Organization Records
-Affected Architecture: API, persistence, and frontend workflow
-```
-
-## Project rules
-
-- Several Initiatives may run in parallel.
-- Do not treat Roadmap order as permanent hierarchy.
-- One Initiative may touch several Domains.
-- Build Units are implementation boundaries, not necessarily deployable releases.
-- Classify legacy Layer docs before migration.
-- Prefer one Build Unit per commit where practical.
-
-## Stop conditions
-
-Stop for unapproved schema destruction, auth changes, breaking contracts, unclear Domain ownership, unclear Initiative scope, or ambiguous legacy Layer meaning.
+This repository uses LEAP. LEAP Core rules come from the global `AGENTS.md`. If that is not installed, use the combined template or read https://github.com/mcataloe/leap_framework/blob/main/docs/leap-core.md. Say `LEAP help` for the command list. Rules in this file take precedence over LEAP Core for this repository.
 
 <!-- LEAP_MANAGED_SECTION_END -->
 
 <!-- LEAP_PROJECT_SECTION_BEGIN -->
 
-## Example project-specific commands
+## Project
+
+- Name: Example Verification Platform
+- Summary: Organizations submit verification requests and receive traceable eligibility results.
+- Start here: `docs/00_start_here.md`
+- Work tracking / planning sources: Jira project `VER`; Strategic Outcomes and Initiatives in `docs/02_strategy/`
+
+## Source truth
+
+- Canonical docs: `docs/00_start_here.md`, `docs/04_architecture/`, `api/openapi.yaml`
+- Draft, archived, or do-not-use docs: `docs/archive/`, `docs/drafts/`
+- Last reconcile: 2026-07-01 via Brownfield Charter; known drift: `docs/gap-register.md`
+
+## Layout and stack
+
+- `web/`: React + TypeScript frontend
+- `api/`: Node 20 + Express API, PostgreSQL via Knex
+- `api/migrations/`: Knex migrations
+- `infra/`: Terraform for AWS
+
+## Commands
 
 ```bash
-npm install
-npm run lint
-npm run typecheck
-npm test
+npm ci
+npm test                 # unit tests; no services needed
+npm run test:integration # needs local Postgres (docker compose up db)
+npm run lint && npm run typecheck
 npm run build
 ```
 
-## Example completion report
+## Project rules
 
-Report changes, traceability, files changed, validation, documentation updates, deviations, risks, and follow-up LEAP work.
+- Never edit a migration that has been applied; add a new one.
+- `verification_request.id` and `org_id` are external identifiers. Do not change their format or generation.
+- Keep every SQL query parameterized. No string-built SQL.
+- `api/openapi.yaml` is the API contract. Update it in the same change as the handler.
+
+## Project stop conditions
+
+- Any change under `infra/` or to IAM policies: approver platform lead
+- Any change to eligibility rules in `api/src/eligibility/`: approver product owner
+
+## Branches and commits
+
+- Branch from `main` as `VER-<ticket>-short-name`; one ticket per PR; squash merge.
 
 <!-- LEAP_PROJECT_SECTION_END -->

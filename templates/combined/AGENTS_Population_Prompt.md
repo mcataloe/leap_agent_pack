@@ -1,113 +1,50 @@
-# LEAP Combined Local-Trial AGENTS.md Population Prompt
+# Combined AGENTS.md Population Prompt
 
 Use this after placing `templates/combined/AGENTS.md` at the repository root as `AGENTS.md`.
 
 ```text
-You are helping adopt the current LEAP Framework using a combined local-trial AGENTS.md file.
+You are populating a combined LEAP AGENTS.md.
 
-Target file:
-- AGENTS.md at the repository root.
-
-Structure:
-- Locked global section:
-  <!-- LEAP_MASTER_GLOBAL_SECTION_START: DO NOT EDIT DURING REPO POPULATION -->
-  <!-- LEAP_MASTER_GLOBAL_SECTION_END -->
-- Editable repository section:
-  <!-- LEAP_MASTER_REPO_SECTION_START: EDIT THIS SECTION ONLY DURING REPO POPULATION -->
-  <!-- LEAP_MASTER_REPO_SECTION_END -->
-
-Goal:
-Populate only the editable repository section with verified project-specific
-context. Preserve the locked global section and every boundary marker exactly.
-
-Do not modify:
-- the locked global section
-- section markers
-- application code
-- tests
-- product or strategy docs
-- configuration
-- any file other than root AGENTS.md unless separately approved
+Target: AGENTS.md at the repository root, between
+<!-- LEAP_PROJECT_SECTION_BEGIN --> and <!-- LEAP_PROJECT_SECTION_END -->.
+The managed section (<!-- LEAP_MANAGED_SECTION_BEGIN --> ...
+<!-- LEAP_MANAGED_SECTION_END -->) is LEAP Core. Do not edit it.
 
 Before editing:
-1. Inspect repository structure and current branch state.
-2. Read the entire AGENTS.md file.
-3. Treat the locked section as current reusable LEAP behavior.
-4. Inspect README files, docs, package/build files, Architecture material,
-   tests, schemas, CI, infrastructure, and other source-truth evidence.
-5. Identify canonical, supporting, Draft, stale, archived, superseded,
-   conflicting, and unknown sources.
-6. Infer only what evidence supports.
-7. Mark unsupported facts as TBD with the exact owner question.
+1. Inspect repository structure, current branch, and worktree state.
+2. Read the whole target file.
+3. Inspect README files, docs, build and package files, CI, tests, schemas,
+   migrations, and infrastructure.
+4. Separate canonical docs from draft, stale, archived, or conflicting ones.
+5. Use only what evidence supports. Write TBD plus the exact owner question
+   for everything else.
 
-Populate the editable section with:
-- project name, purpose, type, maturity, users, and use cases
-- repository layout and technology stack
-- setup, development, format, lint, typecheck, test, and build commands
-- infrastructure, data stores, queues, caches, and external dependencies
-- LEAP Baseline State from evidence
-- Mission / Project Charter path
-- Strategic Outcomes path
-- Initiative registry and active Initiative posture
-- Roadmap path
-- Domain map path
-- Architecture docs path
-- Delivery Unit and Build Unit documentation paths
-- contract and schema paths
-- legacy Layer docs requiring classification
-- canonical and non-canonical document lists
-- project Architecture, coding, data, contract, security, privacy,
-  testing, documentation, branch, PR, and commit rules
-- Recon and Planning Boundary Review expectations
-- stop conditions requiring human review
-
-Use this project-documentation model when material:
-
-Mission / Project Charter
-  -> Strategic Outcome
-    -> Initiative
-      -> Delivery Unit
-        -> Build Unit
-
-Treat Roadmap, Domain Map, and Architecture as separate views.
-
-Rules:
-- Several Initiatives may run in parallel.
-- Roadmap placement does not permanently define Initiative identity.
-- Initiatives and Domains are many-to-many.
-- Delivery Unit may collapse for small work.
-- Build Unit is not necessarily independently deployable.
-- Generic project-planning Layer is legacy-compatible and deprecated.
-- Preserve the LEAP name, Layered House Standard, LEAP LHS,
-  qualified Architecture Layers, public paths, and compatibility references.
-- Classify a legacy Layer before migration.
-
-Baseline rules:
-- Use only evidence-backed values.
-- Use TBD, Never, None, or Not established when unknown.
-- Do not invent reconciliation history.
-- Do not claim a full reconcile unless this task performed one.
-- Do not create leap.baseline.yaml unless explicitly authorized.
-- Recommend machine-readable baseline tracking only when justified.
-- An old date is not automatically a blocker; a recent date is not proof.
+Populate the project section:
+- Project: name, summary, start-here path, work tracking or planning sources
+  (Jira, Azure DevOps, GitHub Projects, or doc paths), or "none".
+- Source truth: canonical docs, do-not-use docs, last reconcile, known drift.
+  Do not invent reconcile history.
+- Layout and stack: one line per meaningful top-level path.
+- Commands: install, test, lint/typecheck, build. Copy them from CI or
+  package scripts. Name checks that need services, credentials, or a
+  specific environment.
+- Project rules: only concrete rules that prevent a real failure here
+  (identity keys, migration immutability, contract shapes, security
+  boundaries, files not to split). Skip generic advice; LEAP Core covers it.
+- Project stop conditions, each with an approver.
+- Branch, PR, and commit conventions.
 
 Editing rules:
-- Preserve the combined-file structure.
-- Preserve the locked section exactly.
-- Keep the editable section concise and operational.
-- Do not refactor application code.
-- Do not create strategy docs during ordinary population.
-- Do not blindly rename legacy Layer material.
-
-Verify that LEAP help, Discovery and Pressure Test remain available through the locked combined bootstrap, even without optional native Skills. Do not modify the locked section or install a Skill during population.
+- Edit only the project section. Preserve every marker exactly.
+- Keep the project section under about 800 words. Link to docs/ for detail.
+- Delete placeholder lines that do not apply instead of leaving them empty.
+- Do not modify application code, tests, docs, or configuration.
+- Do not install or overwrite native Skills.
 
 After editing, return:
-1. Confirmation that the locked section was unchanged.
-2. Editable sections populated.
-3. Evidence used.
-4. Strategic and planning paths identified.
-5. Unknowns left as TBD.
-6. Contradictions, stale-doc risks, or legacy Layer classifications.
-7. Recommended next Charter or Recon target.
-8. Whether leap.baseline.yaml is recommended as follow-up.
+1. Sections populated and the evidence used.
+2. Unknowns left as TBD, with owner questions.
+3. Contradictions or stale-doc risks found.
+4. Project-section word count.
+5. Recommended next LEAP step, if any (often none).
 ```

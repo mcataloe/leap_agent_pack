@@ -1,52 +1,21 @@
 # Global AGENTS.md Initialization Prompt
 
-Use this after copying `templates/separated/global/AGENTS.md` into the coding agent's global instruction location.
-
-## Goal
-
-Install or verify reusable LEAP behavior without adding project-specific facts.
-
-## Instructions
-
-1. Confirm the global LEAP file is installed in the intended global instruction location.
-2. Verify that it remains reusable across repositories.
-3. Confirm it includes the current lifecycle:
-
-   ```text
-   LEAP Charter -> LEAP Recon -> LEAP Prompt -> Implementation -> Validation/Handoff
-   ```
-
-4. Confirm it recognizes the preferred project-documentation model:
-
-   ```text
-   Mission / Project Charter
-     -> Strategic Outcome
-       -> Initiative
-         -> Delivery Unit
-           -> Build Unit
-   ```
-
-5. Confirm it treats Roadmap, Domain Map, and Architecture as separate supporting views.
-6. Confirm it allows Delivery Unit collapse for small work and does not define Build Units as necessarily independently deployable.
-7. Confirm it treats generic project-planning `Layer` as legacy-compatible while preserving the LEAP name, Layered House Standard, LEAP LHS, qualified Architecture Layers, public paths, and compatibility references.
-8. Do not add project-specific Architecture, commands, source-truth paths, business rules, repositories, Strategic Outcomes, Initiatives, Roadmaps, Domains, Delivery Units, Build Units, credentials, environments, or validation commands.
-9. Direct project-specific content to the repository-level template and population Prompt.
-10. For a one-repository trial, direct the user to the combined template and combined population Prompt.
-11. If project-specific content is already present in the global file, report it and recommend moving it to repository guidance.
-
-## Optional routing verification
-
-Confirm **LEAP help** is discoverable from bootstrap alone, Discovery and Pressure Test route without mutation, and Skill installation is optional. Do not install or overwrite native Skills during global AGENTS.md initialization unless separately requested.
-
-## Output
+Use this after copying `templates/separated/global/AGENTS.md` into your coding agent's global instruction location (see the tool table in the [README](../../../README.md#tool-setup)).
 
 ```text
-Global AGENTS.md Initialization Summary
-- Global file present:
-- Current LEAP lifecycle present:
-- Current project-documentation model present:
-- Reusable guidance preserved:
-- Project-specific content found:
-- Recommended repository-level next step:
-- Combined local-trial alternative needed:
+Verify the global LEAP AGENTS.md installation.
+
+1. Confirm the file is loaded by the agent from its global location.
+2. Confirm the managed section matches the current LEAP Core:
+   https://github.com/mcataloe/leap_framework/blob/main/docs/leap-core.md
+3. Report any project-specific content (paths, commands, business rules,
+   repositories, credentials, environments) and recommend moving it to the
+   repository AGENTS.md.
+4. Do not install native Skills or edit any other file.
+
+Return:
+- Global file location and whether the agent loads it
+- LEAP Core current: yes / no (differences)
+- Project-specific content found
+- Recommended next step
 ```
