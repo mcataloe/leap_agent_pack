@@ -1,125 +1,105 @@
 # LEAP Agent Pack
 
-LEAP Agent Pack provides reusable `AGENTS.md` templates for using the LEAP Framework with coding agents.
+`AGENTS.md` templates that put [LEAP](https://github.com/mcataloe/leap_framework) in front of coding agents. The pack is versioned separately from the framework, so downstream repositories can pin their agent instructions.
 
-It is versioned separately from [`leap_framework`](https://github.com/mcataloe/leap_framework) so downstream repositories can pin agent instructions independently from methodology releases.
+What loads every session is deliberately small:
 
-## What this repository owns
+- **LEAP Core** (~600 words): inspect first, ask only what matters, order of truth, the lightest-workflow ladder, scope, hard stops, honest verification, handoff. Canonical text: [`docs/leap-core.md`](https://github.com/mcataloe/leap_framework/blob/main/docs/leap-core.md) in the framework.
+- **Your project section**: the rules that only apply to your repository, kept under about 800 words.
 
-- Global reusable LEAP operating guidance.
-- Repository-level project adapter guidance.
-- Combined local-trial guidance.
-- Population prompts.
-- Agent Pack compatibility, inventory, install, customization, and upgrade guidance.
-
-The LEAP Framework repository owns lifecycle doctrine, Charter, Recon, Prompt behavior, LHS, the project-documentation model, and framework examples.
-
-## Current project-documentation model
-
-Agent Pack templates align with:
-
-```text
-Mission / Project Charter
-        ↓
-Strategic Outcome
-        ↓
-Initiative
-        ↓
-Delivery Unit
-        ↓
-Build Unit
-```
-
-Supporting views remain separate:
-
-```text
-Roadmap      = timing, priority, milestones, dependencies, releases, status, parallelism
-Domain Map   = persistent responsibility and ownership boundaries
-Architecture = technical structure and qualified technical Layers
-```
-
-Several Initiatives may run in parallel. Delivery Unit may collapse for small work. Build Unit is not necessarily independently deployable.
-
-Generic project-planning `Layer` is legacy-compatible and deprecated. Preserve the LEAP name, Layered House Standard, LEAP LHS, qualified Architecture Layers, public paths, and compatibility references.
+Everything else in LEAP (Charter, Recon, Prompt, LHS, Cleanup, Skills, routing) is loaded on demand.
 
 ## Current version
 
 ```text
-Agent Pack: 0.2.0 candidate
-Release tag: none verified
+Agent Pack: 0.2.0-candidate.2 (unreleased; no tag)
 Compatible LEAP Framework: >=0.1.0 <1.0.0
-Status: unreleased candidate
 ```
 
-## Canonical files
+Machine-readable record: [`manifests/latest.json`](manifests/latest.json).
 
-The active repository structure is:
+## Choose a setup
+
+| Setup | Files | When |
+|---|---|---|
+| Separated (recommended) | `templates/separated/global/AGENTS.md` in your agent's global location + `templates/separated/repo/AGENTS.md` at the repository root | You use LEAP in several repositories |
+| Combined | `templates/combined/AGENTS.md` at the repository root | One repository, a trial, or a tool with no global instruction file |
+
+After copying, run the matching population prompt next to the template (`AGENTS_Population_Prompt.md`). It fills only the project section, from repository evidence, and marks unknowns `TBD`.
+
+## Tool setup
+
+| Tool | Global LEAP Core | Repository file |
+|---|---|---|
+| OpenAI Codex | `~/.codex/AGENTS.md` (or `$CODEX_HOME/AGENTS.md`) | `AGENTS.md` at the repository root |
+| Claude Code | `~/.claude/CLAUDE.md` containing the global template, or a line `@~/.codex/AGENTS.md` to share Codex's copy | `AGENTS.md` is read when the repository has no `CLAUDE.md`; otherwise add `@AGENTS.md` to `CLAUDE.md` |
+| Other tools that read `AGENTS.md` | Use the combined template | `AGENTS.md` at the repository root |
+
+Confirm the agent actually loaded the file (for example, `/context` in Claude Code, or ask the agent to quote the LEAP Core heading). An instruction file that does not load is not a guardrail.
+
+## Install
+
+macOS / Linux:
+
+```bash
+PACK=~/src/leap_agent_pack        # your clone of this repository
+REPO=~/src/my_project             # the repository adopting LEAP
+
+# Separated: global core for Codex, shared with Claude Code
+mkdir -p ~/.codex ~/.claude
+cp -i "$PACK/templates/separated/global/AGENTS.md" ~/.codex/AGENTS.md
+grep -qxF '@~/.codex/AGENTS.md' ~/.claude/CLAUDE.md 2>/dev/null || echo '@~/.codex/AGENTS.md' >> ~/.claude/CLAUDE.md
+cp -i "$PACK/templates/separated/repo/AGENTS.md" "$REPO/AGENTS.md"
+
+# Or combined, one file
+cp -i "$PACK/templates/combined/AGENTS.md" "$REPO/AGENTS.md"
+```
+
+Windows (PowerShell):
+
+```powershell
+$Pack = 'D:\Repos\leap_agent_pack'
+$Repo = 'D:\Repos\my_project'
+
+New-Item -ItemType Directory -Force "$HOME\.codex", "$HOME\.claude" | Out-Null
+Copy-Item "$Pack\templates\separated\global\AGENTS.md" "$HOME\.codex\AGENTS.md" -Confirm
+Add-Content "$HOME\.claude\CLAUDE.md" '@~/.codex/AGENTS.md'
+Copy-Item "$Pack\templates\separated\repo\AGENTS.md" "$Repo\AGENTS.md" -Confirm
+
+# Or combined
+Copy-Item "$Pack\templates\combined\AGENTS.md" "$Repo\AGENTS.md" -Confirm
+```
+
+`cp -i` and `-Confirm` stop you from overwriting an existing file. For an existing `AGENTS.md`, follow [Upgrade and customize](docs/install-and-upgrade.md).
+
+## Guardrails beyond instructions
+
+Instructions are requests; enforced checks are guardrails. Pair the templates with:
+
+- the [LEAP pull request template](https://github.com/mcataloe/leap_framework/blob/main/templates/leap-pull-request-template.md) for scope, verification state, and checks not run
+- CODEOWNERS or branch protection on paths your project stop conditions name
+- CI checks for rules that can be tested (for example, "applied migrations are immutable")
+- agent permission deny-rules or hooks for paths that must never be edited (Claude Code permission rules and `PreToolUse` hooks, Codex sandbox and approval settings)
+
+## Repository contents
 
 | Path | Purpose |
 |---|---|
-| `templates/separated/global/AGENTS.md` | Global reusable LEAP guidance. |
-| `templates/separated/global/AGENTS_Population_Prompt.md` | Global initialization and verification prompt. |
-| `templates/separated/repo/AGENTS.md` | Repository-level project adapter template. |
-| `templates/separated/repo/AGENTS_Population_Prompt.md` | Repository population prompt. |
-| `templates/combined/AGENTS.md` | Combined local-trial template. |
-| `templates/combined/AGENTS_Population_Prompt.md` | Combined-template population prompt. |
-| `examples/global-AGENTS.example.md` | Example global guidance. |
-| `examples/repo-AGENTS.example.md` | Example populated repository guidance. |
-| `examples/combined-local-trial-AGENTS.example.md` | Example combined local-trial file. |
-| `manifests/latest.json` | Current candidate version and canonical path record. |
-| `manifests/template-inventory.json` | Machine-readable template inventory. |
-| `manifests/compatibility.json` | Framework compatibility range. |
-| `docs/quickstart.md` | Primary install guide. |
-| `docs/upgrade-guide.md` | Manual update guidance. |
-| `docs/customization-guide.md` | Safe customization guidance. |
+| `templates/separated/global/` | Global LEAP Core template and initialization prompt |
+| `templates/separated/repo/` | Repository template (project slots only) and population prompt |
+| `templates/combined/` | Single-file template and population prompt |
+| `templates/skills/` | Optional starter for project-specific native Skills |
+| `examples/repo-AGENTS.example.md` | A populated repository file |
+| `docs/install-and-upgrade.md` | Upgrade, customization, and versioning |
+| `docs/skills-installation.md` | Optional native LEAP Skill install for Codex and Claude Code |
+| `manifests/latest.json` | Version, compatibility, and file inventory |
+| `scripts/check_pack.py` | Markers, metadata, manifest, links, and size budgets |
 
-Older documentation may mention top-level `global/`, `repo/`, or `combined/` paths. Those paths do not exist in the current repository and should not be treated as canonical.
+## Maintainer check
 
-## Optional native Skills
-
-Existing AGENTS.md adoption continues unchanged. For a ready-to-install LEAP navigator, use [Skill installation](docs/skills-installation.md). For NEW project-specific Skills, use [Starter SKILL.md](templates/skills/project-skill-starter/SKILL.md) and [Population Prompt](templates/skills/Project_Skill_Population_Prompt.md). No root SKILLS.md file is needed. The Framework remains the canonical Skill source.
-
-## Setup scenarios
-
-| Scenario | Install | Population prompt |
-|---|---|---|
-| Separate global plus repository method | Install `templates/separated/global/AGENTS.md` globally and copy `templates/separated/repo/AGENTS.md` to the project root | Run both separated population prompts |
-| Repository-only method | Copy `templates/separated/repo/AGENTS.md` to the project root | Run the repository population prompt |
-| Combined local trial | Copy `templates/combined/AGENTS.md` to the project root | Run the combined population prompt |
-
-## Installation examples
-
-Separate repository template:
-
-```powershell
-Copy-Item D:\Repos\leap_agent_pack\templates\separated\repo\AGENTS.md D:\Repos\my_project\AGENTS.md
+```bash
+python3 scripts/check_pack.py                                   # pack only
+python3 scripts/check_pack.py --framework ../leap_framework     # plus LEAP Core drift
 ```
 
-Combined local trial:
-
-```powershell
-Copy-Item D:\Repos\leap_agent_pack\templates\combined\AGENTS.md D:\Repos\my_project\AGENTS.md
-```
-
-Install the global template in the global instruction location supported by the coding-agent environment.
-
-## Update policy
-
-Updates are manual and notify-only.
-
-Do not overwrite downstream `AGENTS.md` files without reviewing:
-
-- Agent Pack-managed content
-- project-specific edits
-- local overrides
-- current Framework compatibility
-- migration notes
-
-Use [`docs/upgrade-guide.md`](docs/upgrade-guide.md) before adopting a new Agent Pack candidate or release.
-
-## More
-
-- [Quickstart](docs/quickstart.md)
-- [Versioning](docs/versioning.md)
-- [Upgrade guide](docs/upgrade-guide.md)
-- [Customization guide](docs/customization-guide.md)
+Standard library only. CI runs it on every push and pull request.

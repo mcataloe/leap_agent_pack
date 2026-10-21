@@ -11,41 +11,34 @@ OpenAI Codex currently discovers project Skills under .agents/skills/<skill-name
 - Codex: https://learn.chatgpt.com/docs/build-skills
 - Claude Code: https://code.claude.com/docs/en/skills
 
-## Install from local checkout (PowerShell)
+## Install from a local checkout
 
-From the target project root, with a separately cloned LEAP Framework repository:
+From the target project root, with the LEAP Framework cloned alongside. Install only the destination for the assistant you use.
 
-~~~powershell
-$Source = 'D:\Repos\leap_framework\skills\leap\SKILL.md'
-$Codex = '.agents\skills\leap\SKILL.md'
-$Claude = '.claude\skills\leap\SKILL.md'
-if (!(Test-Path $Source)) { throw 'Canonical LEAP Skill source not found' }
-foreach ($Destination in @($Codex, $Claude)) {
+macOS / Linux:
+
+```bash
+SRC=../leap_framework/skills/leap/SKILL.md
+for DEST in .agents/skills/leap/SKILL.md .claude/skills/leap/SKILL.md; do
+  if [ -e "$DEST" ]; then echo "Review existing $DEST before overwriting"; continue; fi
+  mkdir -p "$(dirname "$DEST")" && cp "$SRC" "$DEST"
+done
+```
+
+Windows (PowerShell):
+
+```powershell
+$Source = '..\leap_framework\skills\leap\SKILL.md'
+foreach ($Destination in @('.agents\skills\leap\SKILL.md', '.claude\skills\leap\SKILL.md')) {
     if (Test-Path $Destination) { throw "Review existing Skill before overwrite: $Destination" }
     New-Item -ItemType Directory -Force (Split-Path $Destination) | Out-Null
     Copy-Item $Source $Destination
 }
-~~~
+```
 
-If you only use one assistant, install only its destination. These are copied artifacts of one canonical source, not competing manually maintained definitions. For Windows, ordinary file copies are supported; symlinks are not required.
+The installed files are copies of one canonical source, not separately maintained definitions. Plain copies work; symlinks are not required.
 
-## AGENTS.md and Claude Code
-
-Install the Agent Pack repository AGENTS.md as usual, or use separated global and repo guidance. The repository-level file contains project-specific facts; the global or combined file contains reusable LEAP routing.
-
-Claude Code normally loads CLAUDE.md. Where it does not automatically load the existing AGENTS.md, create a small CLAUDE.md wrapper using Claude's supported import syntax:
-
-~~~markdown
-@AGENTS.md
-~~~
-
-Confirm the wrapper loads your local AGENTS.md in the actual Claude environment and retains project-specific permissions. Do not duplicate or manually synchronize full LEAP instructions into CLAUDE.md.
-
-## The three supported Agent Pack setups
-
-- **Separated:** global AGENTS.md plus repository AGENTS.md; install optional native Skill after population.
-- **Repository-only:** project AGENTS.md contains minimal LEAP help/routing fallback; install optional native Skill for richer discovery.
-- **Combined local trial:** combined template includes routing, then optional Skill installation.
+`AGENTS.md` loading per tool is covered in the [README tool table](../README.md#tool-setup).
 
 ## Project-specific Skills
 
