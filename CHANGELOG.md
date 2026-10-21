@@ -6,6 +6,10 @@ All notable LEAP Agent Pack changes are documented here.
 
 ### Added
 
+- Added optional native Skill installation, project Skill starter and evidence-based population prompt.
+- Added minimal LEAP help and semantic routing behavior to global, combined and repository Agent Pack templates.
+- Aligned missing LEAP Cleanup invocation in supported bootstrap tables.
+
 - Added capability- and cost-aware execution routing to the global and combined templates.
 - Added E0-E4 capability classes and the `Implemented — execution unverified` versus `Execution verified` distinction.
 - Added distributed guidance for the current LEAP project-documentation model:

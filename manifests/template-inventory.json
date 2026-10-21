@@ -4,7 +4,7 @@
     "repository": "https://github.com/mcataloe/leap_agent_pack",
     "inventoryVersion": "0.2.0-candidate",
     "status": "unreleased",
-    "lastUpdated": "2026-07-01",
+    "lastUpdated": "2026-10-14",
     "documentationModel": "Mission / Project Charter -> Strategic Outcome -> Initiative -> Delivery Unit -> Build Unit"
   },
   "templates": [
@@ -39,6 +39,14 @@
       "canonicalOrCompatibility": "canonical",
       "version": "0.2.0-candidate",
       "notes": "Single repository-root file with a locked reusable section and editable repository section."
+    },
+    {
+      "scenario": "Optional project-specific Skill",
+      "templatePath": "templates/skills/project-skill-starter/SKILL.md",
+      "promptPath": "templates/skills/Project_Skill_Population_Prompt.md",
+      "canonicalOrCompatibility": "optional starter",
+      "version": "0.2.0-candidate",
+      "notes": "Initialize a NEW project capability; not a copy of the canonical LEAP Skill."
     }
   ],
   "examples": [
@@ -61,5 +69,7 @@
   "legacyPathPolicy": {
     "status": "no compatibility mirror files discovered on the current branch",
     "rule": "Do not advertise nonexistent global/, repo/, combined/, or templates/leap-*-AGENTS-file paths as canonical. Preserve a legacy path only when the file actually exists or an approved compatibility stub is added."
-  }
+  },
+  "canonicalNativeLeapSkill": "https://github.com/mcataloe/leap_framework/blob/main/skills/leap/SKILL.md",
+  "installationGuide": "docs/skills-installation.md"
 }

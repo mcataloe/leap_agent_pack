@@ -96,3 +96,7 @@ local_modification_notes: Added project source-truth paths and validation comman
 ```
 
 This distinguishes expected customization from accidental Agent Pack drift.
+
+## Native Skill customization
+
+Do not edit generated installed copies of the standard LEAP navigator independently. Change the canonical Framework definition and review propagation, or define a separate, narrowly scoped project-specific Skill using [starter and population prompt](../templates/skills/Project_Skill_Population_Prompt.md). Keep permissions in AGENTS.md and governing Prompts.

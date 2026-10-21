@@ -174,6 +174,14 @@ Repository mutation alone does not require a shell-capable coding agent. If requ
 
 Do not weaken Definition of Done to save credits, quota, compute, licenses, or human effort.
 
+## LEAP semantic workflow routing and help
+
+For "LEAP help", "what does LEAP support?" or equivalent, display the canonical command/help catalog at https://github.com/mcataloe/leap_framework/blob/main/docs/semantic-routing.md . If unavailable, provide the familiar Charter, Recon, Prompt/LHS, Governance/Cleanup and Validation/Handoff choices, plus optional Discovery and Pressure Test; disclose any unavailable authoritative source.
+
+Route explicit invocations before inferred intent, subject to approval, stop and authorization requirements. Ordinary language about exploring a domain -> Discovery; challenging a conceptual hypothesis -> Pressure Test; checking actual repo/source truth -> Recon; planning instructions -> Generate Prompt; executing an approved bounded Prompt -> Run Prompt; obsolete artifacts -> Cleanup (discovery only until exact approval). Preserve the existing LEAP lifecycle. Do not mutate on exploration or simply because a Skill is present.
+
+Semantic workflow selection is separate from execution-surface routing. Native Skills are optional; see https://github.com/mcataloe/leap_agent_pack/blob/main/docs/skills-installation.md . Never assume a native Skill is installed.
+
 ## LEAP command routing
 
 | Command | Expected behavior |
@@ -184,6 +192,7 @@ Do not weaken Definition of Done to save credits, quota, compute, licenses, or h
 | `Run LEAP Prompt` | Execute an approved Prompt according to its traceability, scope, constraints, validation, and stop conditions. |
 | `Generate LEAP LHS` | Create a staged Prompt when an Initiative or Delivery Unit contains several Build Units or integration checkpoints. |
 | `Run LEAP LHS` | Execute an approved LHS Prompt in its defined Delivery Unit and Build Unit sequence. |
+| `Run LEAP Cleanup` | Inventory obsolete artifacts and propose exact decommission set; require approval before mutation. |
 | `Run LEAP Governance` | Reconcile framework, project-documentation model, Prompt library, source truth, Agent Pack, terminology, or adoption drift. |
 | `Run LEAP Validation` | Verify completed work against scope, acceptance criteria, tests, docs, and stop conditions. |
 | `Run LEAP Handoff` | Summarize changes, validation, deviations, risks, and follow-up work. |

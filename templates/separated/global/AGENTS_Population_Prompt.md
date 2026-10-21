@@ -34,6 +34,10 @@ Install or verify reusable LEAP behavior without adding project-specific facts.
 10. For a one-repository trial, direct the user to the combined template and combined population Prompt.
 11. If project-specific content is already present in the global file, report it and recommend moving it to repository guidance.
 
+## Optional routing verification
+
+Confirm **LEAP help** is discoverable from bootstrap alone, Discovery and Pressure Test route without mutation, and Skill installation is optional. Do not install or overwrite native Skills during global AGENTS.md initialization unless separately requested.
+
 ## Output
 
 ```text

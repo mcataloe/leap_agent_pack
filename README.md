@@ -75,6 +75,10 @@ The active repository structure is:
 
 Older documentation may mention top-level `global/`, `repo/`, or `combined/` paths. Those paths do not exist in the current repository and should not be treated as canonical.
 
+## Optional native Skills
+
+Existing AGENTS.md adoption continues unchanged. For a ready-to-install LEAP navigator, use [Skill installation](docs/skills-installation.md). For NEW project-specific Skills, use [Starter SKILL.md](templates/skills/project-skill-starter/SKILL.md) and [Population Prompt](templates/skills/Project_Skill_Population_Prompt.md). No root SKILLS.md file is needed. The Framework remains the canonical Skill source.
+
 ## Setup scenarios
 
 | Scenario | Install | Population prompt |

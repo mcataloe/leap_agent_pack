@@ -8,7 +8,7 @@
     "repository": "https://github.com/mcataloe/leap_agent_pack",
     "compatibleLeapFramework": ">=0.1.0 <1.0.0",
     "documentationModel": "Mission / Project Charter -> Strategic Outcome -> Initiative -> Delivery Unit -> Build Unit",
-    "lastUpdated": "2026-09-28"
+    "lastUpdated": "2026-10-14"
   },
   "templates": {
     "globalAgents": {
@@ -43,6 +43,20 @@
     "templateInventory": {
       "path": "manifests/template-inventory.json",
       "version": "0.2.0-candidate"
+    },
+    "projectSkillStarter": {
+      "path": "templates/skills/project-skill-starter/SKILL.md",
+      "version": "0.2.0-candidate",
+      "optional": true
+    },
+    "projectSkillPopulationPrompt": {
+      "path": "templates/skills/Project_Skill_Population_Prompt.md",
+      "version": "0.2.0-candidate",
+      "optional": true
+    },
+    "skillsInstallationGuide": {
+      "path": "docs/skills-installation.md",
+      "optional": true
     }
   },
   "inventoryManifest": "manifests/template-inventory.json",
@@ -55,6 +69,8 @@
     "Generic project-planning Layer is legacy-compatible and should be classified before migration.",
     "Execution surfaces should be selected from required confidence, validation, capability, and permission needs.",
     "Prefer the least-cost eligible surface; do not weaken Definition of Done to save credits, quota, compute, licenses, or human effort.",
-    "Distinguish implemented-but-unverified work from execution-verified work."
-  ]
+    "Distinguish implemented-but-unverified work from execution-verified work.",
+    "LEAP help and semantic routing are available in managed AGENTS.md; optional native Skills require explicit installation and independent native tests."
+  ],
+  "canonicalFrameworkSkill": "https://github.com/mcataloe/leap_framework/blob/main/skills/leap/SKILL.md"
 }
