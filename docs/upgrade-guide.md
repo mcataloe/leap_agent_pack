@@ -45,6 +45,10 @@ Preserve legitimate uses of:
 
 Classify legacy project Layer docs before migration.
 
+## Advisory estimation guidance during upgrade
+
+The current unreleased candidate also adds **advisory team/capacity estimation**. Keep the designated work-tracker and allocation system authoritative. In editable project guidance, populate source pointers if verified, otherwise mark `Not configured`; do not move roster, timesheet or committed estimate values into AGENTS.md. Keep human/AI capacity distinct, do not derive labor hours from Git commit timestamps, and do not overwrite accepted estimates without separate authorization. Preserve project customizations and permissions.
+
 ## Compare versions
 
 1. Read the hidden metadata in the downstream file.

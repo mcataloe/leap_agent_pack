@@ -50,6 +50,7 @@ Populate the editable section with:
 - Strategic Outcomes path
 - Initiative registry and active Initiative posture
 - Roadmap path
+- project-designated external work tracker and capacity/allocation source pointers (or `Not configured`), never copied rosters, assignments or accepted estimate records
 - Domain map path
 - Architecture docs path
 - Delivery Unit and Build Unit documentation paths

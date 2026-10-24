@@ -40,6 +40,8 @@ Compatible LEAP Framework: >=0.1.0 <1.0.0
 
 The candidate includes:
 
+- advisory team/delivery-capacity estimation guidance with externally owned assignments and estimates
+
 - separated and combined installation scenarios
 - baseline freshness guidance
 - dependency and contract Recon adaptation

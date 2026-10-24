@@ -252,6 +252,13 @@ Evidence may include:
 
 Missing dependency metadata is a limitation, not an automatic blocker. Do not guess external contracts or provider ownership.
 
+## Advisory delivery estimates and source pointers
+
+- Operational work tracker / accepted estimates: `{{WORK_TRACKER_SYSTEM_AND_LOCATION_OR_NOT_CONFIGURED}}`
+- Team allocation / capacity source, if different: `{{ALLOCATION_SOURCE_OR_NOT_CONFIGURED}}`
+
+These are **pointers**, not an allocation or timekeeping ledger. For material estimates, inspect authorized sources, keep human/role capability and AI-agent assistance separate, and distinguish person-effort estimates from conditional elapsed delivery forecasts. Use research, historical comparable tasks, review and testing, availability across parallel Initiatives and dependencies. Git commits and their timestamps are not a measure of labor hours; AI productivity benefits require evidence or an explicitly hypothetical scenario. Ask a material question where an authority or permission gap blocks a safe estimate; otherwise state assumptions and produce provisional advice. Do not silently change external estimates, allocations or dates. See [LEAP estimation guidance](https://github.com/mcataloe/leap_framework/blob/main/docs/team-delivery-estimation.md).
+
 ## Project source of truth
 
 Use this order unless explicit project guidance overrides it:

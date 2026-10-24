@@ -8,7 +8,7 @@
     "repository": "https://github.com/mcataloe/leap_agent_pack",
     "compatibleLeapFramework": ">=0.1.0 <1.0.0",
     "documentationModel": "Mission / Project Charter -> Strategic Outcome -> Initiative -> Delivery Unit -> Build Unit",
-    "lastUpdated": "2026-10-14"
+    "lastUpdated": "2026-10-24"
   },
   "templates": {
     "globalAgents": {
@@ -70,7 +70,8 @@
     "Execution surfaces should be selected from required confidence, validation, capability, and permission needs.",
     "Prefer the least-cost eligible surface; do not weaken Definition of Done to save credits, quota, compute, licenses, or human effort.",
     "Distinguish implemented-but-unverified work from execution-verified work.",
-    "LEAP help and semantic routing are available in managed AGENTS.md; optional native Skills require explicit installation and independent native tests."
+    "LEAP help and semantic routing are available in managed AGENTS.md; optional native Skills require explicit installation and independent native tests.",
+    "Advisory team and delivery-capacity estimation reads project-designated external truth; AGENTS.md contains only pointers, not replicated allocations or individual performance history."
   ],
   "canonicalFrameworkSkill": "https://github.com/mcataloe/leap_framework/blob/main/skills/leap/SKILL.md"
 }
