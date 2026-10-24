@@ -109,6 +109,12 @@ Classify the target as:
 
 Do not assume numbered work must be sequential. Do not globally replace `Layer`.
 
+## Advisory delivery estimates
+
+When asked for effort or delivery forecasts, follow the canonical [LEAP Team & Delivery Capacity Estimation](https://github.com/mcataloe/leap_framework/blob/main/docs/team-delivery-estimation.md) method. First inspect the project's authorized, designated external source of record for work items, accepted estimates and allocations (for example Jira); do not build or maintain a competing LEAP roster or copy individual allocations into `AGENTS.md`. Read approved team capabilities and Initiative availability only where material. Use role placeholders and explicitly conditional scenarios if staffing is unknown.
+
+Keep person-effort and elapsed delivery duration distinct; account for research, dependencies, reviews, testing and critical paths. Human contributors and AI agents are separate: do not treat AI as additional FTEs or credit speedups without comparable evidence including review overhead. Git commit counts/timestamps and PR intervals are **not actual person-hours**. Keep attribution and access purpose-limited, avoid individual performance rankings, cite evidence/uncertainty, and never write back to external systems without explicit authorization.
+
 ## Execution routing
 
 Use E0 Reasoning, E1 Remote Mutation, E2 Execution Environment, E3 Agentic Environment, and E4 Human Gate as capability classes when routing is material.
@@ -208,6 +214,13 @@ Start with `docs/00_start_here.md` when present.
 | Reconcile triggers | `{{STRATEGIC_OUTCOME_CHANGE; INITIATIVE_CHANGE; ROADMAP_REPRIORITIZATION; DOMAIN_OWNERSHIP_CHANGE; ARCHITECTURE_PIVOT; SOURCE_TRUTH_CONFLICT; LARGE_DELIVERY_UNIT; ETC.}}` |
 
 Do not invent reconcile history or silently create baseline metadata.
+
+## Delivery system pointers
+
+- Operational work tracker / accepted estimates: `{{WORK_TRACKER_SYSTEM_AND_LOCATION_OR_NOT_CONFIGURED}}`
+- Allocation/capacity owner or system: `{{ALLOCATION_SOURCE_OR_NOT_CONFIGURED}}`
+
+Record pointers only, not team rosters, allocations, worklogs or speculative AI multipliers. Mark absent systems `Not configured` instead of inventing details.
 
 ## Strategic and planning sources
 
