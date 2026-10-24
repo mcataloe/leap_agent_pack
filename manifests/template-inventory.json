@@ -4,7 +4,7 @@
     "repository": "https://github.com/mcataloe/leap_agent_pack",
     "inventoryVersion": "0.2.0-candidate",
     "status": "unreleased",
-    "lastUpdated": "2026-10-14",
+    "lastUpdated": "2026-10-24",
     "documentationModel": "Mission / Project Charter -> Strategic Outcome -> Initiative -> Delivery Unit -> Build Unit"
   },
   "templates": [
