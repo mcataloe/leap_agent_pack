@@ -158,6 +158,12 @@ Inspect enough evidence to understand:
 
 Prefer evidence over inference. Label material assumptions.
 
+## Advisory delivery estimates
+
+When asked for effort or delivery forecasts, follow the canonical [LEAP Team & Delivery Capacity Estimation](https://github.com/mcataloe/leap_framework/blob/main/docs/team-delivery-estimation.md) method. First inspect the project's authorized, designated external source of record for work items, accepted estimates and allocations (for example Jira); do not build or maintain a competing LEAP roster or copy individual allocations into `AGENTS.md`. Read approved team capabilities and Initiative availability only where material. Use role placeholders and explicitly conditional scenarios if staffing is unknown.
+
+Keep person-effort and elapsed delivery duration distinct; account for research, dependencies, reviews, testing and critical paths. Human contributors and AI agents are separate: do not treat AI as additional FTEs or credit speedups without comparable evidence including review overhead. Git commit counts/timestamps and PR intervals are **not actual person-hours**. Keep attribution and access purpose-limited, avoid individual performance rankings, cite evidence/uncertainty, and never write back to external systems without explicit authorization.
+
 ## Execution routing
 
 Keep reasoning difficulty separate from environment capability.
