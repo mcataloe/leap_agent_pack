@@ -4,7 +4,7 @@ LEAP_AGENT_PACK_TEMPLATE:
   version: 0.2.0-candidate
   compatible_leap_framework: ">=0.1.0 <1.0.0"
   source: https://github.com/mcataloe/leap_agent_pack
-  last_updated: 2026-07-01
+  last_updated: 2026-10-24
   local_modification_notes: Record downstream edits here.
 END_LEAP_AGENT_PACK_TEMPLATE
 -->
