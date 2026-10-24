@@ -6,6 +6,9 @@ All notable LEAP Agent Pack changes are documented here.
 
 ### Added
 
+- Added advisory delivery-capacity estimation rules to separated global/repo and combined templates, and external system-of-record pointers in editable project sections.
+- Extended population prompts to locate approved work-tracker and allocation sources without importing a live roster or individual activity history.
+
 - Added optional native Skill installation, project Skill starter and evidence-based population prompt.
 - Added minimal LEAP help and semantic routing behavior to global, combined and repository Agent Pack templates.
 - Aligned missing LEAP Cleanup invocation in supported bootstrap tables.
