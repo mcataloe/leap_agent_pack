@@ -74,3 +74,7 @@ Classify legacy project Layer docs before migration.
 | MAJOR | Requires explicit review and migration planning. |
 
 The hierarchy synchronization in the unreleased `0.2.0` candidate should be treated as a meaningful manual merge for projects actively using Layer-first planning guidance.
+
+## Native Skill upgrades
+
+Native Skills are optional. Review the pinned canonical Framework SKILL.md and locally installed Codex/Claude copies before replacing. Do not overwrite customized downstream files or claim native Skill selection without a live test. See [Skills installation and rollback](skills-installation.md).
