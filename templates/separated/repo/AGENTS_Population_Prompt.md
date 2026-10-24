@@ -67,6 +67,7 @@ Populate or reconcile:
 - Strategic Outcomes path.
 - Initiative registry path and active Initiative posture.
 - Roadmap path.
+- External work tracker and capacity/allocation owner pointers (or `Not configured`), not replicated personnel records or accepted estimate values.
 - Domain map path.
 - Architecture docs path.
 - Delivery Unit and Build Unit documentation paths, when present.
