@@ -62,6 +62,10 @@ Do not customize the model by:
 
 A downstream project may retain legacy Layer docs. Record what each Layer actually represents and add canonical links before moving or renaming public paths.
 
+## Optional execution role overlays
+
+For independently coordinated work or separate implementation/review responsibilities, use [Optional Execution Roles and Context Packets](optional-execution-roles.md). Role templates and the manifest example are opt-in and do not replace project `AGENTS.md`, enable native delegation, or modify permission ceilings. Do not duplicate their instructions inside the locked global section.
+
 ## Keep guidance compact
 
 Prefer links to canonical project docs over copying long content.
