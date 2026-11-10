@@ -12,6 +12,10 @@ Use this guide to install LEAP `AGENTS.md` guidance into a project.
 
 After AGENTS.md population, follow [native Skill installation](skills-installation.md) to install the canonical LEAP navigator in a Codex and/or Claude Code project. Existing commands remain functional without native Skills. A NEW project capability can use the [Skill template](../templates/skills/project-skill-starter/SKILL.md) and its [population prompt](../templates/skills/Project_Skill_Population_Prompt.md).
 
+## Optional execution continuity
+
+For cross-session handoffs, independent engineering reviews, and evidence-based lesson promotion, see [Execution Continuity and Review Evidence](execution-continuity.md). These optional templates do not replace the project's work tracker, source truth, or approval requirements. Small tasks do not need this additional process.
+
 ## Current template paths
 
 | Scenario | Template | Population prompt |
