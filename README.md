@@ -123,3 +123,7 @@ Use [`docs/upgrade-guide.md`](docs/upgrade-guide.md) before adopting a new Agent
 - [Versioning](docs/versioning.md)
 - [Upgrade guide](docs/upgrade-guide.md)
 - [Customization guide](docs/customization-guide.md)
+
+## Optional native multi-agent delegation
+
+For Codex and Claude Code integration without replacing LEAP's governance or the locked templates, see [Native Delegation Adapters](docs/native-delegation-adapters.md). This is opt-in guidance and requires validation against the installed runtime.
