@@ -9,8 +9,9 @@ Verify the global LEAP AGENTS.md installation.
 2. Confirm the managed section matches the current LEAP Core:
    https://github.com/mcataloe/leap_framework/blob/main/docs/leap-core.md
 3. Report any project-specific content (paths, commands, business rules,
-   repositories, credentials, environments) and recommend moving it to the
-   repository AGENTS.md.
+   repositories, credentials, environments, work trackers) and recommend
+   moving it to the repository AGENTS.md. Rosters, allocations, and personal
+   productivity history belong in neither file.
 4. Do not install native Skills or edit any other file.
 
 Return:

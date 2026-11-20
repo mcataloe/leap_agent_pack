@@ -1,0 +1,37 @@
+# Illustrative, optional context-source manifest; NOT a required LEAP schema.
+# It does not load files automatically, enable native agents, or grant permissions.
+# Replace example paths with verified project-specific paths before use.
+format: "leap-context-example-v1"
+enabled: false
+default_execution: "single-agent"
+source_truth:
+  project_instructions: "AGENTS.md"
+  approved_prompt: "<project-approved-prompt-path>"
+  architecture_decisions: "<optional-applicable-decision-path>"
+  dependency_contracts: "<optional-relevant-contract-path>"
+context:
+  required_for_every_role:
+    - "project_instructions"
+    - "approved_prompt"
+  conditional:
+    - "architecture_decisions"
+    - "dependency_contracts"
+  include_only_when_material: true
+role_overlays:
+  architect: "templates/execution/architect.md"
+  implementor: "templates/execution/implementor.md"
+  reviewer: "templates/execution/reviewer.md"
+assignment:
+  build_unit: "<approved-task-id>"
+  repository: "<owner/repository>"
+  source_revision: "<verified-commit-or-contract-version>"
+  permitted_paths: []
+  forbidden_paths: []
+  required_validation: []
+  stop_conditions: []
+handoff:
+  authority: "existing-project-tracker-or-handoff"
+  location: "<authoritative-path-or-link>"
+  include_executed_checks: true
+  record_unverified_checks: true
+# Human approval policies and tool permission ceilings remain authoritative.

@@ -25,6 +25,7 @@ This repository uses LEAP. LEAP Core rules come from the global `AGENTS.md`. If 
 - Summary: Organizations submit verification requests and receive traceable eligibility results.
 - Start here: `docs/00_start_here.md`
 - Work tracking / planning sources: Jira project `VER`; Strategic Outcomes and Initiatives in `docs/02_strategy/`
+- Allocation / capacity source: Jira `VER` team capacity (pointer only)
 
 ## Source truth
 

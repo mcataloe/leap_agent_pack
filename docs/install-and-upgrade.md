@@ -41,7 +41,11 @@ This is a breaking change to template structure.
 | Setup and validation commands | Commands |
 | Architecture, data, contract, UX, AI, security rules | Project rules: keep only concrete, repository-specific rules |
 | Stop conditions | Project stop conditions, each with an approver |
+| Delivery system pointers, Advisory delivery estimates and source pointers | Project: "work tracking" and "allocation / capacity source" lines |
+| Advisory delivery estimates (managed section) | Remove; the method is in the framework's [delivery estimation](https://github.com/mcataloe/leap_framework/blob/main/docs/team-delivery-estimation.md) doc |
 | Generic testing, docs, completion, Charter, Recon rules | Remove; LEAP Core and the framework cover them |
+
+When moving estimation guidance, keep the work tracker and allocation system authoritative. Fill the pointer lines only from verified sources; never move rosters, timesheets, or accepted estimates into `AGENTS.md`, and do not overwrite accepted estimates without separate authorization.
 
 Keep the project section under about 800 words. Rules that are still `TBD` after population usually belong as open questions in `docs/`, not in a file every session loads.
 
@@ -51,6 +55,7 @@ Keep the project section under about 800 words. Rules that are still `TBD` after
 - Link to canonical docs instead of copying them into `AGENTS.md`.
 - Each project rule should prevent a real failure and be concrete enough to check. Remove rules that never fire.
 - Do not edit the managed section locally. Propose changes to [LEAP Core](https://github.com/mcataloe/leap_framework/blob/main/docs/leap-core.md) instead.
+- Optional [execution role overlays](optional-execution-roles.md) and [continuity templates](execution-continuity.md) are extra context for tasks that need them. Do not copy them into the managed section.
 - Native Skills: do not edit installed copies of the standard LEAP navigator. Write a separate project Skill with the [starter](../templates/skills/project-skill-starter/SKILL.md) instead.
 
 ## Versioning

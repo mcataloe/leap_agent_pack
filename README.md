@@ -81,6 +81,14 @@ Instructions are requests; enforced checks are guardrails. Pair the templates wi
 - CI checks for rules that can be tested (for example, "applied migrations are immutable")
 - agent permission deny-rules or hooks for paths that must never be edited (Claude Code permission rules and `PreToolUse` hooks, Codex sandbox and approval settings)
 
+## Optional add-ons
+
+Opt-in guidance. None of it changes the managed section, enables native delegation, or replaces the project's work tracker. Small tasks need none of it.
+
+- [Execution role overlays](docs/optional-execution-roles.md): architect, implementor, and independent-reviewer overlays plus an example context manifest, for work split across roles or sessions.
+- [Execution continuity](docs/execution-continuity.md): cross-session handoffs, independent review evidence, and lesson promotion.
+- [Native delegation adapters](docs/native-delegation-adapters.md): Codex and Claude Code subagent policy. Validate against the installed runtime before relying on it.
+
 ## Repository contents
 
 | Path | Purpose |
@@ -89,9 +97,11 @@ Instructions are requests; enforced checks are guardrails. Pair the templates wi
 | `templates/separated/repo/` | Repository template (project slots only) and population prompt |
 | `templates/combined/` | Single-file template and population prompt |
 | `templates/skills/` | Optional starter for project-specific native Skills |
+| `templates/execution/` | Optional role overlays, context manifest example, handoff, report, review, and lesson templates |
 | `examples/repo-AGENTS.example.md` | A populated repository file |
 | `docs/install-and-upgrade.md` | Upgrade, customization, and versioning |
 | `docs/skills-installation.md` | Optional native LEAP Skill install for Codex and Claude Code |
+| `docs/optional-execution-roles.md`, `docs/execution-continuity.md`, `docs/native-delegation-adapters.md` | Optional add-ons (see above) |
 | `manifests/latest.json` | Version, compatibility, and file inventory |
 | `scripts/check_pack.py` | Markers, metadata, manifest, links, and size budgets |
 

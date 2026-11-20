@@ -22,6 +22,9 @@ Before editing:
 Populate the project section:
 - Project: name, summary, start-here path, work tracking or planning sources
   (Jira, Azure DevOps, GitHub Projects, or doc paths), or "none".
+- Allocation / capacity source: the owner or system of record, or "none".
+  Record pointers only; never copy rosters, assignments, worklogs, or
+  accepted estimate values.
 - Source truth: canonical docs, do-not-use docs, last reconcile, known drift.
   Do not invent reconcile history.
 - Layout and stack: one line per meaningful top-level path.

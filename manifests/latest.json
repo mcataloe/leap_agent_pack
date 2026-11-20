@@ -16,6 +16,14 @@
     {"path": "templates/combined/AGENTS_Population_Prompt.md", "kind": "prompt"},
     {"path": "templates/skills/project-skill-starter/SKILL.md", "kind": "skill", "optional": true},
     {"path": "templates/skills/Project_Skill_Population_Prompt.md", "kind": "prompt", "optional": true},
+    {"path": "templates/execution/architect.md", "kind": "execution", "optional": true},
+    {"path": "templates/execution/implementor.md", "kind": "execution", "optional": true},
+    {"path": "templates/execution/reviewer.md", "kind": "execution", "optional": true},
+    {"path": "templates/execution/context-manifest.example.yaml", "kind": "execution", "optional": true},
+    {"path": "templates/execution/active-handoff.md", "kind": "execution", "optional": true},
+    {"path": "templates/execution/implementation-report.md", "kind": "execution", "optional": true},
+    {"path": "templates/execution/independent-review.md", "kind": "execution", "optional": true},
+    {"path": "templates/execution/lesson-candidate.md", "kind": "execution", "optional": true},
     {"path": "examples/repo-AGENTS.example.md", "template": "repo-example", "kind": "example"}
   ],
   "breakingChanges": [

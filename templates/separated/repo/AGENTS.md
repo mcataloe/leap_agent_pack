@@ -27,6 +27,9 @@ This repository uses LEAP. LEAP Core rules come from the global `AGENTS.md`. If 
 - Summary: `{{ONE_PARAGRAPH_PROJECT_DESCRIPTION}}`
 - Start here: `{{PATH_TO_SOURCE_TRUTH_ENTRYPOINT_OR_README}}`
 - Work tracking / planning sources (if any): `{{JIRA_ADO_GITHUB_PROJECT_OR_DOC_PATHS_OR_NONE}}`
+- Allocation / capacity source (if any): `{{ALLOCATION_OWNER_OR_SYSTEM_OR_NONE}}`
+
+These are pointers only. Do not copy rosters, allocations, worklogs, or accepted estimates here. For effort or delivery estimates, follow [LEAP delivery estimation](https://github.com/mcataloe/leap_framework/blob/main/docs/team-delivery-estimation.md).
 
 ## Source truth
 

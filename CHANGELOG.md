@@ -20,6 +20,15 @@ Breaking template-structure change. See [Install, Upgrade, and Customize](docs/i
 - `scripts/check_pack.py` and a CI workflow: markers, metadata versus manifest, manifest-to-file consistency, LEAP Core drift (also against the framework), word budgets, links, and anchors.
 - Per-tool setup table for Codex and Claude Code, and a "guardrails beyond instructions" section.
 
+### Reconciled with `main` (#5–#9)
+
+The work merged to `main` after #4 is kept and adapted to the slimmer structure:
+
+- #5 advisory delivery estimates: the managed-section estimation rules give way to LEAP Core, which reaches the framework's `docs/team-delivery-estimation.md` on demand. The repository and combined project sections keep the work tracker pointer and gain an "allocation / capacity source" pointer. Population prompts record pointers only, never rosters, allocations, or accepted estimates.
+- #6 template metadata dates: superseded by the `0.2.0-candidate.2` metadata.
+- #7 `docs/native-delegation-adapters.md`, #8 `docs/optional-execution-roles.md` and role overlays, and #9 `docs/execution-continuity.md` and continuity templates: kept unchanged apart from links. All of `templates/execution/` is listed in `manifests/latest.json`, and the README links them under "Optional add-ons".
+- Links that #5–#9 added to the removed quickstart, upgrade, customization, and versioning docs now live in the README and `docs/install-and-upgrade.md`.
+
 ### Removed
 
 - `docs/quickstart.md`, `docs/LEAP_AGENTS_Quickstart.md`, `docs/LEAP_AGENTS_Separate_Global_and_Repo_Method.md`, `docs/upgrade-guide.md`, `docs/customization-guide.md`, `docs/versioning.md` (merged into the README and `docs/install-and-upgrade.md`).
@@ -29,6 +38,10 @@ Breaking template-structure change. See [Install, Upgrade, and Customize](docs/i
 ## 0.2.0-candidate - Unreleased
 
 ### Added
+
+- Added advisory delivery-capacity estimation rules to separated global/repo and combined templates, and external system-of-record pointers in editable project sections (#5).
+- Extended population prompts to locate approved work-tracker and allocation sources without importing a live roster or individual activity history (#5).
+- Added optional native multi-agent delegation adapters (#7), execution role overlays and context mapping (#8), and execution continuity templates (#9).
 
 - Added optional native Skill installation, project Skill starter and evidence-based population prompt.
 - Added minimal LEAP help and semantic routing behavior to global, combined and repository Agent Pack templates.
