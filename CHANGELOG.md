@@ -2,9 +2,37 @@
 
 All notable LEAP Agent Pack changes are documented here.
 
-## Unreleased - 0.2.0 candidate
+## 0.2.0-candidate.2 - Unreleased
+
+Breaking template-structure change. See [Install, Upgrade, and Customize](docs/install-and-upgrade.md#from-020-candidate-or-earlier-to-020-candidate2).
+
+### Changed
+
+- Managed sections of the global and combined templates are now LEAP Core: about 600 words, embedded verbatim from the framework's `docs/leap-core.md`. LEAP Core adds the Materiality Gate with No Gate, the lightest-workflow ladder, Cleanup and Validation routing, and the four verification states. It drops the always-loaded planning hierarchy, Planning Boundary Review, E0–E4 tiers, and the 13-step work pattern.
+- Repository template reduced from about 1,980 to 275 words of project-specific slots. Planning sources become one optional line, Baseline State becomes one line, and every stop condition names an approver.
+- Combined template markers renamed to `LEAP_MANAGED_SECTION_*` / `LEAP_PROJECT_SECTION_*`, matching the separated templates. `LEAP_MASTER_*` markers are retired.
+- Population prompts rewritten to match, with an 800-word budget for the project section.
+- Documentation collapsed into `README.md` (setups, per-tool table, macOS/Linux and Windows install), `docs/install-and-upgrade.md`, and `docs/skills-installation.md`.
+- Manifests consolidated into `manifests/latest.json`.
 
 ### Added
+
+- `scripts/check_pack.py` and a CI workflow: markers, metadata versus manifest, manifest-to-file consistency, LEAP Core drift (also against the framework), word budgets, links, and anchors.
+- Per-tool setup table for Codex and Claude Code, and a "guardrails beyond instructions" section.
+
+### Removed
+
+- `docs/quickstart.md`, `docs/LEAP_AGENTS_Quickstart.md`, `docs/LEAP_AGENTS_Separate_Global_and_Repo_Method.md`, `docs/upgrade-guide.md`, `docs/customization-guide.md`, `docs/versioning.md` (merged into the README and `docs/install-and-upgrade.md`).
+- `manifests/template-inventory.json`, `manifests/compatibility.json` (merged into `manifests/latest.json`).
+- `examples/global-AGENTS.example.md`, `examples/combined-local-trial-AGENTS.example.md` (identical to the templates).
+
+## 0.2.0-candidate - Unreleased
+
+### Added
+
+- Added optional native Skill installation, project Skill starter and evidence-based population prompt.
+- Added minimal LEAP help and semantic routing behavior to global, combined and repository Agent Pack templates.
+- Aligned missing LEAP Cleanup invocation in supported bootstrap tables.
 
 - Added capability- and cost-aware execution routing to the global and combined templates.
 - Added E0-E4 capability classes and the `Implemented — execution unverified` versus `Execution verified` distinction.
