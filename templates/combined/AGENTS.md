@@ -4,7 +4,7 @@ LEAP_AGENT_PACK_TEMPLATE:
   version: 0.2.0-candidate.2
   compatible_leap_framework: ">=0.1.0 <1.0.0"
   source: https://github.com/mcataloe/leap_agent_pack
-  last_updated: 2026-10-21
+  last_updated: 2026-11-20
   local_modification_notes: Record downstream edits here.
 END_LEAP_AGENT_PACK_TEMPLATE
 -->
@@ -64,9 +64,9 @@ Current code, tests, schemas, and migrations outrank docs. Canonical docs outran
 ## Scope
 
 - Stay inside the stated scope. Respect non-goals and do-not-touch paths.
-- Reuse existing patterns. No unrelated cleanup.
+- Extend the existing implementation; do not treat the task as greenfield unless none exists. Reuse existing patterns. No unrelated cleanup.
 - Do not invent product rules or decisions. Mark unknowns `TBD` with the exact question for the owner.
-- Never weaken or delete tests to make them pass.
+- Add or update tests for changed behavior. Never weaken or delete tests to make them pass.
 - Link the governing ticket, issue, or plan when one exists. Use the full LEAP planning model (Strategic Outcome, Initiative, Delivery Unit, Build Unit) only when the project already uses it.
 
 ## Hard stops
@@ -75,7 +75,8 @@ Stop and ask before:
 
 - destructive or irreversible data changes, including edits to applied migrations
 - auth, permission, security, privacy, billing, or identity changes
-- breaking public contracts, APIs, schemas, or paths
+- changing public contracts, APIs, schemas, or paths
+- acting on a business rule that is unclear and would change the result
 - new dependencies, paid services, or major Architecture replacement
 - treating archived docs as current truth
 - irreversible Git operations or discarding work you do not own
@@ -90,7 +91,7 @@ Run the most relevant checks the repository defines. Choose the cheapest tool or
 - **Execution verified**: every required check ran and passed.
 - **Partially verified**: named required checks are still pending.
 - **Implemented — execution unverified**: required checks did not run.
-- **Failed**: a required check failed, or the diff exceeds scope or crosses a hard stop.
+- **Failed**: a required check failed, or the diff has an unexplained out-of-scope change or crosses a hard stop.
 
 Never call work complete when required checks did not run.
 

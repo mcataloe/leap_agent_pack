@@ -12,6 +12,7 @@ Breaking template-structure change. See [Install, Upgrade, and Customize](docs/i
 - Repository template reduced from about 1,980 to 275 words of project-specific slots. Planning sources become one optional line, Baseline State becomes one line, and every stop condition names an approver.
 - Combined template markers renamed to `LEAP_MANAGED_SECTION_*` / `LEAP_PROJECT_SECTION_*`, matching the separated templates. `LEAP_MASTER_*` markers are retired.
 - Population prompts rewritten to match, with an 800-word budget for the project section.
+- LEAP Core synced with the framework's current `docs/leap-core.md`: stop before changing (not only breaking) public contracts, APIs, schemas, or paths; stop before acting on an unclear business rule that would change the result; extend the existing implementation and add or update tests for changed behavior; `Failed` covers an unexplained out-of-scope change.
 - Documentation collapsed into `README.md` (setups, per-tool table, macOS/Linux and Windows install), `docs/install-and-upgrade.md`, and `docs/skills-installation.md`.
 - Manifests consolidated into `manifests/latest.json`.
 

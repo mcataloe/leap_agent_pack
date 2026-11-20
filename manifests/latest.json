@@ -3,7 +3,7 @@
   "repository": "https://github.com/mcataloe/leap_agent_pack",
   "version": "0.2.0-candidate.2",
   "status": "unreleased candidate; no release tag",
-  "lastUpdated": "2026-10-21",
+  "lastUpdated": "2026-11-20",
   "compatibleLeapFramework": ">=0.1.0 <1.0.0",
   "leapCore": "https://github.com/mcataloe/leap_framework/blob/main/docs/leap-core.md",
   "canonicalFrameworkSkill": "https://github.com/mcataloe/leap_framework/blob/main/skills/leap/SKILL.md",
